@@ -886,7 +886,14 @@ _s3["_st"] = [0x0, 0x0, {
   _0x166e05[_s3["_st"][0x10]()] = _0x5b09e0;
   _0x166e05[_s3["_st"][0x11]()] = _s3["_st"][0x13]();
   var _0x541225 = new _s3_es4(_0x166e05);
+  key = _0x166e05[_s3["_st"][0x10]()]
+  fp = window["_s3"]["_sc"][window["_s3"]['_sc']["length"] - 0x1]
   var _0x26644a = _0x541225[_s3["_st"][0x16]()](window["_s3"]["_sc"][window["_s3"]['_sc']["length"] - 0x1]);
+  enc_fp = _0x26644a
+  alert(key)
+  alert(window["_s3"]["_sc"][window["_s3"]['_sc']["length"] - 0x1])
+  alert([_0x26644a])
+  alert({key:key,fp:fp,enc_fp:enc_fp})
   window["_s3"]["_sc"][window["_s3"]["_sc"]["length"] - 0x1] = undefined;
   if (_0x26644a != null && _0x26644a[_s3["_st"][0x1a]()]()["length"] > 0x0) {
     _0x26644a["replace"](/(\s*|\t|\r|\n)/g, '');
