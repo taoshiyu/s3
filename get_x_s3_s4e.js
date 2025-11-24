@@ -442,7 +442,13 @@ var md5 = function (_0x25f57b, _0x5ddf28, _0xe52c88) {
 };
 // x_s3_s4e= _s3[_0x2ae1('0x13')][0x5a](window[_0xd71476[_0x2ae1('0x156')](_ssc[0x14] + _ssc[0x13], _ssc[0x12]) + _ssc[0x16]](_0x26644a) + _0xd71476['BAPox'] + _s3_tid, _0x214f53, _0x51fc87, _0x47b591)
 function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
-
+    if (fp){
+        let id_parts = fp[0].split(';')
+        console.log(id_parts)
+        x_s3_tid = id_parts[0]
+        x_s3_sid = id_parts[1]
+        console.log(x_s3_tid,x_s3_sid)
+    }
 
     var _0x7db3eb = [x_s3_tid + ';' + x_s3_sid];
 
@@ -468,7 +474,7 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
             _0x340501 = Math['round']((Math['random']() * 0xff));
         } while (_0x340501 === _0x595b7e);
         var _0x3aefc8 = _0x340501['toString'](0x10);
-        return (_0x3aefc8['lengtwh'] == 0x1) ? ('0' + _0x3aefc8) : _0x3aefc8;
+        return (_0x3aefc8['length'] == 0x1) ? ('0' + _0x3aefc8) : _0x3aefc8;
     };
 
     function _0x3ffcf8(_0x5f0ceb) {
@@ -625,23 +631,15 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
         return _0x1a9b6c(_0x360d9a) === _0x48b7ea[_0x360d9a] || [1, 1, "", 0, 0, 0, 31, 0][0x5];
     }
 
-    function _0x405f89(_0x23b2b1) {
-        var _0x13b662 = [];
-        for (var _0x22cff5 = 0x0; _0x22cff5 < _0x23b2b1["length"]; _0x22cff5++) {
-            if (_0x23b2b1[_0x22cff5]) {
-                _0x13b662["push"](_0x22cff5);
-            }
-        }
-        return new Uint8Array(_0x13b662);
-    }
 
     function pushCountingEvent(_0x12f614, current_v) {
         var _0x3a7591,
             _0x4b09f6 = current_v;
         _0x3a7591 = _0x4b09f6["length"];
+        let counts = [_0x29cc1a,_0x405f89]
         if (_0x3a7591 < 0x10) {
             var _0xed5419 = _0x12f614 === "counting" ? 0x0 : 0x1;
-            current_v = _0x405f89(_0x832dc7)
+            current_v = counts[_0xed5419](_0x832dc7)
         } else {
             if (!_0x407529(getMask("dynamic"))) {
                 current_v = current_v
@@ -659,11 +657,11 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
     //======================================================================countArray---->dyna1ing======================================================================
     if (mode === 0) {
         current_v = _0x29cc1a(_0x832dc7)
-      console.log('init',current_v)
+      console.log('initcounting0',current_v)
         current_v = pushCountingEvent('counting0', current_v)
     } else {
         current_v = _0x405f89(_0x832dc7)
-      console.log('init',current_v)
+      console.log('initcounting',current_v)
         current_v = pushCountingEvent('counting', current_v)
     }
 
@@ -1256,15 +1254,15 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
     x_s3_s4e = window.encodeURIComponent(x_s3_s4e) + '3sSs' + x_s3_tid
     return x_s3_s4e
 }
-key = [45,63,85,63,117,33,117,23,85,23,3,55,3,111,85,105]
-fp = ["6927080d5b9d8d9f288ceba746ba8d10f6ceeb46:48:d344c223-c8a2-11f0-a740-005056ae692b:0480412031;S1orTHwurmdne34413lm9ba18","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","81b419c870e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","8181f2efc35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-x_s3_tid = "1ef59452806deee43d64a84021216d6120b3f98a:48:7fc7cbb8-c8a4-11f0-a740-005056ae692b:0c2080201e"
-x_s3_sid =  "S1dq1gibsmSIe34413lm9ba38"
+key = [4,109,32,87,114,19,10,10,85,79,94,98,79,76,91,9]
+fp = ["d8765e0021b43289d0dc3b9411bfe627d9b16b21:48:eead6325-c958-11f0-a33d-3cd2e55daed6:081001207b;S1ksAp8a6oswe34413lm9bazg","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","d101892a70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5970:15)\n","9faf4e0fc35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
+console.log(fp)
+x_s3_tid = "9f0f050a6fb225b9e01bb43a8c74c73572646c9a:48:915fb989-c948-11f0-a33d-3cd2e55daed6:3c10002026"
+x_s3_sid =  "S1npSG8b5otqe34413lm9ba1f"
 ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
 ip = "120.229.99.37"
+right_cookie = 'TpQO7Qw4gU%2BMHjKdGBi7Sw8grZyowdY12zrBAznFahMjEo%2BVYWYxjAZv19QmSk5LKsrhNrDBctbNTWKYA7WswEVu4WQqo%2FbAUrZDwIMuTRAwsnmjkK%2FtILOwQ2Y4UKiTR%2FOceyTGYxJgG2%2BPEIh7H5lGdAmKl3qM%2BKGsU1brtwz0frYxBhCrWWUgeSItwoF%2FVK66zdcTjKdJpAf0hOOtwpXPwbInInjHq3BTAmvKL%2Bd7hrarHYhCii3H7WUREaPtBOisH3D5fIhWm7zQj%2Fyhhk4Uu2onXFTf5WsKxMirGbu%2FVUh9qwNHXp4%2B16qz7MnpOT216Nm%2BJIwf8yZz5C%2BptjppsnEPpylzzcoWi8sasSu69r0lWMv2Wam5oIPglN%2BkcDbud9B9kg7Ql1oAi5%2ByYuyNcit8Bfg9YU0W%2FcbC2o973H691TPo1ZuGvvQKYPXm4%2FzK4LRnlbyFCw%2F24iR%2BPi3jMMivFWf4rUVLHU4QiQcqwUCYORJFRytdbJ2ifd3aM0oeyse9wj75GCjxDL9EDNeiwPhrJrwQt%2BGi33j2ujX6tiaBV%2BRSTYLs6x%2FyLo%2BX4%2FzK4LRnlbyFCw%2F24iR%2BPlRgum9ccV0HSWZu%2BeCoOSEES%2FzRZ0ShYAULpsTnRjbeo7fJ%2BZGwzx38u7EOvsk9hxprk5xqkDkwcNJO7RGvw6cCKpJw4jvI25dujY%2FExYg5ELkvkqYjOXjiFL4PobrQ1T9pDuM8%2FOdD9BmCEA99PHS4h3pS4VX8m9QCC%2Bb1jTO2dHldwCvi99YhysrBl1Un43WJDejCPL0%2BiK1aLkhjpa3Iu8sqrYRjQ3rTftO5aE1uRRjzWrrXslJZi1ycxtJrrA%3D%3D3sSsba29a9a030a1ea959937f4032bfec68fc50a3637:48:31b56915-c947-11f0-a33d-3cd2e55daed6:0bf0022053',
 cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined)
-  right_cookie = '%2FNVDZy0Cx6pVW0zDDFE2T%2BW5ZYHAwoS%2BVl4JgiEXZG2p0QMGG31EgI227MiUbYSjS1AUm4RptOfIRIdqcTbZqvIpmYB9QhErrcr8sd%2FrVitO2WIxwpn03RzwRP2B8JtUB6bvVRqqxMXrmM0xvWSWVyjGGF7bf9Sc3qPaZoqTqFo1pNXt2DPuEprEMKCOrQwzPPh7XvGG9rTIvuv63JqiaHM6dTjSlv%2FTq%2BEZYcUm%2FdeH4UQPQYMUY7epbxLy33OIBDWtqcYJOON%2B7IzVCIiu9vEXpX%2F78CfcTfQrblU68q4ea4WN%2FhooDPTFfCjdzOtrniBwXKKwZv9TVJIs7GMFQHgYCKtdkcwyfxYmt1SrEWBJ7XrCWxXsQvgWPML5rmCT6yfdHDcFj5viPE88a9DTdg7HqBiXIy0Tp59tIQKPLTPTs%2BDst%2FV9vTs9YPdn%2Bx%2FME0Wxy%2F8ot91aAvsmygROhPcirWCsF3HVHKsbOTVW%2FnuekZwVi7atImttoOLadDHlIr41UMztySit%2FuSFsft%2B9vfG25uwpFBVDLmInfcR6FArs2jc8BxeVLvghGG9HBD4E0Wxy%2F8ot91aAvsmygROhGkRWtkCfDUsarFJ7Wq7vqNxqBA0d6EHby4NYfk8PaYmIXGnFXrxeU%2FvriM77R9ObFIEYLuzZpxMxqT4%2BzKed7AprR%2B%2Bu6T58tcESYpv17VxSeF36gOY9qG2F4QFtF1DXNqMRpi2H8VfqN8Kd4Lty6gCrrzrrBsB0QWyQ0E3Xu%2BYwWSyif87TZpvJe4QUFdzc425ZqFuDMOGoirqFiG31vq8u0iWQmMwklyKVwZmwck06yn5Q14GgDB3TbuR%2FX%2FqhQ%3D%3D3sSs1ef59452806deee43d64a84021216d6120b3f98a:48:7fc7cbb8-c8a4-11f0-a740-005056ae692b:0c2080201e',
-
 console.log(cookie===right_cookie)
 console.log(cookie)
 console.log(right_cookie)
@@ -1273,4 +1271,4 @@ console.log(right_cookie)
 
 
 // key = 63,31,93,33,85,63,115,17,97,85,85,85,63,117,93,33
-// fp = ["7eb6354f76337edff9e02070f9c5ff4b174aec49:48:25e82bc2-c77b-11f0-a33d-3cd2e55daed6:0c0a6420ba;S1qibF09dktje34413lm9d327","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.100"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","f35ef2b470e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","346ef9d9cbeb99dbefae1d2e178d2c739fd27dec",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
+// // fp = ["7eb6354f76337edff9e02070f9c5ff4b174aec49:48:25e82bc2-c77b-11f0-a33d-3cd2e55daed6:0c0a6420ba;S1qibF09dktje34413lm9d327","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.100"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","f35ef2b470e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","346ef9d9cbeb99dbefae1d2e178d2c739fd27dec",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]

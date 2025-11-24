@@ -7756,7 +7756,9 @@ var bT = function() {
                 _0x4c65f4 += _0x69dd04;
                 !!_0x69dd04 ? _0x526b00['push'](_0x69dd04) : _0x526b00[_0x1c61('0x4f')]('');
                 _0x4262aa ? _0x4262aa[_0x1c61('0x4f')](!!_0x69dd04 ? [_0x27b7c6[_0x1c61('0x59a')], _0x69dd04] : [_0x1c61('0x59b'), 'W']) : 0x0;
-                return [_0x5c9a04 ? [] : _0x52a783, _0x69dd04, _0x27b7c6['yggmS'](_0x3ffcf8, 0x14)];
+                let random_hash = _0x3ffcf8(0x14)
+                alert(random_hash)
+                return [_0x5c9a04 ? [] : _0x52a783, _0x69dd04, random_hash];
             },
             '_a47': function(_0x45d9e3, _0x5dbe5a) {
                 return [[], []];
