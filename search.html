@@ -1,0 +1,3845 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<script type="text/javascript" src="/vodka/v1/dfp/bootstrap.js" async="true"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>选择航班</title>
+
+	<link href="/szair_B2C/static/css/common.css?t=3" rel="stylesheet" rev="stylesheet" type="text/css" />
+	<script src="/szair_B2C/static/js/jquery-3.7.1.min.js?t=0.7810540806551676"></script>
+	<script src="/szair_B2C/static/js/jquery-migrate-1.4.1.min.js?t=0.7810540806551676"></script>
+	<link rel="stylesheet" href="/szair_B2C/static/ued2/js2/layui/css/layui.css?t=0.7810540806551676">
+	<link rel="stylesheet" type="text/css" href="/szair_B2C/static/ued2/css2/common.css?t=0.7810540806551676" />
+	<link rel="stylesheet" type="text/css" href="/szair_B2C/static/ued2/css2/ued.css?t=0.7810540806551676" />
+
+	<!--100需求  yang-lb-->
+
+
+	<script>
+		var sysPath = "/szair_B2C";
+		var fandhPath = "https://global.shenzhenair.com/zhair/ibe";
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="/szair_B2C/static/ued2/js2/tip/tipso.css?t=0.7810540806551676" />
+
+	<link rel="stylesheet" href="/szair_B2C/static/ued2/css2/date/date.css?t=0.7810540806551676" type="text/css" />
+	<link rel="stylesheet" href="/szair_B2C/static/ued2/css2/city/city.css?t=0.7810540806551676" type="text/css" />
+	<!-- <link rel="stylesheet" href="/szair_B2C/static/ued2/js2/layui/css/layui.css?t=0.7810540806551676">
+<link rel="stylesheet" type="text/css" href="/szair_B2C/static/ued2/css2/common.css?t=0.7810540806551676" />
+<link rel="stylesheet" type="text/css" href="/szair_B2C/static/ued2/css2/ued.css?t=0.7810540806551676" /> -->
+	<link rel="stylesheet" type="text/css" href="/szair_B2C/static/ued2/css2/newRouteQueryResult.css?t=0.7810540806551676" />
+
+</head>
+
+
+<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+<link href="./apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed">
+<link href="./apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="stylesheet" href="/szair_B2C/static/ued/css/font-awesome.min.css?t=0.7810540806551676" type="text/css">
+<link rel="stylesheet" type="text/css" href="/szair_B2C/static/ued/plugins/swiper/idangerous.swiper.css?t=0.7810540806551676" />
+<script src="/szair_B2C/static/ued/plugins/swiper/idangerous.swiper.js?t=0.7810540806551676"></script>
+<link rel="stylesheet" href="/szair_B2C/static/ued/css/header.css?t=0.7810540806551676" type="text/css">
+<style>
+	.topBar img {
+		vertical-align: middle;
+	}
+
+	/**选填标识多处用到，写在这**/
+	.choiceSign {
+		top: 2px;
+		color: red;
+		position: absolute;
+		right: 10px;
+		font-size: 22px;
+	}
+</style>
+<script type="text/javascript">
+	var DEFAULT_VERSION = 8.0;
+	var ua = navigator.userAgent.toLowerCase();
+	var isIE = ua.indexOf("msie") > -1;
+	var safariVersion;
+	if (isIE) {
+		safariVersion = ua.match(/msie ([\d.]+)/)[1];
+	}
+	if (safariVersion <= DEFAULT_VERSION) {
+		window.location.href = "/szair_B2C/405.html";
+	};
+</script>
+
+
+<!-- des 加解密 Start-->
+<script src="/szair_B2C/static/js/tripledes.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/mode-ecb-min.js?t=0.7810540806551676"></script>
+<script>
+	window.console = window.console || (function() {
+		var c = {};
+		c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function() {};
+		return c;
+	})();
+
+	// 加密
+	function encryptByDES(message, key) {
+
+		var keyHex = CryptoJS.enc.Utf8.parse(key);
+
+		var encrypted = CryptoJS.DES.encrypt(message, keyHex, {
+			mode: CryptoJS.mode.ECB,
+			padding: CryptoJS.pad.Pkcs7
+		});
+		return encrypted.toString();
+	}
+	// 解密
+	function decryptByDES(ciphertext, key) {
+
+		var keyHex = CryptoJS.enc.Utf8.parse(key);
+		// direct decrypt ciphertext
+		var decrypted = CryptoJS.DES.decrypt({
+			ciphertext: CryptoJS.enc.Base64.parse(ciphertext)
+		}, keyHex, {
+			mode: CryptoJS.mode.ECB,
+			padding: CryptoJS.pad.Pkcs7
+		});
+		return decrypted.toString(CryptoJS.enc.Utf8);
+	}
+</script>
+<!-- des 加解密 End-->
+
+<script src="/szair_B2C/static/js/popup/index.js?t=0.7810540806551676"></script>
+<!-- NEB-1223 WEB- -->
+
+<script src="/szair_B2C/static/js/codeDissector.js?t=0.7810540806551676"></script>
+<link href="/szair_B2C/static/css/ui.tabs.css?t=0.7810540806551676" rel="stylesheet" rev="stylesheet" type="text/css" />
+<script src="/szair_B2C/static/js/ui.core.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/ui.tabs.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/jquery.cookie.js?t=0.7810540806551676"></script>
+
+<script src="/szair_B2C/static/js/header2.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/sa-sdk-javascript-master/cookie.js?t=0.7810540806551676"></script>
+
+<script>
+	var countLangUrl = "https://global.shenzhenair.com/zhair/ibe/deeplink/countAndRedirectToHomePage.do";
+	// NEB-1739 神策埋点(将电粉信息和常客信息在session中取出应用)  start
+	var userInfoEntity = "";
+	var ffpSignInEntity = "";
+	// NEB-1739 神策埋点(将电粉信息和常客信息在session中取出应用)  end
+
+	var login = "";
+	var userNameCH = "";
+	var firstNameCH = "";
+	var firstNameEN = "";
+	var secondNameEN = "";
+	var memId = "";
+	var memLevel = "";
+	var sex = "";
+	var crmId = "";
+	var mobilephone = "";
+	var openId = "";
+
+	function cutString(str, len) {
+		//length属性读出来的汉字长度为1
+		if (str.length * 2 <= len) {
+			return str;
+		}
+		var strlen = 0;
+		var s = "";
+		for (var i = 0; i < str.length; i++) {
+			s = s + str.charAt(i);
+			if (str.charCodeAt(i) > 128) {
+				strlen = strlen + 2;
+				if (strlen >= len) {
+					return s.substring(0, s.length - 1) + "...";
+				}
+			} else {
+				strlen = strlen + 1;
+				if (strlen >= len) {
+					return s.substring(0, s.length - 2) + "...";
+				}
+			}
+		}
+		return s;
+	}
+
+	//add by linhui 20190301 STORY #466 领券中心入口嵌码 start
+	function couponCenterCode() {
+		sa.track('DrawCouponEntry', {
+			DrawCouponEntry: "特色产品"
+		});
+	}
+	//add by linhui 20190301 STORY #466 领券中心入口嵌码 end
+
+	//#616 start
+	function onlineSer() {
+		var url = "http://chat.shenzhenair.com/zxkf_sz/chatAction.do?action=firstInto&acceptedAccount=szair_web";
+		var userId = Math.random().toString(36).slice(-8);
+		/*if(login == "true"){
+		var nameCH = userNameCH + firstNameCH;
+		var nameEN = secondNameEN + "/"+ firstNameEN;
+		var psgrName=""
+		if(userNameCH != null && userNameCH != "" && firstNameCH!=null && firstNameCH != ""){
+			psgrName=nameCH;
+		}else if(secondNameEN!=null && secondNameEN!="" && firstNameEN!=null && firstNameEN!=""){
+			psgrName=nameEN;
+		} else {
+			psgrName=mobilephone;
+		}
+		var encodeName = encodeURIComponent(psgrName);
+		if(crmId != ""){
+			userId = "FHZY"+crmId;
+		} else {
+			userId = "SF"+memId;
+		}
+
+
+		url=url+"&name="+encodeName+"&vipLevel="+memLevel+"&sex="+sex;
+		if(openId != ""){
+			url=url+"&openid="+openId;
+		}
+	}
+	window.open(url+"&userId="+userId);*/
+
+		if (login == "true") {
+			var nameCH = userNameCH + firstNameCH;
+			var nameEN = secondNameEN + "/" + firstNameEN;
+			var psgrName = ""
+			if (userNameCH != null && userNameCH != "" && firstNameCH != null && firstNameCH != "") {
+				psgrName = nameCH;
+			} else if (secondNameEN != null && secondNameEN != "" && firstNameEN != null && firstNameEN != "") {
+				psgrName = nameEN;
+			} else {
+				psgrName = mobilephone;
+			}
+			var encodeName = encodeURIComponent(psgrName);
+			if (crmId != "") {
+				userId = "FHZY" + crmId;
+			} else {
+				userId = "SF" + memId;
+			}
+			var openid = '';
+			if (openId != "") {
+				openid = openId;
+			}
+			var mobile_phone = mobilephone;
+			//服务端加密
+			var desCryptData = {
+				"encryptedLinkDto.psgName": encodeName,
+				"encryptedLinkDto.vipLevel": memLevel,
+				"encryptedLinkDto.sex": sex,
+				"encryptedLinkDto.userId": userId,
+				"encryptedLinkDto.openid": openid,
+				"encryptedLinkDto.phone": mobile_phone
+			}
+			$.ajax({
+				type: "post",
+				url: sysPath + "/encryptedLink.action",
+				async: false,
+				data: desCryptData,
+				datatype: "json",
+				success: function(data) {
+					if (data != null && data != "") {
+						/*return result.encryptLink;*/
+						var tokenReq = {
+							"userId": "34820n2390871",
+							"channelAccount": "szair_weixin"
+						}
+						/*  $.ajax({
+						      type : "post",
+						      url : data.tokenUrl,
+						      async: false,
+						      data : tokenReq,
+						      datatype : "json",
+						      success : function(tokenResult) {
+						          var openUrl = tokenResult+"&token="+tokenResult.token;
+						          window.open(openUrl);
+						      }
+						  })*/
+						window.open(data.encryptLink);
+					}
+				}
+			});
+		} else {
+			toLoginNew('header');
+			$("#zxkf").attr("isZxkf", "1");
+			$(".layui-layer-close2").on("click", function() {
+				$("#zxkf").removeAttr("isZxkf");
+			})
+		}
+		/*  if(uid == null || uid == ''){
+		      toLoginNew('header');
+		  }*/
+	}
+
+	function onlineSerUrl() {
+		var url = "http://chat.shenzhenair.com/zxkf_sz/chatAction.do?action=firstInto&acceptedAccount=szair_web";
+		var userId = Math.random().toString(36).slice(-8);
+		debugger;
+		if (login == "true") {
+			var nameCH = userNameCH + firstNameCH;
+			var nameEN = secondNameEN + "/" + firstNameEN;
+			var psgrName = ""
+			if (userNameCH != null && userNameCH != "" && firstNameCH != null && firstNameCH != "") {
+				psgrName = nameCH;
+			} else if (secondNameEN != null && secondNameEN != "" && firstNameEN != null && firstNameEN != "") {
+				psgrName = nameEN;
+			} else {
+				psgrName = mobilephone;
+			}
+			var encodeName = encodeURIComponent(psgrName);
+			if (crmId != "") {
+				userId = "FHZY" + crmId;
+			} else {
+				userId = "SF" + memId;
+			}
+
+			url = url + "&name=" + encodeName + "&vipLevel=" + memLevel + "&sex=" + sex;
+			if (openId != "") {
+				url = url + "&openid=" + openId;
+			}
+		}
+		return url + "&userId=" + userId;
+	}
+	//#616 end
+</script>
+<!-- NEB-1739 神策埋点  start-->
+<!-- 埋点js在 common.vm 中的 velocity/common/coremetrics.vm 中有重复引用造成埋点重复，将headerUed中注释 解决重复埋点问题 -->
+<script src="/szair_B2C/static/js/sa-sdk-javascript-master/automaticBuryingPoint.js?t=0.7810540806551676"></script>
+<!-- NEB-1739 神策埋点  end-->
+<script>
+	var cookieValue = $.cookie("iszxkf");
+	console.log("是否在线客服" + cookieValue);
+	if (cookieValue == '1' && login == "true") {
+		onlineSer();
+		document.cookie = 'iszxkf' + '=0;Path=/;';
+		console.log("当前状态" + $.cookie("iszxkf"));
+	}
+</script>
+<script>
+	//add by linhui 20190505 1828额外行李 start
+	var uid = ""
+
+	function checkLoginStatus(url) {
+		debugger;
+		if (uid == null || uid == '') {
+			toLoginNew('header');
+		} else {
+			if (url) {
+				location.href = sysPath + url;
+			} else {
+				location.href = sysPath + '/index.html';
+			}
+		}
+	}
+	//add by linhui 20190505 1828额外行李 end
+</script>
+<div id="header-wrap">
+	<div id="header" class="header" style="color:#333;background-position:0 800px;height:auto !important">
+		<input type="hidden" name="cardID" id="cardID" value='' />
+		<input type="hidden" name="isPhoenix" id="isPhoenix" value='' />
+		<input type="hidden" name="memberNumber" id="memberNumber" value='' />
+		<input type="hidden" name="userID" id="userID" value='' />
+		<input type="hidden" name="depositId" id="depositId" value='' />
+		<input id="userIds" type="hidden" />
+		<input type="hidden" name="loginWay" id="loginWay" value='' />
+		<input type="hidden" name="iszxkf" id="iszxkf" value='' />
+		<input type="hidden" name="mobilePhone" id="mobilePhone" value='' />
+		<input type="hidden" name="emailNew" id="emailNew" value='' />
+		<input type="hidden" name="whichLogin" id="whichLogin" value='' />
+		<input type="hidden" name="userNameCH" id="userNameCH" value='' />
+		<input type="hidden" name="firstNameCH" id="firstNameCH" value='' />
+		<input type="hidden" name="firstNameEN" id="firstNameEN" value='' />
+		<input type="hidden" name="secondNameEN" id="secondNameEN" value='' />
+
+		<input type="hidden" name="pinActiveFlg" id="pinActiveFlg" value='' />
+
+		<div class="topBar">
+			<ul>
+				<li id="p3">
+					<img src="/szair_B2C/static/ued/images/header/aixin.png" style="height: 15px; width: 15px">
+					<a href="javascript:void(0)" class="cnwza">网站无障碍</a>
+					<span>|</span>
+				</li>
+				<li>
+					<img src="/szair_B2C/static/ued/images/header/top_1.png" style="margin-right: 5px;" />
+					<a href="#" id="lang_name" onclick="changelanguage();">简体中文</a>
+
+					<i class="fa fa-caret-down" onclick="changelanguage()" style="cursor: pointer"></i>
+					<span>|</span>
+				</li>
+				<li>
+					客服热线：95361
+					<span>|</span>
+				</li>
+				<li>
+					<a href="javascript:void(0)" id="zxkf" onclick="onlineSer();"><img src="/szair_B2C/static/ued/images/header/zxkf.png" onmouseover="this.src='/szair_B2C/static/ued/images/header/zxkf_o.png'" onmouseout="this.src='/szair_B2C/static/ued/images/header/zxkf.png'" />
+						在线客服</a>
+					<span>|</span>
+				</li>
+
+				<li style="display:none">
+					<a href="/szair_B2C/questionnaire/toHomeQuestionnaire.action"><img src="/szair_B2C/static/ued/images/header/yjwd.png" onmouseover="this.src='/szair_B2C/static/ued/images/header/yjwd_o.png'" onmouseout="this.src='/szair_B2C/static/ued/images/header/yjwd.png'" />
+						满意度有奖调查</a><span>|</span>
+				</li>
+				<li id="p1">
+					<a href="#" onclick="toLoginNew('header');"><img src="/szair_B2C/static/ued/images/header/user.png" onmouseover="this.src='/szair_B2C/static/ued/images/header/user_o.png'" onmouseout="this.src='/szair_B2C/static/ued/images/header/user.png'" />
+						<!--<a href="#" onclick="toLoginOld('header');">登录</a>-->
+						登录</a>
+					<span>|</span>
+					<a href="https://sf.shenzhenair.com/szffp-web/register/registerInit"><img src="/szair_B2C/static/ued/images/header/sign.png" onmouseover="this.src='/szair_B2C/static/ued/images/header/sign_o.png'" onmouseout="this.src='/szair_B2C/static/ued/images/header/sign.png'" />
+						注册</a>
+				</li>
+
+				<li id="p2" style="display: none">
+					欢迎您！
+					<a id="personalID" href="https://sf.shenzhenair.com/szffp-web/memberManage/memberOverview" target="_blank" class="underline">深航会员</a>
+					<a href="javascript:webLogoutNew();">退 出</a>
+				</li>
+			</ul>
+		</div>
+		<div class="logo" style="z-index: 1000;cursor: pointer">
+			<!--100需求 yang-lb  --start-->
+			<img class="log_1" src="/szair_B2C/static/ued/images/header/logo_201810new.png" onclick="window.location='/szair_B2C/index.html'" style="vertical-align: middle;widht:148px;height:67px" />
+			<!--100需求 yang-lb  --end-->
+			<!-- <img class="log_2" src="/szair_B2C/static/ued/images/header/jgbz.png" onclick="window.open('/szair_B2C/priceAppeal/toPriceAppealLandingPage.action')" style=""/> -->
+		</div>
+		<style>
+			/*  #indexNote,*/
+			#header {
+				z-index: 997;
+			}
+
+			.fullscreen-mask {
+				position: fixed;
+				left: 0;
+				top: 110px;
+				right: 0;
+				bottom: 0;
+				background-color: rgba(0, 0, 0, 0.3);
+				visibility: hidden;
+				z-index: -1;
+				opacity: 0;
+			}
+
+			.fullscreen-mask.show {
+				opacity: 1;
+				-webkit-transition: all 0.5s;
+				transition: all 0.5s;
+				opacity: 1;
+			}
+
+			#header .navNew_container {
+				position: relative !important;
+				margin-left: 0 !important;
+				padding-left: 287px !important;
+			}
+
+			.sec_navNew {
+				position: fixed !important;
+				z-index: 40010 !important;
+				left: 0px !important;
+				width: 100% !important;
+				padding: 0px !important;
+			}
+
+			.navNew .sec_navNew .sec_navNew--player {
+				position: absolute;
+				z-index: 1;
+				right: 40px;
+				bottom: 40px;
+				width: 24px;
+				height: 22px;
+				background: url('/szair_B2C/static/images/revision_image/2_laba_icon.png') no-repeat;
+			}
+
+			.navNew .sec_navNew>div.sec_navNew__inner {
+				padding: 20px 0px !important;
+				position: relative;
+				zoom: 1;
+				/*IE下*/
+				margin: 0 auto;
+				width: 100%;
+				max-width: 1367px;
+				overflow: hidden;
+			}
+
+			/*
+            *  深航logo图
+            */
+			.navNew .sec_navNew>div.sec_navNew__inner::before {
+				position: absolute;
+				z-index: -1;
+				content: '';
+				right: 40px;
+				bottom: 0;
+				width: 307px;
+				height: 283px;
+				background: url('/szair_B2C/static/images/revision_image/sh_logo.png') no-repeat;
+				background-size: 100% auto;
+			}
+
+			/**
+            * 清浮动
+            **/
+			.navNew .sec_navNew>div.sec_navNew__inner::after {
+				content: "020";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}
+
+			/**
+            *  会员推荐模块
+            **/
+			.sec_navNew__inner-list>li {
+				float: left !important;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+			}
+
+			.sec_navNew__inner-subNav {
+				width: 100% !important;
+			}
+
+			.sec_navNew__inner-subNav>li {
+				padding: 0 !important;
+				padding-left: 10px !important;
+
+			}
+
+			.sec_navNew__inner-subNav>li:nth-of-type(1) {
+				position: relative;
+			}
+
+			.sec_navNew__inner-subNav>li:nth-of-type(1)::before {
+				position: absolute;
+				content: '';
+				left: 0;
+				top: 50%;
+				width: 8px;
+				height: 8px;
+				background-color: #383838;
+				border-radius: 50%;
+				transform: translateY(-50%);
+			}
+
+			.nav_bk {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				background-image: url('/szair_B2C/static/ued/images/mask.png');
+				transition: all 0.5s;
+				left: 0px;
+				top: 150px;
+				display: none;
+				z-index: 40000;
+			}
+		</style>
+		<link rel="stylesheet" href="/szair_B2C/static/upgrade/css/heade.css?t=0.7810540806551676" type="text/css">
+		<div class="navNew_container">
+			<div class="navNew current" value="music0" style="z-index: 300;width: 12.1%;font-size: 20px" onclick="window.location='/szair_B2C/index.html'">
+				<span class="firstNav">首页</span>
+			</div>
+
+			<div class="navNew" value="music2" style="width: 12.1%">
+				<a href="/szair_B2C/toFlightSearch.action" class="firstNav">航班预订</a>
+				<div class="sec_navNew">
+					<div class="sec_navNew__inner">
+						<ul class="sec_navNew__inner-list" style="width: 50%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin:auto;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/toFlightSearch.action">机票预订</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="margin-left: 2px" href="/szair_B2C/toFlightSearch.action">机票预订</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="margin-left: 2px" href="https://szair.shenzhenair.com/b2g/login" target="_blank">企业差旅</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="margin-left: 2px" href="https://app.gpticket.org/login.action" target="_blank">政府采购</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="margin-left: 2px" href="/szair_B2C/toFlightGMJCSearch.action">军/警/残预订</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/internationalStudentBooking.do?language=zh&market=CN">国际票身份专享</a>
+								</div>
+							</li>
+						</ul>
+						<ul class="sec_navNew__inner-list" style="width: 50%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin:auto;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -10px" href="#" onclick="clickUedInitOrder('2');">订单管理</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="#" onclick="clickUedInitOrder('1')">国内订单</a>
+								</div>
+							</li>
+							<!-- <li style="width: 100%">
+                            <div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+                                <a style="" href="#" onclick="clickUedInitOrder('2','2')">国际订单</a>
+                            </div>
+                        </li>-->
+							<li style="width: 100%">
+								<div style=" width: 165px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="#" onclick="clickAbnormalOrder()">不正常航班退票订单</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="#" onclick="checkLoginStatus('/baggage/orderListSearch.action');">额外行李订单</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/rescheduledOrder.action">改期订单查询</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="#" onclick="clickTransitHotel();">中转住宿订单查询</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a href="/szair_B2C/specialmeal/specialMeal_init.action">特殊餐食订单</a>
+								</div>
+							</li>
+						</ul>
+
+						<!--<ul>
+                        <li class="heading">
+                            <a href="https://global.shenzhenair.com/zhair/ibe/airpass/home.do?language=zh&amp;market=CN">国际套票专区</a>
+                        </li>
+                    </ul>-->
+						<!-- 886 官网 机票+酒店功能下线  <ul>
+                        <li class="heading">
+                            <a href="./toFlightHotelSearch.action">机票+酒店</a>
+                        </li>
+                    </ul>-->
+						<!-- <ul>
+                         <li class="heading">
+                             <a href="./toFlightGMJCSearch.action">军（警）残票预订</a>
+                         </li>
+                     </ul>-->
+						<!-- <ul>
+                         <li class="heading">
+                             <a href="./initTransitHotel.action">中转住宿</a>
+                         </li>
+                     </ul> -->
+						<!--  <ul>
+                          <li class="heading">
+                              <a href="./appointment/initAppointmentFlight.action">国内机票预约</a>
+                          </li>
+                      </ul>
+                      <ul>
+                          <li class="heading">
+                              &lt;!&ndash; <a href="./initOrderSearchList.action">我的订单</a> &ndash;&gt;
+                              <a href="./uedInitOrderSearchList.action">我的订单</a>
+                          </li>
+                      </ul>
+                      <ul>
+                          <li class="heading">
+                              <a>国际票身份专享</a>
+                          </li>
+                          <li>
+                              <a href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/internationalStudentBooking.do?language=zh&amp;market=CN">留学生</a>
+                          </li>
+                          <li>
+                              <a href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/seamanBooking.do?language=zh&amp;market=CN">海员</a>
+                          </li>
+                          <li>
+                              <a href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/laborBooking.do?language=zh&amp;market=CN">劳工</a>
+                          </li>
+                          <li>
+                              <a href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/immigrationBooking.do?language=zh&amp;market=CN">移民</a>
+                          </li>
+                      </ul>-->
+					</div>
+				</div>
+				<!--<div class="sec_navNew">
+                    <ul>
+                        <li class="heading">
+                            <a href="/szair_B2C/">机票预订</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="heading">
+                            <a href="https://global.shenzhenair.com/zhair/ibe/airpass/home.do?language=zh&amp;market=CN">国际套票专区</a>
+                        </li>
+                    </ul>
+                    &lt;!&ndash; 886 官网 机票+酒店功能下线  <ul>
+                        <li class="heading">
+                            <a href="./toFlightHotelSearch.action">机票+酒店</a>
+                        </li>
+                    </ul>&ndash;&gt;
+                    <ul>
+                        <li class="heading">
+                            <a href="./toFlightGMJCSearch.action">军（警）残票预订</a>
+                        </li>
+                    </ul>
+                    &lt;!&ndash;  <ul>
+                         <li class="heading">
+                             <a href="./initTransitHotel.action">中转住宿</a>
+                         </li>
+                     </ul> &ndash;&gt;
+                    <ul>
+                        <li class="heading">
+                            <a href="./appointment/initAppointmentFlight.action">国内机票预约</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="heading">
+                            &lt;!&ndash; <a href="./initOrderSearchList.action">我的订单</a> &ndash;&gt;
+                            <a href="./uedInitOrderSearchList.action">我的订单</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="heading">
+                            <a>国际票身份专享</a>
+                        </li>
+                        <li>
+                            <a href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/internationalStudentBooking.do?language=zh&amp;market=CN">留学生</a>
+                        </li>
+                        <li>
+                            <a href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/seamanBooking.do?language=zh&amp;market=CN">海员</a>
+                        </li>
+                        <li>
+                            <a href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/laborBooking.do?language=zh&amp;market=CN">劳工</a>
+                        </li>
+                        <li>
+                            <a href="https://global.shenzhenair.com/zhair/ibe/bookingManagement/immigrationBooking.do?language=zh&amp;market=CN">移民</a>
+                        </li>
+                    </ul>
+
+                </div>-->
+			</div>
+			<div class="navNew" value="music3" style="width: 12.1%">
+				<a href="/szair_B2C/staticPage.action?htmlName=acyx" class="firstNav">产品推荐</a>
+				<div class="sec_navNew">
+					<div class="sec_navNew__inner">
+						<ul class="sec_navNew__inner-list" style="width: 61.6%;margin-left: 28px">
+							<li class="heading" style="width: 100%; padding-left: 0;">
+								<div style="padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px;width: 94%">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=zxfw_gwc">深航出行</a>
+								</div>
+							</li>
+							<li style="width: 25%">
+								<div style="text-align: left;">
+									<ul class="sec_navNew__inner-subNav">
+										<li style="font-size: 19px"><a href="/szair_B2C/staticPage.action?htmlName=zxfw_gwc">尊享服务</a></li>
+										<li style="font-size: 16px"><a href="/szair_B2C/staticPage.action?htmlName=zxfw_gwc">尊享公务舱</a></li>
+										<li style="font-size: 16px"><a href="/szair_B2C/staticPage.action?htmlName=zxfw_cpssjjc">尊享舒适经济舱</a></li>
+
+									</ul>
+								</div>
+							</li>
+							<li style="width: 25%">
+								<div style="text-align: left;">
+									<ul class="sec_navNew__inner-subNav">
+										<li style="font-size: 19px"><a href="/szair_B2C/staticPage.action?htmlName=hyfw_bjk">会员服务</a></li>
+										<li style="font-size: 16px"><a href="/szair_B2C/staticPage.action?htmlName=hyfw_bjk">白金卡</a></li>
+										<li style="font-size: 16px"><a href="/szair_B2C/staticPage.action?htmlName=hyfw_jk">金卡</a></li>
+										<li style="font-size: 16px"><a href="/szair_B2C/staticPage.action?htmlName=hyfw_yk">银卡</a></li>
+									</ul>
+								</div>
+							</li>
+
+
+
+
+
+
+
+
+
+
+
+							<li style="width: 25%">
+								<div style="text-align: left;">
+									<ul class="sec_navNew__inner-subNav">
+										<li style="font-size: 19px"><a href="/szair_B2C/staticPage.action?htmlName=cxfw_cpshyx">促销服务</a></li>
+										<li style="font-size: 16px"><a href="/szair_B2C/staticPage.action?htmlName=cxfw_cpshyx">深航优享</a></li>
+										<li style="font-size: 16px"><a href="https://global.shenzhenair.com/zhair/ibe/airpass/home.do?language=zh&amp;market=CN">国际套票</a></li>
+
+									</ul>
+								</div>
+							</li>
+						</ul>
+						<ul class="sec_navNew__inner-list" style="width: 18%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin:auto;padding: 2px 10px 5px 0px;border-bottom: 2px red solid;text-align: left;font-size: 20px;">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=acyx">深航货运</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=acyx">爱宠易行</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=cks">超快送、当日达</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=gzwp">贵重物品</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=zjdz">整机定制</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=slxhgs">时令鲜活果蔬</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=llhw">冷链货物</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=hldc">含锂电池类货物</a>
+								</div>
+							</li>
+						</ul>
+						<ul class="sec_navNew__inner-list" style="width: 18%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin:auto;padding: 2px 10px 5px 0px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=yxkftp">深航酒店</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=yxkftp">悠享客房套票</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=msxwzl_xwc">美食寻味之旅&nbsp;<img style="width: 10px;height: 10px;" src="/szair_B2C/static/images/jiantou_icon.png"></a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=yh">喜宴|宴会|会议</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style="width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="/szair_B2C/staticPage.action?htmlName=tshl">特色好礼</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="navNew" value="music4" style="width: 12.1%">
+				<a href="/szair_B2C/involuntaryreschedu/involuntaryrescheduList.action" class="firstNav">自助服务</a>
+				<div class="sec_navNew">
+
+					<div class="sec_navNew__inner">
+						<ul style="width: 33.3%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin-left: 43%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/involuntaryreschedu/involuntaryrescheduList.action">机票服务</a>
+								</div>
+							</li>
+							<li style="width: 100%; padding-right:95px">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/involuntaryreschedu/involuntaryrescheduList.action">退改服务</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding-right: 95px;">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/refundRate/refundRateSearch.action">退票费查询</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding-right: 95px;">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/initTicketValidateSearch.action">机票验真</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding-right: 95px;">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="#" onclick="clickInvoice();">电子发票</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 33.3%;">
+							<li class="heading" style="width: 80%;">
+								<div style="width: 160px;margin-left: 43%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/checkIn/initCheckInTC.action">乘机服务</a>
+								</div>
+							</li>
+
+							<li style="width: 80%;padding-right: 70px;">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/checkIn/initCheckInTC.action">选座值机</a>
+								</div>
+							</li>
+							<li style="width: 80%;padding-right: 70px;">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/initFlightDynamic.action">航班动态</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding-right: 70px;">
+								<div style="margin-left: 37%; font-size: 16px">
+									<a href="/szair_B2C/certificateOfDelay/initCertificateOfDelay.action">航班延误/取消证明</a>
+								</div>
+							</li>
+
+							<li style="width: 80%;padding-right: 70px;">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/staticPage.action?htmlName=lscjzm">临时乘机证明</a>
+								</div>
+							</li>
+							<li style="width: 80%;padding-right: 70px;">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="http://szapay.shenzhenair.com/" target="_blank">深航易付</a>
+								</div>
+							</li>
+							<li style="width: 100%">
+								<div style=" width: 160px;margin:auto;text-align: left;font-size: 16px">
+									<a style="" href="./initTransitHotel.action">中转住宿</a>
+								</div>
+							</li>
+							<li style="width: 80%;padding-right: 70px;">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/specialmeal/meal_init.action">餐食预订</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 33.3%;">
+							<li class="heading" style="width: 75%">
+								<div style="width: 160px;margin-left: 43%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/baggage/baggageIndex.action">行李服务</a>
+								</div>
+							</li>
+							<li style="width: 75%;padding-right: 70px">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/baggage/baggageIndex.action">额外行李</a>
+								</div>
+							</li>
+							<li style="width: 75%;padding-right: 70px">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/staticPage.action?htmlName=xldj">行李到家</a>
+								</div>
+							</li>
+							<li style="width: 75%;padding-right: 50px">
+								<div style="margin-left: 50%; font-size: 16px">
+									<a href="/szair_B2C/lostPack/belongingsLostShowInit.action">遗失物品&nbsp;<img style="width: 10px;height: 10px;" src="/szair_B2C/static/images/jiantou_icon.png"></a>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+			<div class="navNew" value="music5" style="width: 12.1%">
+				<a href="https://sf.shenzhenair.com/szffp-web/flight/flightInit" class="firstNav">会员服务</a>
+				<div class="sec_navNew">
+					<div class="sec_navNew__inner">
+						<ul style="width:20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 140px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/flight/flightInit">快捷查询</a>
+								</div>
+							</li>
+							<li style="width: 100%;;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/flight/flightInit">兑换机票</a>
+								</div>
+							</li>
+							<li style="width: 100%;;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/mileageOverview/goMileReplenish?fromPage=1">里程补登</a>
+								</div>
+							</li>
+							<li style="width: 100%;;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px" href="https://ffp.airchina.com.cn/mall.html">会员商城</a>
+								</div>
+							</li>
+							<li style="width: 100%;;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/order/shopOrder">商城订单</a>
+								</div>
+							</li>
+							<li style="width: 100%;;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/mileageOverview/goMileExchange?fromPage=3">计算器</a>
+								</div>
+							</li>
+						</ul>
+
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 140px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/memberManage/memberOverview">账户管理</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/memberManage/memberOverview">账户概况</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/mileageOverview/goMileOverview">里程管理</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/memberManage/sfInfo">个人信息</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 140px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/airlineCompany/selectAirlineList">权益获取</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/airlineCompany/selectAirlineList">航空途径获取里程</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList?partnerType=0&discountType=0&fromPage=1">合作伙伴获取里程</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 140px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">合作伙伴</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">银行</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">联名卡</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">交通</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">旅游预订</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">时尚购物</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">生活服务</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">电子商务</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/partner/selectList">航空促销</a>
+								</div>
+							</li>
+						</ul>
+						<!--       <ul style="width: 16.6%;">
+                        <li class="heading" style="width: 100%;">
+                            <div style="width: 140px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px;">
+                                <a style="margin-left: -7px"
+                                   href="http://www.shenzhenair.com/szair_B2C/activities/EnjoyFly/html/index.html">会员专享</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 35px;">
+                            <div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+                                <a style="margin-left: -7px;width: 100%;"
+                                   href="http://www.shenzhenair.com/szair_B2C/activities/EnjoyFly/html/index.html" target="_blank">会员日</a>
+                            </div>
+                        </li>
+                       <!--  <li style="width: 100%;padding: 0 35px;">
+                            <div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+                                <a style="margin-left: -7px;width: 100%;"
+                                   href="/szair_B2C/staticPage.action?htmlName=fxdr">飞行达人</a>
+                            </div>
+                        </li> -->
+						</ul>-->
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 140px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px;">
+									<a style="margin-left: -7px" href="https://sf.shenzhenair.com/szffp-web/activity/aboutUs/3">俱乐部介绍</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/activity/aboutUs/3">关于知音</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/activity/aboutUs/8">贵宾会员</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/activity/aboutUs/12">里程累积</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 35px;">
+								<div style="margin-left: 15%;text-align: left;font-size: 16px;width: 140px;">
+									<a style="margin-left: -7px;width: 100%;" href="https://sf.shenzhenair.com/szffp-web/activity/aboutUs/15">里程兑换</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="navNew" value="music6" style="width: 12.1%">
+				<a href="/szair_B2C/staticPage.action?htmlName=kpsy" class="firstNav">乘机帮助</a>
+				<div class="sec_navNew">
+					<div class="sec_navNew__inner">
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=kpsy">预订须知</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=kpsy">客票使用</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=gpts">购票提示</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=dmgx">代码共享</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=zzfw_zzzs">中转服务 <img style="width: 10px;height: 10px;" src="/szair_B2C/static/images/jiantou_icon.png"></a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=xcbx">行程报销</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=bxxx">保险信息</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=jjys">拒绝运输</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=blzj">乘机出行</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=blzj">办理值机</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=hbbd">航班变动</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=kcfw">客舱服务</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=zpg">休息室</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=tyxl">行李服务</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=tyxl">托运行李</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=ssxl">随身行李</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=tsxl_xzys">特殊行李 <img style="width: 10px;height: 10px;" src="/szair_B2C/static/images/jiantou_icon.png"></a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/dangerousGoods/initDangerousGoods.action">危险品</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=xlsh">行李损坏</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=yswp">遗失物品(深圳)</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=wplk">特殊旅客</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=wplk">无陪旅客</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=etye">儿童婴儿</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=yclk">孕产旅客</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=lylk">轮椅旅客</a>
+								</div>
+							</li>
+
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=djlk">担架旅客</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=tsxq">特殊需求</a>
+								</div>
+							</li>
+
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=ysgz">货物运输</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=ysgz">运输规则</a>
+								</div>
+							</li>
+							<li style="width: 100%;padding: 0 42px;">
+								<div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+									<a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=lxfs">联系方式</a>
+								</div>
+							</li>
+						</ul>
+						<!-- <ul style="width: 16.6%;">
+                        <li class="heading" style="width: 100%;">
+                            <div style="width: 160px;margin-left: 6%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+                                <a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=lxzj">常见问题</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 42px;">
+                            <div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+                                <a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=lxzj">旅行证件</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 42px;">
+                            <div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+                                <a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=xlwt">行李问题</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 42px;">
+                            <div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+                                <a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=zjjt">转机经停</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 42px;">
+                            <div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+                                <a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=tslkfw">特殊旅客服务</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 42px;">
+                            <div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+                                <a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=wxpl">危险品类</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 42px;">
+                            <div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+                                <a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=jswt">机上问题</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 42px;">
+                            <div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+                                <a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=ywsh">意外伤害</a>
+                            </div>
+                        </li>
+                        <li style="width: 100%;padding: 0 42px;">
+                            <div style=" margin-left: 15%;text-align: left;font-size: 16px;width: 140px">
+                                <a style="margin-left: -11px" href="/szair_B2C/staticPage.action?htmlName=mcsy">名词释义</a>
+                            </div>
+                        </li>
+                    </ul> -->
+
+					</div>
+				</div>
+			</div>
+			<div class="navNew" value="music7" style="width: 12.1%">
+				<a href="/szair_B2C/staticPage.action?htmlName=kfzx" class="firstNav">联系深航</a>
+				<div class="sec_navNew">
+					<div class="sec_navNew__inner">
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=kfzx">客服中心</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=hyrx">会员热线</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=yyb">营业部&柜台</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=jddh">酒店电话</a>
+								</div>
+							</li>
+						</ul>
+						<ul style="width: 20%;">
+							<li class="heading" style="width: 100%;">
+								<div style="width: 160px;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 20px">
+									<a style="margin-left: -7px" href="/szair_B2C/staticPage.action?htmlName=hydh">货运电话</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="navNew" value="music8" style="width: 12.1%">
+				<a href="/szair_B2C/onlineFeedbackUrl.action" class="firstNav">旅客留言</a>
+				<!--<div class="sec_navNew" style="display: none">
+                    <div style="">
+                        <ul style="width: 50%;">
+                            <li class="heading" style="width: 100%;">
+                                <div style="width: 160px;margin-left: 43%;padding: 2px 10px 5px 10px;border-bottom: 2px red solid;text-align: left;font-size: 22px">
+                                    <a style="margin-left: -7px" href="/szair_B2C/">深航概况</a>
+                                </div>
+                            </li>
+                            <li style="width: 100%">
+                                <div style=" margin-left: 48%;text-align: left;font-size: 16px">
+                                    <a style="margin-left: -7px" href="/szair_B2C/">机票预订</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>-->
+			</div>
+		</div>
+		<div class="fullscreen-mask"></div>
+		<!-- 新加遮罩 06/18 start-->
+		<script>
+			// $('.navNew').on('mouseover', function(){
+			//     // 没有二级菜单不用处理
+			//     console.log($(this))
+			//     if($(this).find('.sec_navNew').length > 0){
+			//         $('.fullscreen-mask').addClass('show').css('visibility', 'visible')
+			//     }
+			// })
+			// $('.navNew').on('mouseout', function(){
+			//     $('.fullscreen-mask').removeClass('show').css('visibility', 'hidden')
+			// })
+		</script>
+		<!-- 新加遮罩 06/18 end-->
+
+	</div>
+</div>
+
+
+<!-- <div id="login_layout" class="dis1" style="border: 5px solid rgb(170, 170, 170); z-index: 9999; position: fixed; width: 380px; margin-left: -179px; left: 50%; margin-top: -120px; top: 50%;display:none;">
+	<div class="ll_in01"><span style="font-weight:bold; font-size:12px;  cursor:pointer; z-index:9999" id='loginClose'>×&nbsp;关闭</span></div>
+	<div id="registOrLogin" style="margin-top:-19px; width:300x; background:#ffffff;">
+		<ul class="ui-tabs-nav" style="width:372px">
+			<li class="ui-tabs-selected" style="min-width:158px;"><a id="tab1" href="#fragment-1"><span style=" font-weight:bold; font-size:15px;">会员密码登录</span></a></li>
+			<li class="ui-tabs-selected" style="min-width:158px;"><a id="tab2" href="#fragment-2"><span style=" font-weight:bold; font-size:15px; ">手机动态码登录</span></a></li>
+		</ul>
+	</div>
+
+	<div style="border: 1px solid rgb(225, 225, 225); margin-left: 5px; width: 350px; min-height: 190px; display: block; background: rgb(241, 241, 241);" id="fragment-1" class="ui-tabs-panel">
+		<div id="omTip1" style="display: none;">
+			<font style="font-weight: bold;">该订单是会员登录后预订的，为了给您提供更便捷的订单管理服<br>务，请您按以下提示登录后再查看:</font>
+		</div>
+		<ul class="login_bd" id="loginByNormal">
+			<li class="clearfix" style="vertical-align:middle;">
+				<span class="label pass"></span>
+				<span class="inptxt">
+					<input id="userName1" name="userName1" type="text" value="常客卡号/手机号/身份证号/邮箱" onfocus="javascript:if(this.value=='常客卡号/手机号/身份证号/邮箱'){this.value='';this.style.color='#333'}" class="inp-w200" onblur="javascript:if(this.value==''){this.value='常客卡号/手机号/身份证号/邮箱';this.style.color='#999'};">
+				</span>
+
+
+			</li>
+		    <li id="userName_error_msg" class="wrong_msg" style="display:none;"></li>
+		    <li class="clearfix" style="vertical-align:middle;">
+				<span class="label name"></span>
+				<span class="inptxt"><input id="password1" name="password" type="text" value="凤凰知音账户密码" onfocus="javascript:$(this).get(0).setAttribute('type','password');if(this.value=='凤凰知音账户密码'){this.value='';this.style.color='#333';$(this).get(0).setAttribute('type','password')}else{$(this).get(0).setAttribute('type','password')}" class="inp-w200" onblur="javascript:if(this.value==''){this.value='凤凰知音账户密码';this.style.color='#999';$(this).get(0).setAttribute('type','text')}else{$(this).get(0).setAttribute('type','password')};console.log($(this).attr('type'));"></span>
+			</li>
+			<li id="password_error_msg" class="wrong_msg" style="display:none;"></li>
+			<li class="text clearfix" style="vertical-align:middle;">
+				<span class="fl" style="white-space: nowrap; word-break: keep-all;"><input type="checkbox" id="user" class="check"><label for="user">记住账户</label></span>
+				<a href="http://ffp.airchina.com.cn/app/auth/member/index?backUrl=/forget/member/resetPassword" class="fr forget" target="_blank">忘记密码？</a>
+			</li>
+			<li class="code" style="vertical-align:middle;">
+				<span class="inptxt" id="login_yzm1"><input type="text" name="verifyCode" id="verifyCode1" value="请输入验证码" onfocus="javascript:if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" class="inp-w80">&nbsp;<a href="javascript:changeImg('login_yzm_img1');">换一张</a><img id="login_yzm_img1" onclick="changeImg('login_yzm_img1')" ></span>
+			</li>
+			<li id="verifyCode_error_msg" class="wrong_msg" style="display:none;"></li>
+			<li class="tc" style="vertical-align:middle;"><input type="button" class="btn btn165" id="login_in1" value="登录" onclick="subLogin('member');"></li>
+		</ul>
+	</div>
+
+	<div style="border:1px solid #e1e1e1; background:#f1f1f1; margin-left:5px; width:350px; min-height: 190px;" id="fragment-2" class="ui-tabs-panel ui-tabs-hide">
+		<div><input type="hidden" id="messageId" name="messageId" value=""></div>
+		<div id="omTip2" style="display: none;">
+			<font style="font-weight: bold;">该订单是会员登录后预订的，为了给您提供更便捷的订单管理服<br>务，请您按以下提示登录后再查看:</font>
+		</div>
+		<ul class="login_bd" id="loginByCaptchaUl">
+			<li class="clearfix" style="vertical-align:middle;">
+				<span class="label pass"></span>
+				<span class="inptxt">
+					<input id="userName2" name="userName2" type="text" value="手机号" onfocus="javascript:if(this.value=='手机号'){this.value='';this.style.color='#333'}" class="inp-w200" onblur="javascript:if(this.value==''){this.value='手机号';this.style.color='#999'};">
+				</span>
+			</li>
+			<li id="telephone_error_msg" class="wrong_msg" style="display: none;"></li>
+			<li style="vertical-align:middle;">
+				<input style="margin-left:50px;" type="button" id="checkTime" value="获取手机验证码(60)" onclick="sendMessagesNew();">
+			</li>
+			<li id="send_error_msg" class="wrong_msg" style="display: none;"></li>
+			<li style="vertical-align:middle;">
+				<span class="label name"></span>
+				<span class="inptxt">
+					<input id="password2" name="password" type="text" value="" class="inp-w200" onblur="checkMemberLoginCaptcha()">
+				</span>
+			</li>
+			<li class="code" style="vertical-align:middle;">
+				<span class="inptxt" id="login_yzm2">
+					<input type="text" name="verifyCode" id="verifyCode2" value="请输入验证码" onfocus="javascript:if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" class="inp-w80">&nbsp;<a href="javascript:changeImg('login_yzm_img2','mobile');">换一张</a><img id="login_yzm_img2" onclick="changeImg('login_yzm_img2','mobile')">
+				</span>
+			</li>
+			<li id="tele_verifyCode_error_msg" class="wrong_msg" style="display:none;"></li>
+			<li class="tc" style="vertical-align:middle;margin-top:10px;"><input type="button" class="btn btn165" id="login_in2" value="登录" onclick="subLogin('captcha');"></li>
+		</ul>
+	</div>
+	<div class="ll_in011" style="margin-top:8px;background-position:0 -300px;  overflow:hidden;  padding:3px 10px 0 0;text-align:left;height:40px;">
+		<span id="littleTip" style="font-weight:bold;  cursor:pointer; z-index:9999; padding-left:10px;">
+			<font>温馨提示：未绑定凤凰知音的用户请使用手机动态码登录</font>
+		</span>
+		<span id="regist" style="font-weight:bold;  cursor:pointer; z-index:9999; display:none">&nbsp;&nbsp;&nbsp;您还不是会员？请点击这里<a id="register" href="https://sf.shenzhenair.com/szffp-web/register/registerInit"><font color="blue">注册</font></a>
+		</span>
+		<span id="notLoginBuyTickets" style="font-weight:bold;  cursor:pointer; z-index:9999; float:right;display:none;">
+			<a id="notLogin" onclick="notLoginBuyTicket()"><font color="blue">不登录直接购票</font></a>
+		</span>
+	</div>
+</div> -->
+<div id="loginTempDiv" class="layui-hide" style="display: none">
+	<div id="login_655">
+		<div class="login_655_header" style="">
+			<p style="color: #111111;font-size: 24px;font-weight: 400">深圳航空</p>
+		</div>
+		<div class="layui-tab" style="width: 487px;display: inline-block;">
+			<ul class="layui-tab-title">
+				<li class="layui-this" style="width: 204px;">账号登录</li>
+				<li>手机动态密码登录</li>
+			</ul>
+			<div class="layui-tab-content">
+				<div class="layui-tab-item layui-show">
+					<form class="layui-form" action="" onsubmit="return false">
+						<div style="">
+							<table>
+								<tr>
+									<td colspan="4">
+										<input class="layui-input" style="color:#999" type="text" id="userName1" name="userName1" value="常客卡号/手机号/身份证号/邮箱" onfocus="javascript:if(this.value=='常客卡号/手机号/身份证号/邮箱'){
+                                               this.value='';this.style.color='#333'}" onblur="javascript:if(this.value==''){
+                                               this.style.color='#999'
+                                               this.value='常客卡号/手机号/身份证号/邮箱';};" />
+									</td>
+								</tr>
+								<tr style="display:none;height:20px" id="userNameErrorTr" class="wrong_msg">
+									<td colspan="4" align="left"><span id="userName_error_msg" style="color:red"></span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="padding-top: 20px">
+
+										<input class="layui-input" style="color:#999" type="text" id="pwdBak" name="pwdBak" value="请输入密码" onfocus="javascript:this.style.display='none';
+                                           document.getElementById('password1').style.display='block';
+                                            document.getElementById('password1').focus();">
+										<input id="password1" name="password" class="layui-input" type="password" style="display: none;" onblur="if(this.value==''){this.style.display='none';document.getElementById('pwdBak').style.display='block';}">
+
+										<!--<input id="password1" name="password" class="layui-input" type="text"-->
+										<!--value="请输入密码" style="color:#999"-->
+										<!--onfocus="javascript:if(this.value=='请输入密码'){-->
+										<!--this.value='';this.style.color='#333' ;this.type='password'}"-->
+										<!--onblur="javascript:if(this.value==''){-->
+										<!--this.type='text'-->
+										<!--this.style.color='#999'-->
+										<!--this.value='请输入密码';};">-->
+									</td>
+								</tr>
+								<tr style="height:50px">
+									<td colspan="4" align="left" id="passwordErrorTr" class="wrong_msg">
+										<span id="password_error_msg" style="color:red"></span>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td align="left" class="generalComment" style="padding: 0 0 10px">
+										<input type="checkbox" id="user" class="windowChk" />记住账户
+									</td>
+									<td align="right" colspan="2" style="padding: 0 0 10px">
+										<!--<a href="http://ffp.airchina.com.cn/app/auth/member/index?backUrl=/forget/member/resetPassword"
+                                        class="fr forget" target="_blank" class="generalComment">忘记密码？</a></td>-->
+										<a href="https://sf.shenzhenair.com/szffp-web/identify/goResetPwdSFFFP?fromPage=1" class="fr forget" target="_blank" class="generalComment">忘记密码？</a>
+									</td>
+								</tr>
+								<!--<tr>-->
+								<!--<td></td>-->
+								<!--<td width="185px">-->
+								<!--<input type="text" name="verifyCode" id="verifyCode1" style="color:#999"-->
+								<!--class="layui-input"-->
+								<!--value="请输入验证码"-->
+								<!--onfocus="javascript:if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}"-->
+								<!--size="6"/>-->
+								<!--</td>-->
+								<!--<td align="right" width="130px"><img id="login_yzm_img1"-->
+								<!--onclick="changeImg('login_yzm_img1')"></td>-->
+								<!--<td align="right"><a href="javascript:changeImg('login_yzm_img1');"-->
+								<!--class="generalComment">换一张</a></td>-->
+								<!--</tr>-->
+								<!--<tr style="display:none;height:20px" id="verifyCodeErrorTr" class="wrong_msg">-->
+								<!--<td></td>-->
+								<!--<td align="left"><span id="verifyCode_error_msg" style="color:red"></span></td>-->
+								<!--<td colspan="2"></td>-->
+								<!--</tr>-->
+							</table>
+						</div>
+					</form>
+					<!--<hr style="padding:0"/>-->
+					<div align="center" style="margin-bottom: 10px">
+						<button type="button" class="layui-btn-disabled login-btn" id="memberLogin">登录</button>
+						<p class="tipMsg">温馨提示：未绑定凤凰知音的用户请使用手机动态密码登录</p>
+						<p class="tipMsg2">还没有账号？
+							<a href="https://sf.shenzhenair.com/szffp-web/register/registerInit" class="loginLink">点击注册</a>
+						</p>
+					</div>
+				</div>
+				<div class="layui-tab-item" style="">
+					<form class="layui-form" action="" onsubmit="return false">
+						<div>
+							<table>
+								<tr>
+									<td colspan="4"><input class="layui-input" id="userName2" name="userName2" style="color:#999" type="text" size="11" value="请输入手机号" onfocus="javascript:if(this.value=='请输入手机号'){
+                                                           this.value='';this.style.color='#333'}" onblur="javascript:if(this.value==''){
+                                                           this.style.color='#999';
+                                                           this.value='请输入手机号';};" />
+									</td>
+								</tr>
+								<tr style="display:none;height:20px" id="phoneErrorTr" class="wrong_msg">
+									<td colspan="4" align="left"><span id="telephone_error_msg" style="color:red"></span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="position: relative;padding-top: 20px;">
+										<input class="layui-input" style="color:#999" type="text" id="password2" name="password" value="请输入手机验证码" onfocus="javascript:if(this.value=='请输入手机验证码'){
+                                               this.value='';this.style.color='#333'}" onblur="javascript:if(this.value==''){
+                                               this.style.color='#999';
+                                               this.value='请输入手机验证码';};">
+										<!--<input id="password2" name="password" class="layui-input" type="password"-->
+										<!--style="display: none;"-->
+										<!--onblur="if(this.value==''){this.style.display='none';document.getElementById('dxBak').style.display='block';}checkMemberLoginCaptcha();">-->
+										<input type="text" id="checkTime" value="获取手机验证码(60)" readonly="readonly" onclick="sendMessagesNew();" class="getVerifyCode" />
+									</td>
+								</tr>
+								<tr style="height:50px;display: block;">
+									<td colspan="3" align="left" class="wrong_msg" id="sendErrorTr">
+										<span id="send_error_msg" style="color:red"></span>
+									</td>
+									<td></td>
+								</tr>
+								<!--<tr>-->
+								<!--<td></td>-->
+								<!--<td width="185px">-->
+								<!--<input type="text" class="layui-input" name="verifyCode"-->
+								<!--id="verifyCode2" value="请输入验证码" style="color:#999"-->
+								<!--onfocus="javascript:if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}"-->
+								<!--size="6"/>-->
+								<!--</td>-->
+								<!--<td align="right" width="130px"><img id="login_yzm_img2"-->
+								<!--onclick="changeImg('login_yzm_img2','mobile')"/>-->
+								<!--</td>-->
+								<!--<td align="right"><a href="javascript:changeImg('login_yzm_img2','mobile');"-->
+								<!--class="generalComment">换一张</a></td>-->
+								<!--</tr>-->
+								<!--<tr style="display:none;height:20px" id="teleVerifyCodeErrorTr" class="wrong_msg">-->
+								<!--<td></td>-->
+								<!--<td align="left"><span id="tele_verifyCode_error_msg" style="color:red"></span></td>-->
+								<!--<td></td>-->
+								<!--<td></td>-->
+								<!--</tr>-->
+							</table>
+						</div>
+					</form>
+					<div align="center" style="margin-bottom: 10px">
+						<button type="button" class="layui-btn-disabled login-btn" id="captchaLogin">登录</button>
+						<p class="tipMsg">温馨提示：未绑定凤凰知音的用户请使用手机动态密码登录</p>
+						<p class="tipMsg2">还没有账号？
+							<a href="https://sf.shenzhenair.com/szffp-web/register/registerInit" class="loginLink">点击注册</a>
+						</p>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<form action="" onsubmit="return false">
+						<div style="width:450px;min-height:295px;max-height:455px">
+							<table width="450px">
+								<tr>
+									<td><label class="layui-form-label_login layerContent">账号</label></td>
+									<td colspan="3">
+										<input class="layui-input" type="text" placeholder="手机号/知音卡号/身份证/邮箱" size="8" />
+									</td>
+								</tr>
+								<tr>
+									<td><label class="layui-form-label_login layerContent">密码</label></td>
+									<td colspan="3">
+										<input class="layui-input" style="color:#999" type="text" id="pwdBak2" name="pwdBak" value="凤凰知音账户密码" onfocus="javascript:this.style.display='none';document.getElementById('password3').style.display='block';">
+										<input id="password3" name="password" class="layui-input" type="password" style="display: none;" onblur="if(this.value==''){this.style.display='none';document.getElementById('pwdBak2').style.display='block';}">
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td style="text-align:left" class="generalComment">
+										<input type="checkbox" class="windowChk" />&nbsp;&nbsp;记住账户
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td width="185px"><input type="text" class="layui-input" placeholder="请输入验证码" size="6" />
+									</td>
+									<td align="right" width="130px"></td>
+									<td align="right"><a href="" class="generalComment">换一张</a></td>
+								</tr>
+							</table>
+						</div>
+					</form>
+					<hr style="padding:0" />
+					<div align="center">
+						<button type="button" class="layui-btn" onclick="">登录</button>
+					</div>
+					<div style="margin:20px auto 20px 15px;text-align: right;padding-right: 10px;">
+						<a href="" class="generalComment">不登录直接购票</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="notLoginBuyTickets">
+			<button type="button" class="layui-btn login-btn2" onclick="notLoginBuyTicket();">不登录直接购票</button>
+			<div class="loginTipMsg">登录/注册后可享受更多优惠或服务</div>
+		</div>
+	</div>
+</div>
+<!--add by lintao 20190717 #624 电粉业务切换深粉业务一期 start-->
+<div id="loginTempDivNew2" class="layui-hide" style="display: none">
+	<div id="login_655">
+		<div class="login_655_header">
+			<span style="color: #111111;font-size: 24px;font-weight: 400;">深圳航空</span>
+			<div class="notLoginBuy notLoginBuyMsg" onclick="notLoginBuyTicket()" style="cursor: pointer;">
+				不登录购票
+				<div class="sanjiao">
+					<div class="sanjiao2"></div>
+				</div>
+			</div>
+			<img class="notLoginBuy notLoginBuyImg" src="/szair_B2C/static/images/login/noLoginTicket.png" onclick="notLoginBuyTicket()">
+		</div>
+		<div class="layui-tab" style="width: 487px;display: inline-block;">
+			<ul class="layui-tab-title" style="text-align: left;">
+				<li class="layui-this">手机验证码登录</li>
+			</ul>
+			<div class="layui-tab-content">
+
+				<div class="layui-tab-item layui-show" style="">
+					<form class="layui-form" action="" onsubmit="return false">
+						<div>
+							<table>
+								<tr>
+									<td colspan="4"><input class="layui-input" id="userName2New2" name="userName2New2" style="color:#999" type="text" size="11" value="手机号" onfocus="javascript:if(this.value=='手机号'){
+                                                           this.value='';this.style.color='#333'}" onblur="javascript:if(this.value==''){
+                                                           this.style.color='#999';
+                                                           this.value='手机号';};" />
+									</td>
+								</tr>
+								<tr style="display:none;height:20px" id="phoneErrorTrNew2" class="wrong_msg">
+									<td colspan="4" align="left"><span id="telephone_error_msgNew2" style="color:red"></span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="position: relative;padding-top: 20px;">
+										<input class="layui-input" style="width: 240px;color:#999" type="text" id="password2New2" name="passwordNew2" value="短信验证码" onfocus="javascript:if(this.value=='短信验证码'){
+                                               this.value='';this.style.color='#333'}" onblur="javascript:if(this.value==''){
+                                               this.style.color='#999';
+                                               this.value='短信验证码';};">
+										<input type="text" id="checkTimeNew2" value="获取验证码" readonly="readonly" onclick="sendMessagesNew2();" class="getVerifyCode" style="width: 160px;background-color: white;color: #2196F3;border: 1px solid #2196F3;border-radius:5px" />
+									</td>
+								</tr>
+								<tr id="errMsgInfo" style="height:50px;display: block;">
+									<td colspan="3" align="left" class="wrong_msg" id="sendErrorTrNew2">
+										<span id="send_error_msgNew2" style="color:red"></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="3" align="left" class="generalComment" style="padding: 0 0 10px">
+										<input type="checkbox" id="privacyAgreementMobile" name="privacyAgreementMobile" class="windowChk" lay-skin="primary" />
+										我已阅读并同意
+										<a class="readPopup" href="#" style="color: red">《隐私条款》</a>
+									</td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+					</form>
+					<button type="button" class="layui-btn-disabled login-btn" id="captchaLoginNew2">登录</button>
+				</div>
+
+
+				<div class="layui-tab-item">
+					<form class="layui-form" action="" onsubmit="return false">
+						<div style="">
+							<table>
+								<tr>
+									<td colspan="4">
+										<input class="layui-input" style="color:#999" type="text" id="userName1New2" name="userName1New2" value="凤凰知音卡号/手机号/身份证号" onfocus="javascript:if(this.value=='凤凰知音卡号/手机号/身份证号'){
+                                               this.value='';this.style.color='#333'}" onblur="javascript:if(this.value==''){
+                                               this.style.color='#999'
+                                               this.value='凤凰知音卡号/手机号/身份证号';};" />
+									</td>
+								</tr>
+								<tr style="display:none;height:20px" id="userNameErrorTrNew2" class="wrong_msg">
+									<td colspan="4" align="left"><span id="userName_error_msgNew2" style="color:red"></span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="padding-top: 20px">
+
+										<input class="layui-input" style="color:#999" type="text" id="pwdBakNew2" name="pwdBakNew2" value="请输入账户密码" onfocus="javascript:this.style.display='none';
+                                           document.getElementById('password1New2').style.display='block';
+                                            document.getElementById('password1New2').focus();">
+										<input id="password1New2" name="passwordNew2" class="layui-input" type="password" style="display: none;" onblur="if(this.value==''){this.style.display='none';document.getElementById('pwdBakNew2').style.display='block';}">
+									</td>
+								</tr>
+								<tr style="height:50px">
+									<td colspan="4" align="left" id="passwordErrorTrNew2" class="wrong_msg">
+										<span id="password_error_msgNew2" style="color:red"></span>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td align="left" class="generalComment" style="padding: 0 0 10px">
+										<input type="checkbox" id="userNew2" class="windowChk" lay-skin="primary" />
+										<!-- input type="checkbox" id="userNew2" class="windowChk"/> -->记住账户
+									</td>
+									<td align="right" colspan="2" style="padding: 0 0 10px">
+										<!--<a href="http://ffp.airchina.com.cn/app/auth/member/index?backUrl=/forget/member/resetPassword"
+                                           class="fr forget" target="_blank" class="generalComment">忘记密码？</a></td>-->
+										<a href="https://sf.shenzhenair.com/szffp-web/identify/goResetPwdSFFFP?fromPage=1" class="fr forget" target="_blank" class="generalComment">忘记密码？</a>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td align="left" class="generalComment" style="padding: 0 0 10px">
+										<input type="checkbox" id="privacyAgreement" name="privacyAgreement" class="windowChk" lay-skin="primary" />
+										我已阅读并同意
+										<a href="#" class="readPopup" style="color: red">《隐私条款》</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</form>
+					<button type="button" class="layui-btn-disabled login-btn" id="memberLoginNew2">登录</button>
+				</div>
+				<!--联合登录-->
+				<div align="center" style="margin-bottom: 10px">
+					<div style="width: 100%;font-size: 0px;padding: 30px 30px 14px 30px;">
+						<div style="width: 25%;display: inline-block;text-align: center;"><img src="/szair_B2C/static/images/login/wx.png" onclick="toAuthorize('weixin')"></div>
+						<div style="width: 25%;display: none;text-align: center;"><img src="/szair_B2C/static/images/login/zfb.png" onclick="toAuthorize('alipay')"></div>
+						<div style="width: 25%;display: inline-block;text-align: center;"><img src="/szair_B2C/static/images/login/qq.png" onclick="toAuthorize('qq')"></div>
+						<div style="width: 25%;display: inline-block;text-align: center;"><img src="/szair_B2C/static/images/login/wb.png" onclick="toAuthorize('weibo')"></div>
+					</div>
+					<p class="tipMsg" style="margin-top:10px;text-align: center">未注册手机验证后自动登录</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--add by lintao 20190717 #624 电粉业务切换深粉业务一期 end-->
+<div id="lang_layout" title="语言选择" class="dis1" style="border: 5px solid rgb(170, 170, 170); z-index: 9999; display:none;">
+	<div style="width:350px; height:300px;background-color:#f7f7f7;">
+		<div style="overflow:hidden;padding:3px 10px 0 0;text-align:right;"><a style="font-weight:bold; font-size:12px;  cursor:pointer; z-index:9999" id="langClose" onclick="closeLangLayout()">×&nbsp;关闭</a></div>
+		<div>
+			<div style="margin-left:15px;margin-top:5px;font-weight:bold; font-size:18px;"><label>选择地区和语言</label></div>
+			<div style="margin-left:15px;margin-top:15px;font-size:15px;">
+				<label>地区</label>
+				<div id="langLocal_Box" class="langLocal_Box" onclick="openLangLocalList()" style="margin-top:10px;">
+					<div id="showLocalFlag" class="local_CN" style="display: inline-block;margin-left:5px;"></div><a id="showLocalName" href="#nogo">China</a><b class="down"></b>
+					<ul id="langLocal_list" class="langLocal_list">
+						<li title="China">
+							<div class="local_CN"></div><a href="#nogo">China</a>
+						</li>
+						<li title="Hong Kong">
+							<div class="local_HK" style="margin-left: 25px;"></div><a href="#nogo">Hong Kong(China)</a>
+						</li>
+						<li title="Macau">
+							<div class="local_MO" style="margin-left: 25px;"></div><a href="#nogo">Macau(China)</a>
+						</li>
+						<li title="Taiwan">
+							<div class="local_TW" style="margin-left: 25px;"></div><a href="#nogo">Taiwan(China)</a>
+						</li>
+						<li title="Australia">
+							<div class="local_AU"></div><a href="#nogo">Australia</a>
+						</li>
+						<li title="Germany">
+							<div class="local_DE"></div><a href="#nogo">Germany</a>
+						</li>
+						<li title="Japan">
+							<div class="local_JP"></div><a href="#nogo">Japan</a>
+						</li>
+						<li title="Malaysia">
+							<div class="local_MY"></div><a href="#nogo">Malaysia</a>
+						</li>
+						<li title="Republic of Korea">
+							<div class="local_KR"></div><a href="#nogo">Republic of Korea</a>
+						</li>
+						<li title="Singapore">
+							<div class="local_SG"></div><a href="#nogo">Singapore</a>
+						</li>
+						<li title="Thailand">
+							<div class="local_TH"></div><a href="#nogo">Thailand</a>
+						</li>
+						<li title="United Kingdom">
+							<div class="local_GB"></div><a href="#nogo">United Kingdom</a>
+						</li>
+						<li title="Spain">
+							<div class="local_ES"></div><a href="#nogo">Spain</a>
+						</li>
+						<li title="Other">
+							<div class="local_OTHER"></div><a href="#nogo">Other</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div style="margin-left:15px;margin-top:15px;font-size:15px;">
+				<label>语言</label>
+				<div style="margin-left: -5px;margin-top: 10px;">
+					<span id="lang_zh"><input type="radio" name="languageOfLocal" value="zh" style="margin-left: 10px;"><label style="margin-left: 7px;">简体中文</label></span>
+					<span id="lang_cn"><input type="radio" name="languageOfLocal" value="cn" style="margin-left: 10px;"><label style="margin-left: 7px;">繁體中文</label></span>
+					<span id="lang_en"><input type="radio" name="languageOfLocal" value="en" style="margin-left: 10px;"><label style="margin-left: 7px;">English</label></span>
+					<span id="lang_ja"><input type="radio" name="languageOfLocal" value="ja" style="margin-left: 10px;"><label style="margin-left: 7px;">日本語</label></span>
+					<span id="lang_ko"><input type="radio" name="languageOfLocal" value="ko" style="margin-left: 10px;"><label style="margin-left: 7px;">한국어</label></span>
+				</div>
+			</div>
+			<div style="margin-left:15px;margin-top:15px;padding-left: 5px;"><input type="button" class="btn300" id="langLocalBtn" onclick="chooseLocalLanguage()" value="选择" /></div>
+			<div style="margin-left:15px;margin-top:15px;font-size:15px;"><span><input type="checkbox" id="rememberLang" />记住我的选择</span></div>
+		</div>
+	</div>
+</div>
+
+<div class="dis1" style="border: 5px solid rgb(170, 170, 170); z-index: 9999; position: fixed; width: 500px; margin-left: -179px; left: 50%; margin-top: -120px; top: 50%;display:none;" id="noPhoenixInfo">
+	<ul class="ffp">
+		<li class="tc" style="margin-top: 10px"><span style="width:80px;margin-left:-20px;font-size:14px">绑定凤凰知音会员账号，尊享更多会员权益</span></li>
+		<br>
+		<li><span style="width: 80px;margin-left: 100px">账户：</span>
+			<span class="inptxt"><input id="userName4" name="userName4" type="text" value="常客卡号/手机号/身份证号/邮箱" onfocus="javascript:if(this.value=='常客卡号/手机号/身份证号/邮箱'){this.value='';this.style.color='#333'}" class="inp-w200" onblur="javascript:if(this.value==''){this.value='常客卡号/手机号/身份证号/邮箱';this.style.color='#999'};"></span>
+		</li>
+		<br>
+		<li id="userName4_error_msg" class="wrong_msg" style="display:none;"></li>
+		<br>
+		<li><span style="width: 80px;margin-left: 100px">密码：</span>
+			<span class="inptxt"><input id="password4" name="password" type="password" value="" onfocus="javascript:if(this.value=='密码'){this.value='';this.style.color='#333'}" class="inp-w200" placeholder="密码"></span>
+		</li>
+		<br>
+		<li id="password4_error_msg" class="wrong_msg" style="display:none;"></li>
+		<br>
+		<li class="code"><span style="width: 80px;margin-left: 100px"></span>
+			<span class="inptxt" id="login_yzm4"><input type="text" name="verifyCode" id="verifyCode4" value="请输入验证码" onfocus="javascript:if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" class="inp-w80" onblur="javascript:if(this.value==''){this.value='请输入验证码';this.style.color='#999'};">&nbsp;<a href="javascript:changeImg('login_yzm_img4','noPhoenix');" style="color:#6666CC; line-height:30px;">换一张</a><img id="login_yzm_img4" style="vertical-align:middle; width:60px; height:30px; overflow:hidden" onclick="changeImg('login_yzm_img4','noPhoenix')"></span>
+		</li>
+		<br>
+		<li id="verifyCode4_error_msg" class="wrong_msg" style="display:none;"></li>
+		<br>
+		<li><span style="width: 80px;margin-left: 100px"></span><span style="font-weight:bold;  cursor:pointer; z-index:9999">&nbsp;&nbsp;&nbsp;您还不是会员？请点击这里<a id="register" href="https://sf.shenzhenair.com/szffp-web/register/registerInit">
+					<font color="blue">注册</font>
+				</a></span></li>
+		<br>
+		<li id="bind4_error_msg" class="wrong_msg" style="display:none;"></li>
+		<li id="bind4_success_msg" class=right_msg style="display:none;">绑定成功</li>
+		<br>
+		<li class="tc" style="vertical-align:middle; margin-top:10px;margin-bottom:30px"><input type="button" class="btn btn165" value="绑定" id="bingPhoenix" onclick="bingPhoenix('1')"> <input type="button" class="btn btn165" id="cancelBindPhoenix" value="下次再说" onclick="cancelBind('1')"> </li>
+	</ul>
+</div>
+
+<div class="dis1" style="border: 5px solid rgb(170, 170, 170); z-index: 9999; position: fixed; width: 450px; margin-left: -179px; left: 50%; margin-top: -120px; top: 50%;display:none;" id="isBindMember">
+	<input type="hidden" id="phoenixCardNo" name="phoenixCardNo" value="">
+	<ul class="ffp">
+		<li class="tc" style="margin-top: 10px"><span style="width:80px;margin-left:-20px;font-size:14px">绑定凤凰知音会员账号，尊享更多会员权益</span></li>
+		<br>
+		<li><span style="width: 80px;margin-left: 50px">卡号：</span><span id="phoenixCardNoView"></span></li>
+		<li><span style="width: 80px;margin-left: 50px">姓名：</span><span id="cNFirstName"></span></li>
+		<li><span style="width: 80px;margin-left: 50px">证件号：</span><span id="credentialNum"></span></li>
+		<li style="margin-bottom:10px;"><span class="label" style="width:80px;margin-left: 50px">
+				<font color="red">*</font>密码：
+			</span>
+			<span class="inptxt">
+				<input id="memberPassword" name="memberPassword" type="password">
+			</span>
+		</li>
+		<li id="cardPassword_error_msg" class="wrong_msg" style="display:none;"></li>
+		<li id="bind_error_msg" class="wrong_msg" style="display:none;margin-left: 80px;"></li>
+		<li id="bind_success_msg" class=right_msg style="display:none;">绑定成功</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class="tc" style="vertical-align:middle; margin-top:10px;margin-bottom:30px;"><input type="button" class="btn btn165" value="绑定" id="bingMem" onclick="bingPhoenix('2')"> <input type="button" class="btn btn165" id="cancelBind" value="下次再说" onclick="cancelBind('2')"> </li>
+	</ul>
+</div>
+
+<div class="dis1" style="border: 5px solid rgb(170, 170, 170); height:200px; z-index: 9999; position: fixed; width: 450px; margin-left: -179px; left: 50%; margin-top: -120px; top: 50%;display:none;" id="isBindPhoenix">
+	<input type="hidden" id="userName" value=''>
+	<ul class="ffp">
+		<li class="tc" style="margin-top: 10px"><span style="width:80px;margin-left:-20px;font-size:14px">您已拥有深航电粉会员账号，绑定后有更多权益，是否进行绑定?</span></li>
+		<br>
+		<li><span style="width: 80px;margin-left: 50px">账号：</span><span id="loginName"></span></li>
+		<li><span style="width: 80px;margin-left: 50px">姓名：</span><span id="cNFirstNamePhoenix"></span></li>
+		<li><span style="width: 80px;margin-left: 50px">证件号：</span><span id="credentialNumPhoenix"></span></li>
+		<li><span class="label" style="width:80px;margin-left: 50px""><font color=" red">*</font>密码：</span>
+			<span class="inptxt">
+				<input id="memberPasswordPhoenix" name="memberPasswordPhoenix" type="password">
+			</span>
+		</li>
+		<li id="cardPassword_error_msg_phoenix" class="wrong_msg" style="display:none;"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class="tc" style="vertical-align:middle; margin-top:10px"><input type="button" class="btn btn165" value="绑定" id="bingPho" onclick="bingPho()"> <input type="button" class="btn btn165" id="cancelBind" value="下次再说" onclick="cancelBindPho()"></li>
+	</ul>
+</div>
+<script>
+	//二级菜单展示逻辑begin
+	var $bk = $('<div class="nav_bk"></div>')
+	$('.navNew_container').append($bk)
+	$('.navNew').bind('mouseover', function() {
+		var $sec_navNew = $(this).find('.sec_navNew')
+		console.log($sec_navNew.css('display'))
+		if ($sec_navNew.css('display') === 'none') {
+			$('.sec_navNew:visible').hide()
+			let menu_top = $(this).offset().top + $(this).height() - $(document).scrollTop()
+			$sec_navNew.css('top', menu_top)
+			console.log('mouseover')
+			if ($sec_navNew.find('.sec_navNew__inner ul').length > 0) {
+				$sec_navNew.show()
+				$bk.css('top', menu_top).show()
+			}
+		} else {}
+
+	})
+	$('.navNew').bind('mouseleave', function() {
+		$('.sec_navNew:visible').hide()
+		$bk.hide()
+	})
+	$(window).scroll(function() {
+		$('.sec_navNew:visible').hide()
+		$bk.hide()
+	});
+	//二级菜单展示逻辑end
+</script>
+<script src="/szair_B2C/static/js/audio/audio.v1.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="/szair_B2C/static/css/popup.css?t=0.7810540806551676">
+
+<div id="guardian" class="popup">
+	<div class="popup-body">
+		<div class="popup-title">
+			<label style="padding: 4px;font-size: 15px;font-weight: bold">
+				用户隐私条款
+			</label>
+
+			<div class="closePopup">
+				<svg t="1641973187427" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2564" width="200" height="200">
+					<path d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024zM512 96a416 416 0 1 0 0 832 416 416 0 0 0 0-832z m176 640a47.68 47.68 0 0 1-33.92-14.08L512 579.904 369.92 721.92a48 48 0 0 1-67.84-67.84L444.096 512 302.08 369.92a48 48 0 0 1 67.84-67.84L512 444.096l142.08-142.016a48 48 0 0 1 67.84 67.84L579.904 512l142.016 142.08a48 48 0 0 1-33.92 81.92z" fill="#e6e6e6" p-id="2565"></path>
+				</svg>
+			</div>
+		</div>
+		<div class="popup-context" style="width: 850px;color: black;padding: 20px 60px;">
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/szair_B2C/static/css/popup.css?t=0.7810540806551676">
+
+<div id="check" class="popup">
+	<div class="popup-body" style="width: 450px;">
+		<div class="popup-title">
+			<label style="padding: 4px;font-size: 15px;font-weight: bold">
+				监护人登记
+			</label>
+
+			<div class="closePopup">
+				<svg t="1641973187427" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2564" width="200" height="200">
+					<path d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024zM512 96a416 416 0 1 0 0 832 416 416 0 0 0 0-832z m176 640a47.68 47.68 0 0 1-33.92-14.08L512 579.904 369.92 721.92a48 48 0 0 1-67.84-67.84L444.096 512 302.08 369.92a48 48 0 0 1 67.84-67.84L512 444.096l142.08-142.016a48 48 0 0 1 67.84 67.84L579.904 512l142.016 142.08a48 48 0 0 1-33.92 81.92z" fill="#e6e6e6" p-id="2565"></path>
+				</svg>
+			</div>
+		</div>
+
+		<div style="display: flex;flex-direction: column;justify-content: space-around;padding: 20px;font-size: 14px;">
+			<div style="padding-left:100px;display: none;align-items: center" id="szhk-login-error-msg-mobile-check" class="szhk-login-error-msg-mobile-check">
+				<svg t="1642039623396" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2096" width="20" height="20">
+					<path d="M469.333333 384h85.333334v213.333333h-85.333334z m0 298.666667h85.333334v85.333333h-85.333334z" fill="#d81e06" p-id="2097"></path>
+					<path d="M549.717333 108.032c-14.762667-27.904-60.672-27.904-75.434666 0l-384 725.333333A42.624 42.624 0 0 0 128 896h768a42.581333 42.581333 0 0 0 37.674667-62.592L549.717333 108.032zM198.869333 810.666667L512 219.221333 825.130667 810.666667H198.869333z" fill="#d81e06" p-id="2098"></path>
+				</svg>
+				<label style="color: red;margin-left: 5px;"></label>
+			</div>
+			<div style="display: flex;flex-direction: row;align-items: center;padding: 6px;">
+				<label style="width: 100px;color: gray;">监护人账号</label>
+				<input value="" readonly id="loginMobileCheck" style="
+                            font-size: 14px;
+                            padding: 10px;
+                            color: gray;
+                            font-weight: 600;
+                            border:0;
+                            height: 35px;
+                            width:250px;
+                        " />
+			</div>
+			<div style="display: flex;flex-direction: row;align-items: center;padding: 6px;">
+				<label style="width: 100px;color: gray;">验证码</label>
+				<input id="captchaMobileCheck" style="
+                            font-size: 14px;
+                            padding: 10px;
+                            color: gray;
+                            font-weight: 600;
+                            border:0;background: #ccdbf95e;height: 17px;;width:140px;border-radius: 5px;margin-right: 10px;" onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="6" />
+				<button id="codeCheck" onclick="sendCodeCheck(this)" style="background:white;color:dodgerblue;border-radius:5px;width: 100px;padding: 7px 0;font-size:14px;border: 1px dodgerblue solid;font-weight:600;text-align: center">
+					获取验证码
+				</button>
+			</div>
+		</div>
+		<div style="display: flex;flex-direction: row;justify-content: center;margin-bottom: 10px;margin-top: 10px;">
+			<button id="privacyCheck" onclick="checkGuardian(this)" style="border-radius:4px;padding: 10px 60px;font-size:14px;background: red;font-weight:600;color: white;text-align: center;border:0">
+				信 息 验 证
+			</button>
+		</div>
+
+		<div class="popup-context">
+			<p style="font-size: 14px;font-weight: bold">温馨提示：</p>
+			<label style="color: grey;font-size: 12px;">未满14岁未成年账户，请由监护人操作或得到监护人许可后进行。</label>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/szair_B2C/static/css/popup.css?t=0.7810540806551676">
+
+<div id="minor" class="popup">
+	<div class="popup-body" style="width: 500px;">
+		<div class="popup-title">
+			<label style="padding: 4px;font-size: 15px;font-weight: bold">
+				信息申报
+			</label>
+
+			<div class="closePopup">
+				<svg t="1641973187427" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2564" width="200" height="200">
+					<path d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024zM512 96a416 416 0 1 0 0 832 416 416 0 0 0 0-832z m176 640a47.68 47.68 0 0 1-33.92-14.08L512 579.904 369.92 721.92a48 48 0 0 1-67.84-67.84L444.096 512 302.08 369.92a48 48 0 0 1 67.84-67.84L512 444.096l142.08-142.016a48 48 0 0 1 67.84 67.84L579.904 512l142.016 142.08a48 48 0 0 1-33.92 81.92z" fill="#e6e6e6" p-id="2565"></path>
+				</svg>
+			</div>
+		</div>
+		<div class="popup-context">
+			<div id="minorError" style="padding: 2px;background: red;opacity: 0.7;color: white;width: 100%;text-align: center;display: none;">
+				请选择是或否
+			</div>
+			感谢您登录注册深航账户，根据《中华人民共和国个人信息保护法》第二节第三十一条：个人信息处理者处理不满十四周岁未成年人个人信息的，应当取得未成年人的父母或者其他监护人的同意。请问您是否年满十四周岁。
+		</div>
+		<div style="display: flex;flex-direction: row;justify-content: space-around;padding: 20px 156px;">
+			<div style="display: flex;flex-direction: row;align-items: center">
+				<label style="color: gray;cursor: pointer;font-size: 16px;display: flex;flex-direction: row;align-items: center">
+					<input id="yes" name="minorRadio" type="radio" style="margin: 0;margin-right:10px;width: 20px;height: 20px;" value="yes" />
+					是
+				</label>
+			</div>
+			<div style="display: flex;flex-direction: row;align-items: center">
+				<label style="color: gray;cursor: pointer;font-size: 16px;display: flex;flex-direction: row;align-items: center">
+					<input id="no" name="minorRadio" type="radio" style="margin: 0;margin-right:10px;width: 20px;height: 20px;" value="no" />
+					否
+				</label>
+			</div>
+		</div>
+		<div style="display: flex;flex-direction: row;justify-content: center;margin-bottom: 10px;margin-top: 10px;">
+			<button id="minorBtn" style="border-radius:4px;padding: 10px 50px;background: red;font-size:14px;font-weight:600;color: white;text-align: center;border:0">
+				提 交
+			</button>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/szair_B2C/static/css/popup.css?t=0.7810540806551676">
+
+<div id="privacy" class="popup">
+	<div class="popup-body" style="width: 450px;">
+		<div class="popup-title">
+			<label style="padding: 4px;font-size: 15px;font-weight: bold">
+				监护人登记
+			</label>
+
+			<div class="closePopup">
+				<svg t="1641973187427" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2564" width="200" height="200">
+					<path d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024zM512 96a416 416 0 1 0 0 832 416 416 0 0 0 0-832z m176 640a47.68 47.68 0 0 1-33.92-14.08L512 579.904 369.92 721.92a48 48 0 0 1-67.84-67.84L444.096 512 302.08 369.92a48 48 0 0 1 67.84-67.84L512 444.096l142.08-142.016a48 48 0 0 1 67.84 67.84L579.904 512l142.016 142.08a48 48 0 0 1-33.92 81.92z" fill="#e6e6e6" p-id="2565"></path>
+				</svg>
+			</div>
+		</div>
+		<div class="popup-context">
+			因您申报的年龄未满十四周岁，根据《中华人民共和国个人信息保护法》的要求，请及时完善个人信息，年满十四周岁后系统将自动解绑监护人，监护人需年满十八周岁，且具有深航账户或为凤凰知音会员。
+		</div>
+		<div style="display: flex;flex-direction: column;justify-content: space-around;padding: 0 20px;font-size: 14px;">
+			<div style="padding-left:100px;display: none;align-items: center" id="szhk-login-error-msg-mobile-btn" class="szhk-login-error-msg-mobile-btn">
+				<svg t="1642039623396" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2096" width="20" height="20">
+					<path d="M469.333333 384h85.333334v213.333333h-85.333334z m0 298.666667h85.333334v85.333333h-85.333334z" fill="#d81e06" p-id="2097"></path>
+					<path d="M549.717333 108.032c-14.762667-27.904-60.672-27.904-75.434666 0l-384 725.333333A42.624 42.624 0 0 0 128 896h768a42.581333 42.581333 0 0 0 37.674667-62.592L549.717333 108.032zM198.869333 810.666667L512 219.221333 825.130667 810.666667H198.869333z" fill="#d81e06" p-id="2098"></path>
+				</svg>
+				<label style="color: red;margin-left: 5px;"></label>
+			</div>
+			<div style="display: flex;flex-direction: row;align-items: center;padding: 6px;">
+				<label style="width: 100px;color: gray;">监护人手机号</label>
+				<input id="loginMobileBtn" onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="11" style="
+                            font-size: 14px;
+                            padding: 10px;
+                            color: gray;
+                            font-weight: 600;
+                            border:0;
+                            background: #ccdbf95e;
+                            height: 17px;
+                            width:250px;
+                            border-radius: 5px;" />
+			</div>
+			<div style="display: flex;flex-direction: row;align-items: center;padding: 6px;">
+				<label style="width: 100px;color: gray;">验证码</label>
+				<input id="captchaMobileBtn" style="
+                            font-size: 14px;
+                            padding: 10px;
+                            color: gray;
+                            font-weight: 600;
+                            border:0;background: #ccdbf95e;height: 17px;;width:140px;border-radius: 5px;margin-right: 10px;" onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="6" />
+				<button id="codeBtn" style="background:white;color:dodgerblue;border-radius:5px;width: 100px;padding: 7px 0;font-size:14px;border: 1px dodgerblue solid;font-weight:600;text-align: center">
+					获取验证码
+				</button>
+			</div>
+		</div>
+		<div style="display: flex;flex-direction: row;justify-content: center;margin-bottom: 30px;margin-top: 10px;">
+			<button id="privacyBtn" style="border-radius:4px;padding: 10px 60px;font-size:14px;background: red;font-weight:600;color: white;text-align: center;border:0">
+				绑 定 监 护 人
+			</button>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+<!--头部 开始-->
+<script type='text/javascript'>
+	javascript: window.history.forward(1);
+	var isLogin = "false";
+	var dianfenUrl = "http://ecfan.shenzhenair.com";
+	var ffpUrl = "https://sf.shenzhenair.com";
+	var menuIndex = 3;
+	var lowerPrice = "0";
+	var continueFlag = "true";
+	var needValidFlag = "false";
+	var hcType = "DC";
+	var flightDateCheck = "2019-03-31";
+	var flightDateFlag = "true";
+</script>
+<form id="GuoNeiflightSearchForm" name="flightChooseDCForm" method="post" action="/szair_B2C/flightsearch.action">
+	<input type="hidden" id="submitOrgCityCode" name="orgCityCode" value="SZX">
+	<input type="hidden" id="submitDstCityCode" name="dstCityCode" value="HFE">
+	<input type="hidden" id="internationalFlag" value="false">
+	<input type="hidden" name="hcType" id="submitHcType" value="DC" />
+	<input name="orgCity" id="submitOrgCity" type="hidden" value="深圳" />
+	<input name="dstCity" id="submitDstCity" type="hidden" value="合肥" />
+	<input name="orgDate" id="submitOrgDate" type="hidden" value="2025-11-24" />
+	<input name="dstDate" id="submitDstDate" type="hidden" value="2025-11-24" />
+	<input name="easyFlyFlag" id="easyFlyFlag" type="hidden" value='0' />
+</form>
+
+<body>
+	<form class="layui-form">
+		<!-- 这个替换成头部的VM -->
+		<div></div>
+
+		<!-- 	<div id="crumb" style="background-color: #fff;clear: both;">
+			<span class="layui-breadcrumb" lay-separator=">"> <a href="">航班服务</a>
+				<a><cite>机票预订</cite> </a> </span>
+		</div> -->
+		<div id="crumb">
+			<span class="layui-breadcrumb" lay-separator=">" style="visibility: visible;">
+				<a href="/szair_B2C/index.html">首页</a><span lay-separator="">&gt;</span>
+				<a href="/szair_B2C/toFlightSearch.action">航班预订</a><span lay-separator="">&gt;</span>
+				<a href="/szair_B2C/toFlightSearch.action">机票预订</a><span lay-separator="">&gt;</span>
+				<a><cite>机票预订</cite> </a> </span>
+		</div>
+		<div class="allMain" style="padding-bottom:230px;">
+			<div id="container" class="d1200" style="background: none">
+				<div id="topStatus">
+					<div class="redCircle">1</div>
+					<div class="red txt">机票查询</div>
+					<div class="redLine">&nbsp;</div>
+					<div class="grayCircle">2</div>
+					<div class="txt">填写信息</div>
+					<div class="grayLine">&nbsp;</div>
+					<div class="grayCircle">3</div>
+					<div class="txt">支付</div>
+				</div>
+
+				<div class="divQuery">
+					<div style="padding-top:10px;border-bottom:solid 2px #F3B1BE">
+						<div id="rangeType" class="layui-tab layui-tab-brief" lay-filter="typeTab">
+							<ul class="layui-tab-title">
+								<li lay-id="1" class="layui-this">单程</li>
+								<li lay-id="2">往返</li>
+								<!-- 	<li lay-id="3" >多程</li> -->
+							</ul>
+							<div class="layui-tab-content"></div>
+						</div>
+					</div>
+				</div>
+				<div class="itinerary divQuery divQueryCond" id="box2">
+					<table border="0">
+						<tr>
+							<td width="82"><label>出发城市</label></td>
+							<td width="173" style="position: relative;">
+								<input type="text" id="orgCity" name="orgCity" value="深圳" class="layui-input small" nextid="dstCity">
+								<input type="hidden" name="orgCityCode" id="orgCityCode" value="SZX" />
+								<span class="input_icon1" style="position: absolute;left: 120px;top: 10px;">
+									<!--<i class="layui-icon">&#xe615;</i> -->
+									<img src="/szair_B2C/static/ued2/img2/19-chauxn.png" style="width: 20px;">
+								</span>
+							</td>
+							<td width="30"><img onclick="cityChange()" src="/szair_B2C/static/ued2/img2/plane.png" width="30" height="30" style="margin-right:10px;" />
+							</td>
+							<td width="82"><label>到达城市</label></td>
+							<td width="173" style="position: relative;">
+								<input type="text" name="dstCity" id="dstCity" value="合肥" class="layui-input small" nextid="orgDate">
+								<input type="hidden" name="dstCityCode" id="dstCityCode" value="HFE" />
+								<span class="input_icon1" style="position: absolute;left: 120px;top: 10px;">
+									<!--<i class="layui-icon">&#xe615;</i> -->
+									<img src="/szair_B2C/static/ued2/img2/19-chauxn.png" style="width: 20px;">
+								</span>
+							</td>
+							<td width="82"><label>出发日期</label></td>
+							<td width="173" style="position: relative;">
+								<div>
+									<input type="text" class="layui-input small" id="orgDate" name="orgDate" value="2025-11-24" data-datePicker-type="org" readonly="true" data-datePicker-dstid="#dstDate" startDate="2025-11-24" endDate="9999-12-31" nextId="dstDate">
+									<span class="input_icon1" style="position: absolute;left: 132px;top: 50%;margin: -10px 0px 0px -10px;">
+										<!--<i class="layui-icon">&#xe637;</i>-->
+										<img src="/szair_B2C/static/ued2/img2/20-rili.png" style="height: 20px; ">
+									</span>
+								</div>
+							</td>
+							<td width="82"><label id="backTd" style="display:none">回程日期</label></td>
+							<td width="173" style="position: relative;">
+								<div id="backTd2" style="display:none">
+									<input type="text" class="layui-input small" id="dstDate" name="dstDate" value="2025-11-24" data-datePicker-type="dst" readonly="true" data-datePicker-orgid="#orgDate" startDate="2025-11-24" endDate="9999-12-31">
+									<span class="input_icon1" style="position: absolute;left: 132px;top: 50%;margin: -10px 0px 0px -10px;">
+										<!--<i class="layui-icon">&#xe637;</i>-->
+										<img src="/szair_B2C/static/ued2/img2/20-rili.png" style="height: 20px;">
+									</span>
+								</div>
+							</td>
+
+							<td width="76">
+								<button type="button" id="search-flight-DC" class="mybtn">查询</button>
+							</td>
+
+						</tr>
+						<tr height="20px"></tr>
+						<tr id="intFlightDiv" style="display: none">
+							<td><label>成人数量</label></td>
+							<td>
+								<select id="adtCount" name="adtCount" lay-filter="adult_number" lay-verify="required" style="width:150px">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td>
+
+							</td>
+							<td><label>儿童数量</label></td>
+							<td>
+								<select id="chdCount" name="chdCount" lay-filter="child_number" lay-verify="required">
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td><label id="inf_num">婴儿数量</label></td>
+							<td>
+								<div id="inf_select">
+									<select id="infCount" name="infCount" lay-filter="inf_number" style="width:201px;" lay-verify="required">
+										<option value="0">0</option>
+										<option value="1">1</option>
+									</select>
+								</div>
+							</td>
+							<td><label id="yang_num">青年数量</label></td>
+							<td>
+								<div id="yang_select">
+									<select id="YoungCount" lay-filter="young_sele_type" style="width:201px;" name="YoungCount">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<!-- <div class="divRoutePanel" id="box1">
+					<table border="0" >
+						<col width="350" />
+						<col width="220" />
+						<col width="350" />
+						<col width="220" />
+						<tr>
+							<td style="font-size: 22px"><label>深圳</label>（深圳宝安国际机场）</td>
+							<td rowSpan="2"><img
+								src="/szair_B2C/static/ued2/img2/plane_small.png" />
+							</td>
+							<td style="font-size: 22px"><label>合肥</label>（合肥新桥国际机场）</td>
+							<td rowspan="2" align="right" >
+							<a href='javascript:' class='mybtn' id="cxcx">重新查询</a>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-top:10px;color: #808080;font-size: 20px;">2025-11-24 星期一</td>
+							<td style="padding-top:10px;color: #808080;font-size: 20px;"> </td>
+						</tr>
+					</table>
+					</div> -->
+
+				<div class="dl835">
+					<div class="divQuery">
+						<div style="padding-top:10px;border-bottom:solid 2px #F3B1BE">
+							<div class="layui-tab layui-tab-brief" lay-filter="routeTab" id="flightTab">
+								<ul class="layui-tab-title">
+									<li class="layui-this" id="liGo">去程：深圳-合肥</li>
+									<li class="" id="liWFFirst" style="display:none">套票(公务舱)</li>
+
+									<li class="" id="liWFTourist" style="display:none">套票(经济舱)</li>
+									<li class="" id="liEasyFly" style="display:none">易来易往</li>
+								</ul>
+								<div class="layui-tab-content"></div>
+							</div>
+						</div>
+					</div>
+					<div class="loadingDiv" id="flightSearchLoading" style="margin-bottom:15px;">
+						<div class="pic"><img src="/szair_B2C/static/ued2/img2/pic01.png" /></div>
+						<div id="movePic" class="move"><img src="/szair_B2C/static/ued2/img2/lodding.gif" /></div>
+						<p class="txt">处理中，请稍后......</p>
+					</div>
+					<div id="pCalendar" style="z-index:300;display:none">
+
+						<link href="/szair_B2C/static/ued2/css2/uedPriceCalendar.css?ver=20150306" rel="stylesheet" rev="stylesheet" type="text/css" />
+
+						<div>
+							<div style="height:20px"></div>
+							<div class="layui-form">
+								<div class="layui-form-item">
+									<table id="dateTbl" border="0" height="80">
+										<tr>
+											<td>
+												<div class="arrow" id="left_prev" onclick="nextDate(this);"><img src="/szair_B2C/static/ued2/img2/10-xiangzuo.png" /></div>
+											</td>
+											<td id="ul_days">
+
+											</td>
+											<td>
+												<div class="arrow" id="left_next" onclick="nextDate(this);"><img src="/szair_B2C/static/ued2/img2/11-xiangyou.png" /></div>
+											</td>
+											<td>
+												<div id="divCalendar" class="calendar">
+													<!--ued  --yang-lb--> <span class="calenderNew"></span>
+													<p style="color:#EE2934;padding-top:2px">特价日历</p>
+												</div>
+											</td>
+										</tr>
+
+									</table>
+								</div>
+							</div>
+						</div>
+						<script>
+							var currentDate = "2025-11-24";
+							var token = '$session.getAttribute("priceCalendarToken")';
+							var hcType = "DC";
+							var from = "SZX";
+							var to = "HFE";
+							var flightDate = "2025-11-24";
+							var url = '../servlet/SavePrice';
+							var data = {
+								priceToken: token,
+								flag: "uiue"
+							};
+							//jQuery.post(url,data);
+						</script>
+						<script src="/szair_B2C/static/js/uedjs/uedPriceCalendar.js"></script>
+					</div>
+
+					<!-- date table -->
+
+					<!-- 通过改变 class中的orderNone/orderUp/orderDown 来控制三角的颜色 -->
+					<div id="ticketBdDC" style="display:none;">
+						<div>
+							<div>
+								<table class="autoHideFlag">
+									<tr>
+										<td><button type="button" id="timeSortDC" class="btOrder orderNone">时间</button>
+										</td>
+										<td width="5px"></td>
+										<td><button type="button" id="priceSortDC" class="btOrder orderNone">价格</button>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<!-- <button type="button" class="btOrder orderDown">价格</button> -->
+							<div>
+								<!-- query result list -->
+								<!-- header -->
+								<table border="0" class="tblRouteListHeader" id="flightTitle">
+									<tr class="autoHideFlag">
+										<td width="242">航班信息</td>
+
+										<td width="140" class="FirstEconomy">头等/公务舱
+											<img src="/szair_B2C/static/images/luggage_help.png" alt="">
+											<div class="FirstEconomyText hidden">
+												<div class="ComfortPad">
+													<div class="Comfortbtn" style="margin-top: 30px;">
+														<div class="btnLeft newBtnCom">舒适座椅 舒享体验</div>
+													</div>
+													<div class="FirstEconomyTitle">
+														<!-- &#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;贵宾休息室服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;公务舱旅客享贵宾休息室服务，&#60;/span&#62;&#60;span style=&#34;color:#FF0000&#34;&#62;&#60;strong&#62;可免费携带同航班1人入休息室。&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;舒适座椅&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;窄体机：宽敞间距，椅背仰角最大可达120&#38;deg;或150&#38;deg;。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;宽体机：宽敞座椅，180&#38;deg;舒适平躺及机上智能娱乐。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:12px&#34;&#62;*不同飞机座椅调节度数可能存在差异，请以实际乘机为准。&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;尊享服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;1）专属值机柜台&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;2）优先登机&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;3）快速安检通道&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;4）VIP摆渡车：远机位专车摆渡服务&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;5）优先提取行李&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;空中特色服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;机上提供非一次性餐具、餐前饮料、公务舱餐食、小支矿泉水、热毛巾、拖鞋等。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;接送机&#60;/strong&#62;&#60;strong&#62;服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;指定舱位及城市可享深航易行免费机场接/送、乘机泊车服务，详情请致电深航官方客服95361查询及预订。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62; -->
+													</div>
+												</div>
+											</div>
+										</td>
+										<td width="140" class="BusinessEconomy">超值公务舱
+											<img src="/szair_B2C/static/images/luggage_help.png" alt="">
+											<div class="BusinessEconomyText hidden" id="xxsGoPage1">
+												<div class="ComfortPad">
+													<div class="Comfortbtn" style="margin-top: 30px;">
+														<div class="btnLeft newBtnCom">舒适座椅 舒享体验</div>
+													</div>
+													<div class="BusinessEconomyTitle">
+														<!-- &#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;贵宾休息室服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;公务舱旅客享贵宾休息室服务，&#60;/span&#62;&#60;span style=&#34;color:#FF0000&#34;&#62;&#60;strong&#62;可免费携带同航班1人入休息室。&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;舒适座椅&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;窄体机：宽敞间距，椅背仰角最大可达120&#38;deg;或150&#38;deg;。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;宽体机：宽敞座椅，180&#38;deg;舒适平躺及机上智能娱乐。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:12px&#34;&#62;*不同飞机座椅调节度数可能存在差异，请以实际乘机为准。&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;尊享服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;1）专属值机柜台&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;2）优先登机&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;3）快速安检通道&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;4）VIP摆渡车：远机位专车摆渡服务&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;5）优先提取行李&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;空中特色服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;机上提供非一次性餐具、餐前饮料、公务舱餐食、小支矿泉水、热毛巾、拖鞋等。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;接送机&#60;/strong&#62;&#60;strong&#62;服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;指定舱位及城市可享深航易行免费机场接/送、乘机泊车服务，详情请致电深航官方客服95361查询及预订。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62; -->
+													</div>
+												</div>
+											</div>
+										</td>
+
+										<!-- 388舒适经济舱增加产品简介 start-->
+										<td width="140px" class="ComfortEconomy">舒适经济舱
+											<img src="/szair_B2C/static/images/luggage_help.png" alt="">
+											<div class="ComfortEconomyText hidden" id="xxsGoPage">
+												<div class="ComfortPad">
+													<div class="Comfortbtn" style="margin-top: 30px;">
+														<div class="btnLeft newBtnCom">宽敞座位 更多里程</div>
+													</div>
+													<div class="ComfortEconomyTitle">
+														<!-- &#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;经济舱前排宽敞座位&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;提供经济舱前排&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;、宽敞&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;座位&#60;/span&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;会员升级加速&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;E舱：&#60;/strong&#62;凤凰知音会员乘坐舒适经济舱里程累积率为90%，定级航段数可按0.9个累积。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;G舱：&#60;/strong&#62;凤凰知音会员乘坐舒适经济舱里程累积率为110%，定级航段数可按1.1个累积。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;特色服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;提供舒适拖鞋、毛毯、靠枕；机上专属行李架；部分城市提供优先登机服务。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;餐食服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;优先餐饮服务。提供专属优质餐食，配备&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;瓶装水、&#60;/span&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;挂耳咖啡（按需提供）。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;*&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(24, 28, 31); font-family:microsoft yahei,segoe ui,system-ui,roboto,droid sans,helvetica neue,sans-serif,tahoma,segoe ui symbol,myanmar text,微软雅黑; font-size:14px&#34;&#62;为践行绿色飞行，合理利用机上空间，我们的机供品将进行动态配备，若未能满足阁下的选择，敬请谅解。&#60;/span&#62;&#60;/p&#62; -->
+													</div>
+												</div>
+											</div>
+										</td>
+										<!-- 388舒适经济舱增加产品简介 end-->
+										<td width="140">经济舱</td>
+										<td width="40">&nbsp;</td>
+									</tr>
+								</table>
+							</div>
+							<div id="flightInfoListDC">
+
+							</div>
+						</div>
+					</div>
+
+					<div id="ticketBdWF" style="display: none;">
+
+
+						<table>
+							<tr>
+								<td>
+									<button type="button" id="timeSortWF" class="btOrder orderNone">时间</button>
+								</td>
+								<td width="5px"></td>
+								<td><button type="button" id="priceSortWF" style=" " class="btOrder orderNone">价格</button>
+								</td>
+							</tr>
+						</table>
+
+						<table border="0" class="tblRouteListHeader" id="flightTitle">
+							<tr>
+								<td width="242">航班信息</td>
+								<td width="140" class="FirstEconomy">公务舱
+									<img src="/szair_B2C/static/images/luggage_help.png" alt="">
+									<div class="FirstEconomyText hidden">
+										<div class="ComfortPad">
+											<div class="Comfortbtn" style="margin-top: 30px;">
+												<div class="btnLeft newBtnCom">舒适座椅 舒享体验</div>
+											</div>
+											<div class="FirstEconomyTitle">
+												<!-- &#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;贵宾休息室服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;公务舱旅客享贵宾休息室服务，&#60;/span&#62;&#60;span style=&#34;color:#FF0000&#34;&#62;&#60;strong&#62;可免费携带同航班1人入休息室。&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;舒适座椅&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;窄体机：宽敞间距，椅背仰角最大可达120&#38;deg;或150&#38;deg;。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;宽体机：宽敞座椅，180&#38;deg;舒适平躺及机上智能娱乐。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:12px&#34;&#62;*不同飞机座椅调节度数可能存在差异，请以实际乘机为准。&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;尊享服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;1）专属值机柜台&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;2）优先登机&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;3）快速安检通道&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;4）VIP摆渡车：远机位专车摆渡服务&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;5）优先提取行李&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;空中特色服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;机上提供非一次性餐具、餐前饮料、公务舱餐食、小支矿泉水、热毛巾、拖鞋等。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;接送机&#60;/strong&#62;&#60;strong&#62;服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;指定舱位及城市可享深航易行免费机场接/送、乘机泊车服务，详情请致电深航官方客服95361查询及预订。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62; -->
+											</div>
+										</div>
+									</div>
+								</td>
+								<td width="140" class="BusinessEconomy">超值公务舱
+									<img src="/szair_B2C/static/images/luggage_help.png" alt="">
+									<div class="BusinessEconomyText hidden">
+										<div class="ComfortPad">
+											<div class="Comfortbtn" style="margin-top: 30px;">
+												<div class="btnLeft newBtnCom">舒适座椅 舒享体验</div>
+											</div>
+											<div class="BusinessEconomyTitle">
+												<!-- &#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;贵宾休息室服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;公务舱旅客享贵宾休息室服务，&#60;/span&#62;&#60;span style=&#34;color:#FF0000&#34;&#62;&#60;strong&#62;可免费携带同航班1人入休息室。&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;舒适座椅&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;窄体机：宽敞间距，椅背仰角最大可达120&#38;deg;或150&#38;deg;。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;宽体机：宽敞座椅，180&#38;deg;舒适平躺及机上智能娱乐。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:12px&#34;&#62;*不同飞机座椅调节度数可能存在差异，请以实际乘机为准。&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;尊享服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;1）专属值机柜台&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;2）优先登机&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;3）快速安检通道&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;4）VIP摆渡车：远机位专车摆渡服务&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;5）优先提取行李&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;空中特色服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;机上提供非一次性餐具、餐前饮料、公务舱餐食、小支矿泉水、热毛巾、拖鞋等。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;接送机&#60;/strong&#62;&#60;strong&#62;服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;指定舱位及城市可享深航易行免费机场接/送、乘机泊车服务，详情请致电深航官方客服95361查询及预订。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62; -->
+											</div>
+										</div>
+									</div>
+								</td>
+								<!-- 388舒适经济舱增加产品简介 start-->
+								<td width="140px" class="ComfortEconomy">舒适经济舱
+									<img src="/szair_B2C/static/images/luggage_help.png" alt="">
+									<div class="ComfortEconomyText hidden" id="xxsBackPage1">
+										<div class="ComfortPad">
+											<div class="Comfortbtn" style="margin-top: 30px;">
+												<div class="btnLeft newBtnCom">宽敞座位 更多里程</div>
+											</div>
+											<div class="ComfortEconomyTitle">
+												<!-- &#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;经济舱前排宽敞座位&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;提供经济舱前排&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;、宽敞&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;座位&#60;/span&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;会员升级加速&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;E舱：&#60;/strong&#62;凤凰知音会员乘坐舒适经济舱里程累积率为90%，定级航段数可按0.9个累积。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;G舱：&#60;/strong&#62;凤凰知音会员乘坐舒适经济舱里程累积率为110%，定级航段数可按1.1个累积。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;特色服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;提供舒适拖鞋、毛毯、靠枕；机上专属行李架；部分城市提供优先登机服务。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;餐食服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;优先餐饮服务。提供专属优质餐食，配备&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;瓶装水、&#60;/span&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;挂耳咖啡（按需提供）。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;*&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(24, 28, 31); font-family:microsoft yahei,segoe ui,system-ui,roboto,droid sans,helvetica neue,sans-serif,tahoma,segoe ui symbol,myanmar text,微软雅黑; font-size:14px&#34;&#62;为践行绿色飞行，合理利用机上空间，我们的机供品将进行动态配备，若未能满足阁下的选择，敬请谅解。&#60;/span&#62;&#60;/p&#62; -->
+											</div>
+										</div>
+									</div>
+								</td>
+								<!-- 388舒适经济舱增加产品简介 end-->
+								<td width="140">经济舱</td>
+								<td width="40">&nbsp;</td>
+							</tr>
+						</table>
+						<div id="flightInfoListWF">
+
+						</div>
+					</div>
+
+					<div id="ticketBdWFFirst" style="display: none;">
+
+						<table>
+							<tr>
+								<td>
+									<button type="button" id="timeSortWFFirst" class="btOrder orderNone">时间</button>
+								</td>
+								<td width="5px"></td>
+								<td>
+									<button type="button" id="priceSortWFFirst" style=" " class="btOrder orderNone">价格</button>
+								</td>
+							</tr>
+						</table>
+						<div id="flightInfoListWFFirst">
+
+						</div>
+					</div>
+
+					<div id="ticketBdWFTourist" style="display: none;">
+						<table>
+							<tr>
+								<td>
+									<button type="button" id="timeSortWFTourist" class="btOrder orderNone">时间</button>
+								</td>
+								<td width="5px"></td>
+								<td>
+									<button type="button" id="priceSortWFTouris" style=" " class="btOrder orderNone">价格</button>
+								</td>
+							</tr>
+						</table>
+						<div id="flightInfoListWFTourist">
+
+						</div>
+					</div>
+
+					<div id="ticketBdEasyFly" style="display: none;">
+
+						<table>
+							<tr>
+								<td>
+									<button type="button" id="timeSortEasyFly" class="btOrder orderNone">时间</button>
+								</td>
+								<td width="5px"></td>
+								<td>
+									<button type="button" id="priceSortEasyFly" style=" " class="btOrder orderNone">价格</button>
+								</td>
+							</tr>
+						</table>
+						<div id="flightInfoListEasyFly">
+
+						</div>
+					</div>
+
+				</div>
+				<!-- 835 -->
+
+				<!-- right -->
+				<div class="dl335">
+					<div class="dl335_r">
+						<div class="rightHeader">购物清单</div>
+						<div class="rightPanel" style="border-color:#dcdcdc;overflow-y:scroll;max-height: 550px;" align="center">
+							<div class="slideDiv">
+								<i class="layui-icon showIcon" style="font-size:18px">&#xe61a;</i>
+							</div>
+							<div class="planeInfoDiv" style="display:none;">
+								<div align="center" class="divNoFlight">
+									<img src="/szair_B2C/static/ued2/img2/cancel.png" style="padding-right:20px" />尚未选择航班
+								</div>
+								<div class="item flightInfo" id="firstItem">
+								</div>
+								<div class="item flightInfo" id="secondItem">
+								</div>
+							</div>
+							<div id="amountItem">
+								<!-- <hr class="bg-gray" style="margin-top:20px;" /> -->
+								<div class="totalFee">
+									总价<span id="totalPrice" class="red">￥0</span>
+								</div>
+								<hr class="bg-gray" style="margin-top:20px;" />
+							</div>
+							<center id="buttonM">
+								<button type="button" id="jsNext" class="layui-btn nextButton" style="display:none;margin-top:25px;margin-bottom:50px;">下一步</button>
+								<!-- 						    <input type="button" class="btn-choose tc" style="margin-top:25px;margin-bottom:50px;" value="请选择航班">
+ --> <button type="button" class="layui-btn selectFlightBtn tc">请选择航班</button>
+							</center>
+						</div>
+						<!--right panel-->
+					</div>
+				</div>
+				<!-- right -->
+			</div>
+
+		</div>
+		<div class="bottomBar">
+			<div class="footer">
+				<div class="footer_bd" style="width: auto ;text-align: center;">
+					<a href="http://www.staralliance.com/cn/" target="_blank" style="display: inline-block;margin-right:10px;">
+						<span class="logo" style="position:static"></span>
+					</a>
+					<div class="ft_in" style="display: inline-block;margin-left:0px; width: 810px">
+						<p>
+							<nobr style="vertical-align:middle">
+								<a href="/szair_B2C/getStaticHtml.action?htmlName=legalDeclaration" target="_blank">法律声明</a>|<a href="/szair_B2C/szair_B2C/staticPage.action?htmlName=kfzx" target="_blank">联系我们</a>|<a href="/szair_B2C/getStaticHtml.action?htmlName=termService" target="_blank">使用条款</a>|<a href="/szair_B2C/getMsgInfo.action?msgId=8a8de190665d071e01665d923fbc0009" target="_blank">隐私通知</a>|<a href="/szair_B2C/getMsgInfo.action?msgId=8a8ecf0c665476b101665d0f0a6e1a61" target="_blank">Cookies声明</a>|<a href="/szair_B2C/getStaticHtml.action?htmlName=copyrightProtection" target="_blank">版权信息</a>|<a href="/szair_B2C/getCateMsgList.action?channel=2&cmsId=8a8ecf0b67ea038d0167eec877360baf&cateId=8a8beef5573c433b01574051c1d60009" target="_blank">营业执照</a>|<a href="http://job.shenzhenair.com" target="_blank">人力资源</a>|
+
+
+								<span>快速链接:
+									<span class="d_list" id="d_list">
+										<span class="list_in" style="position: absolute;top:3px">请选择</span>
+										<span class="link_list">
+											<a href="https://szair.shenzhenair.com/b2g/login" onclick="footerSensorsClick('首页','页脚','政企客户','企业差旅','1');">企业差旅</a>
+											<a href="https://app.gpticket.org/login.action" onclick="footerSensorsClick('首页','页脚','政企客户','政府采购','2');">政府采购</a>
+
+											<a href="http://open.shenzhenair.com/#/login" target="_blank">深航销售平台</a>
+
+
+											<a href="http://www.airchina.com.cn/" target="_blank">中国国航</a>
+											<a href="https://www.sda.cn/" target="_blank">山东航空</a>
+
+											<a href="https://cargo.shenzhenair.com/" target="_blank">深航货运</a>
+
+										</span>
+									</span>
+
+								</span>
+							</nobr>
+						</p>
+						<p class="copyright"><a href="http://beian.miit.gov.cn/" target="_blank">粤ICP备08115151号</a>&nbsp;&nbsp;&nbsp;&nbsp;Copyright©2022&nbsp;&nbsp;&nbsp;&nbsp;SHENZHEN
+							AIRLINES. All Rights Reserved</p>
+					</div>
+					<!--<div class="link">-->
+
+					<!--</div>-->
+				</div>
+			</div>
+			<script src="/szair_B2C/static/ued2/js2/layui/layui.all.js?t=0.7810540806551676"></script>
+			<script src="/szair_B2C/static/js/common.js?t=0.7810540806551676"></script>
+			<script src="//shenzhenair.govwza.cn/dist/aria.js?appid=62b46074f42bc6889eb56929f8d1d074" charset="utf-8"></script>
+		</div>
+	</form>
+	<!-- 遮罩层 -->
+	<div id="mark_main"></div>
+	<!-- 产品说明 -->
+	<div class="pop-up-w650" style="position:absolute; top:400px; left:50%; margin-left:-325px; z-index:9999; display:none;height:auto;overflow:hidden;">
+		<div class="tit">
+			<span>产品说明</span><a>关闭</a>
+		</div>
+		<ul class="serve_info" style="height:auto">
+			<li>
+				<div class="item1">
+					<div>
+						<strong>车接车送</strong><span class="hot"></span>
+					</div>
+					<p>免费专车：凡购买深航深圳始发或到达指定舱位机票的旅客，可免费或优惠尊享深圳市区至深圳宝安机场间的专车送机或接机服务
+						免费拼车：凡购买深航深圳始发指定折扣机票的旅客，可享受深圳市区至深圳宝安机场的送机服务。</p>
+				</div> <span class="icon"></span>
+			</li>
+		</ul>
+	</div>
+	<!-- 产品说明 -->
+
+	<form id="saveFlight" name="flightSaveForm" method="post" action="/szair_B2C/saveFlightInfo.action">
+		<input type="hidden" name="flightJson" id="flightJson" /> <input type="hidden" name="flightListCaptchaCode" id="flightListCaptchaCode" />
+	</form>
+	<div class="pop-up " id="captchaPop" style="width:350px;top:60%; left:50%; margin-left:-150px;">
+		<div class="tit">
+			<span>滑动验证码</span><a id="closeCaptchaPop" href="#nogo">关闭</a>
+		</div>
+		<div class="mileage_info clearfix" style="background:white;">
+			<div id="embed-captcha" style="padding:20px;"></div>
+			<p id="wait" class="show">正在加载验证码......</p>
+		</div>
+	</div>
+	<div id="calendarBox" class="calendarBoxDiv">
+		<table style="width:100%" class="calendarTbl">
+			<thead>
+				<tr style="background-color: #ee2934;color:#fff;">
+					<td><span class='iconfont' style="font-size: 20px" onclick="nextMonthPrice(this);" id="preMonth">&#xe659;</span>
+						<!--<img src="/szair_B2C/static/ued2/img2/calendarLeft.png"/ onclick="nextMonthPrice(this);"  id="preMonth">-->
+					</td>
+					<td colspan="5">
+						<span style="font-size: 18px;" id="nowMonth" onclick="showUlMonth();">十月&nbsp;&nbsp;2017年 &nbsp;&nbsp;
+							<img src="/szair_B2C/static/ued2/img2/xiangxia.png" /> </span>
+						<ul id="ul_month"></ul>
+					</td>
+					<td><span class='iconfont ' style="font-size: 20px" onclick="nextMonthPrice(this);" id="nextMonth">&#xe65b;</span>
+						<!--<img src="/szair_B2C/static/ued2/img2/calendarRight.png"/ id="nextMonth" onclick="nextMonthPrice(this);">-->
+					</td>
+				</tr>
+				<tr style="height: 40px;">
+					<th style="color:red">日</th>
+					<th>一</th>
+					<th>二</th>
+					<th>三</th>
+					<th>四</th>
+					<th>五</th>
+					<th style="color:red">六</th>
+				</tr>
+			</thead>
+			<tbody id="pc_tbody">
+
+			</tbody>
+		</table>
+
+	</div>
+
+
+	<div id="tipDetail_old" class="tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<table style="width:100%; border-collapse: separate;">
+			<tr>
+				<!--ued --yang-lb-->
+				<th colspan="2" style="border:0px;border-top-left-radius:4px">飞行里程</th>
+				<th style="border:0px;border-top-right-radius:4px">总累计里程</th>
+			</tr>
+			<tr>
+				<td colspan="2" name="mil"></td>
+				<td name="mil"></td>
+			</tr>
+
+			<tr>
+				<th></th>
+				<th>起飞前两个小时之前</th>
+				<th>起飞前两个小时内及起飞后</th>
+			</tr>
+			<tr>
+				<td>退票费</td>
+				<td name="minR"></td>
+				<td name="maxR"></td>
+			</tr>
+			<tr>
+				<td>改期费</td>
+				<td name="minC"></td>
+				<td name="maxC"></td>
+			</tr>
+		</table>
+		<div style="text-align: left;font-size:16px">温馨提示</div>
+		<div class="tipDetailPrice" style="display: block; margin-top: 0px;">
+			<div>1、以上金额仅供参考，实际以执行退改时金额为准；</div>
+			<div>2、4折以下自定义舱位改期必须升舱至公布运价舱位；改期舱位差价多不退少补，差价与手续费同时收取；</div>
+			<div>3、已办理选座值机的旅客无法办理改期或退票，请先取消选座值机再进行办理。</div>
+			<div>4、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+		</div>
+	</div>
+	<div id="threeDay" style="z-index: 100" class="tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<div class="tipDetailPrice " style="display: block; margin-top: 0px;">
+			<div>3日内执行率为当前航班在查询当日的前3天内，除远期取消外的航班实际执行情况，当前数据仅供参考。</div>
+		</div>
+	</div>
+	<div id="mustFly" style="z-index: 100" class="tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<div class="tipDetailPrice " style="display: block; margin-top: 0px;">
+			<div>2022年7月1日-2022年9月30日，此航班起飞日期前三个自然日内不取消（含航班起飞当日，天气原因及公共安全原因除外）。</div>
+		</div>
+	</div>
+	<div id="mustFly1" style="z-index: 100" class="tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<div class="tipDetailPrice " style="display: block; margin-top: 0px;">
+			<div>2022年7月1日-2022年9月30日，此航班起飞日期前三十个自然日内不取消（含航班起飞当日，天气原因及公共安全原因除外）。</div>
+		</div>
+	</div>
+	<div id="tipDetail_new" style="z-index: 100" class="tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<table style="width:100%;border-collapse:separate" class="tipDetialZH">
+			<tr>
+				<!--ued --yang-lb-->
+				<th class="bl bt" width="50%" colspan="2" style="border-top-left-radius:4px">飞行里程</th>
+				<th class="bt" width="50%" colspan="2" style="border-top-right-radius:4px">总累计里程</th>
+			</tr>
+			<tr>
+				<td class="bl " colspan="2" name="mil"></td>
+				<td colspan="2" name="mil"></td>
+			</tr>
+			<tr>
+				<th class="bl " width="10%"></th>
+				<th width="40%"></th>
+				<th width="25%">改期费</th>
+				<th width="25%">退票费</th>
+			</tr>
+			<tr>
+				<td class="bl " rowspan="4" style="border-bottom-left-radius:4px">成人</td>
+				<td align="left" class="flightInfoTd" name="bWRText">起飞前7 天(含)之前</td>
+				<td name="bWRe"></td>
+				<td name="bWR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd" name="bDRText">起飞前7天至72小时(含)之前</td>
+				<td name="bDRe"></td>
+				<td name="bDR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd" name="bHRText">起飞前72小时至4小时(含)之前</td>
+				<td name="bHRe"></td>
+				<td name="bHR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd" name="aHRText">起飞前4小时内及起飞后</td>
+				<td name="aHRe"></td>
+				<td name="aHR" style="border-bottom-right-radius:4px"></td>
+			</tr>
+
+			<!-- <tr>
+			<th></th>
+			<th>起飞前两个小时之前</th>
+			<th>起飞前两个小时内及起飞后</th>
+		</tr>
+		<tr>
+			<td>退票费</td>
+			<td name="minR"></td>
+			<td name="maxR"></td>
+		</tr>
+		<tr>
+			<td>改期费</td>
+			<td name="minC"></td>
+			<td name="maxC"></td>
+		</tr>	 -->
+		</table>
+
+		<table style="width:100%;border-collapse:separate" class="tipDetialCA">
+			<tr>
+				<!--ued --yang-lb-->
+				<th class="bt" width="100%" colspan="4" style="border-top-right-radius:4px">里程累计率</th>
+			</tr>
+			<tr>
+				<td class="bl " colspan="4" name="mil"></td>
+			</tr>
+			<tr>
+				<th class="bl " width="10%"></th>
+				<th width="40%"></th>
+				<th width="25%">改期费</th>
+				<th width="25%">退票费</th>
+			</tr>
+			<tr>
+				<td class="bl " rowspan="4" style="border-bottom-left-radius:4px">成人</td>
+				<td align="left" class="flightInfoTd">起飞前14 天(含)</td>
+				<td name="bWRe"></td>
+				<td name="bWR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前14天-48小时(含)</td>
+				<td name="bDRe"></td>
+				<td name="bDR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前48小时-4小时(含)</td>
+				<td name="bHRe"></td>
+				<td name="bHR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前4小时内至起飞后</td>
+				<td name="aHRe"></td>
+				<td name="aHR" style="border-bottom-right-radius:4px"></td>
+			</tr>
+
+		</table>
+		<div style="text-align: left;font-size:16px">温馨提示</div>
+		<div class="tipDetailPrice tipDetialZH " style="display: block; margin-top: 0px;">
+			<div>1、以上金额仅供参考，实际以执行退改时金额为准，7天以168小时为标准；</div>
+			<div>2、航班起飞4小时（含）前，凤凰知音会员预订的飞享家客票首次自愿变更可免改期手续费，若有票面差价需补齐。如需改期请致电95361。</div>
+			<div>3、改期不可享受原产品优惠，需改至现有舱位价格，差价多不退少补，需与手续费同时收取；</div>
+			<div>4、已办理选座值机的旅客无法办理改期或退票，请先取消选座值机再进行办理。</div>
+			<div>5、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+		</div>
+		<div class="tipDetailPriceCA  tipDetialCA" style="display: block; margin-top: 0px;">
+		</div>
+		<div style="text-align: left;font-size:16px">行李规定</div>
+		<div name="bgTip" style="color: #808080;margin-top: 0px;text-align: left;">
+		</div>
+
+	</div>
+
+	<div id="tipDetail_CA" style="z-index: 100" class="tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<table style="width:100%;border-collapse:separate">
+			<tr>
+				<!--ued --yang-lb-->
+				<th class="bt" width="100%" colspan="4" style="border-top-right-radius:4px">里程累计率</th>
+			</tr>
+			<tr>
+				<td class="bl " colspan="4" name="mil"></td>
+			</tr>
+			<tr>
+				<th class="bl " width="10%"></th>
+				<th width="40%"></th>
+				<th width="25%">改期费</th>
+				<th width="25%">退票费</th>
+			</tr>
+			<tr>
+				<td class="bl " rowspan="4" style="border-bottom-left-radius:4px">成人</td>
+				<td align="left" class="flightInfoTd">起飞前14 天(含)</td>
+				<td name="bWRe"></td>
+				<td name="bWR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前14天-48小时(含)</td>
+				<td name="bDRe"></td>
+				<td name="bDR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前48小时-4小时(含)</td>
+				<td name="bHRe"></td>
+				<td name="bHR"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前4小时内至起飞后</td>
+				<td name="aHRe"></td>
+				<td name="aHR" style="border-bottom-right-radius:4px"></td>
+			</tr>
+
+		</table>
+		<div style="text-align: left;font-size:16px">温馨提示</div>
+		<div class="tipDetailPriceCA" style="display: block; margin-top: 0px;">
+			<div>1、以上金额仅供参考，实际以执行退改时金额为准，14天以336小时为标准。</div>
+			<div>2、改期舱位差价多不退少补，差价与手续费同时收取。</div>
+			<div>3、深航暂不支持国航旗舰店订单办理改期，请致电95583办理。</div>
+			<div>4、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+		</div>
+	</div>
+
+
+
+	<div id="refundInfoDiv_old" style="display:none">
+		<div class="tipDetail1" style="display:block">
+			<table style="width:100%">
+				<tr>
+					<th></th>
+					<th>起飞前两个小时之前</th>
+					<th>起飞前两个小时内及起飞后</th>
+				</tr>
+				<tr>
+					<td>退票费</td>
+					<td name="minR"></td>
+					<td name="maxR"></td>
+				</tr>
+				<tr>
+					<td>改期费</td>
+					<td name="minC"></td>
+					<td name="maxC"></td>
+				</tr>
+			</table>
+			<div style="text-align: left;font-size:16px">温馨提示</div>
+			<div class="tipDetailPrice" style="display: block; margin-top: 0px;">
+				<div>1、以上金额仅供参考，实际以执行退改时金额为准；</div>
+				<div>2、4折以下自定义舱位改期必须升舱至公布运价舱位；改期舱位差价多不退少补，差价与手续费同时收取；</div>
+				<div>3、已办理选座值机的旅客无法办理改期或退票，请先取消选座值机再进行办理。</div>
+				<div>4、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="refundInfoDiv_new" style="display:none">
+		<div class="tipDetail1 lightTableTh" style="display:block">
+			<table style="width:100%">
+				<tr>
+					<!--ued --yang-lb-->
+					<th width="50%" colspan="2">飞行里程</th>
+					<th width="50%" colspan="2">总累计里程</th>
+				</tr>
+				<tr>
+					<td colspan="2" name="mil"></td>
+					<td colspan="2" name="mil"></td>
+				</tr>
+				<tr>
+					<th width="10%"></th>
+					<th width="40%"></th>
+					<th width="25%">改期费</th>
+					<th width="25%">退票费</th>
+				</tr>
+				<tr>
+					<td rowspan="4">成人</td>
+					<td align="left" class="flightInfoTd">起飞前7 天(含)之前</td>
+					<td name="bWRe"></td>
+					<td name="bWR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd" name="bDRText">起飞前7天至72小时(含)之前</td>
+					<td name="bDRe"></td>
+					<td name="bDR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd" name="bHRText">起飞前72小时至4小时(含)之前</td>
+					<td name="bHRe"></td>
+					<td name="bHR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd">起飞前4小时内及起飞后</td>
+					<td name="aHRe"></td>
+					<td name="aHR"></td>
+				</tr>
+
+				<!-- <tr>
+			<th></th>
+			<th>起飞前两个小时之前</th>
+			<th>起飞前两个小时内及起飞后</th>
+		</tr>
+		<tr>
+			<td>退票费</td>
+			<td name="minR"></td>
+			<td name="maxR"></td>
+		</tr>
+		<tr>
+			<td>改期费</td>
+			<td name="minC"></td>
+			<td name="maxC"></td>
+		</tr>	 -->
+			</table>
+			<div style="text-align: left;font-size:16px">温馨提示</div>
+			<div class="tipDetailPrice" style="display: block; margin-top: 0px;">
+				<div>1、以上金额仅供参考，实际以执行退改时金额为准，7天以168小时为标准；</div>
+				<div>2、改期不可享受原产品优惠，需改至现有舱位价格，差价多不退少补，需与手续费同时收取；</div>
+				<div>3、已办理选座值机的旅客无法办理改期或退票，请先取消选座值机再进行办理。</div>
+				<div>4、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+			</div>
+			<div style="text-align: left;font-size:16px">行李规定</div>
+			<div name="bgTipDC" style="color: #808080;margin-top: 0px;text-align: left;">
+
+			</div>
+		</div>
+	</div>
+
+	<div id="refundInfoDiv_ca" style="display:none">
+		<div class="tipDetail1 lightTableTh" style="display:block">
+			<table style="width:100%">
+				<tr>
+					<!--ued --yang-lb-->
+					<th width="100%" colspan="4">里程积累率</th>
+				</tr>
+				<tr>
+					<td colspan="4" name="mil"></td>
+				</tr>
+				<tr>
+					<th width="10%"></th>
+					<th width="40%"></th>
+					<th width="25%">改期费</th>
+					<th width="25%">退票费</th>
+				</tr>
+				<tr>
+					<td rowspan="4">成人</td>
+					<td align="left" class="flightInfoTd">起飞前14天(含)</td>
+					<td name="bWRe"></td>
+					<td name="bWR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd">起飞前14天-48小时(含)</td>
+					<td name="bDRe"></td>
+					<td name="bDR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd">起飞前48小时-4小时(含)</td>
+					<td name="bHRe"></td>
+					<td name="bHR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd">起飞前4小时内至起飞后</td>
+					<td name="aHRe"></td>
+					<td name="aHR"></td>
+				</tr>
+
+				<!-- <tr>
+			<th></th>
+			<th>起飞前两个小时之前</th>
+			<th>起飞前两个小时内及起飞后</th>
+		</tr>
+		<tr>
+			<td>退票费</td>
+			<td name="minR"></td>
+			<td name="maxR"></td>
+		</tr>
+		<tr>
+			<td>改期费</td>
+			<td name="minC"></td>
+			<td name="maxC"></td>
+		</tr>	 -->
+			</table>
+
+			<div style="text-align: left;font-size:16px">温馨提示</div>
+			<div class="tipDetailPriceCA" style="display: block; margin-top: 0px;">
+				<div>1、以上金额仅供参考，实际以执行退改时金额为准，14天以336小时为标准。</div>
+				<div>2、改期舱位差价多不退少补，差价与手续费同时收取。</div>
+				<div>3、深航暂不支持国航旗舰店订单办理改期，请致电95583办理。</div>
+				<div>4、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+			</div>
+			<div style="text-align: left;font-size:16px">行李规定</div>
+			<div name="bgTipDC" style="color: #808080;margin-top: 0px;text-align: left;">
+
+			</div>
+		</div>
+	</div>
+
+
+	<div id="refundInfoDiv_easyFly" style="display:none">
+		<div class="tipDetail1 lightTableTh" style="display:block">
+			<table style="width:100%">
+				<tr>
+					<!--ued --yang-lb-->
+					<th width="50%" colspan="2">飞行里程</th>
+					<th width="50%" colspan="2">总累计里程</th>
+				</tr>
+				<tr>
+					<td colspan="2" name="mil"></td>
+					<td colspan="2" name="mil"></td>
+				</tr>
+				<tr>
+					<th width="10%"></th>
+					<th width="40%"></th>
+					<th width="25%">改期费</th>
+					<th width="25%">退票费</th>
+				</tr>
+				<tr>
+					<td rowspan="4">成人</td>
+					<td align="left" class="flightInfoTd">起飞前7 天(含)之前</td>
+					<td name="bWRe"></td>
+					<td name="bWR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd">起飞前7天至72小时(含)之前</td>
+					<td name="bDRe"></td>
+					<td name="bDR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd">起飞前72小时至4小时(含)之前</td>
+					<td name="bHRe"></td>
+					<td name="bHR"></td>
+				</tr>
+				<tr>
+					<td align="left" class="flightInfoTd">起飞前4小时内及起飞后</td>
+					<td name="aHRe"></td>
+					<td name="aHR"></td>
+				</tr>
+
+				<!-- <tr>
+			<th></th>
+			<th>起飞前两个小时之前</th>
+			<th>起飞前两个小时内及起飞后</th>
+		</tr>
+		<tr>
+			<td>退票费</td>
+			<td name="minR"></td>
+			<td name="maxR"></td>
+		</tr>
+		<tr>
+			<td>改期费</td>
+			<td name="minC"></td>
+			<td name="maxC"></td>
+		</tr>	 -->
+			</table>
+			<div style="text-align: left;font-size:16px">温馨提示</div>
+			<div class="tipDetailPrice" style="display: block; margin-top: 0px;">
+				<div>1、以上金额仅供参考，实际以执行退改时金额为准。</div>
+				<div>2、该产品不允许单程退票，不支持自愿签转，产品有效期内且有产品舱位情况下，可自愿变更一次，改期舱位差价多不退少补，差价与手续费同时收取。</div>
+				<div>注：去程航段乘机日期变更范围在2021年1月16日（含）-2021年2月10日（含）；返程航段乘机日期变更范围在2021年2月11日(含)-2021年3月8日(含)。</div>
+				<div>3、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+			</div>
+			<div style="text-align: left;font-size:16px">行李规定</div>
+			<div name="bgTipDC" style="color: #808080;margin-top: 0px;text-align: left;">
+
+			</div>
+		</div>
+	</div>
+
+	<div id="tipDetailWF_old" class=" tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<table style="width:100%">
+			<tr>
+				<!--ued --yang-lb-->
+				<th colspan="3">飞行里程</th>
+				<th>总累计里程</th>
+			</tr>
+			<tr>
+				<td colspan="3" name="mil"></td>
+				<td name="mil"></td>
+			</tr>
+
+			<tr>
+				<th></th>
+				<th></th>
+				<th>起飞前两个小时之前</th>
+				<th>起飞前两个小时内及起飞后</th>
+			</tr>
+			<tr>
+				<td rowspan="2">第一段</td>
+				<td>退票费</td>
+				<td name="minR1"></td>
+				<td name="maxR1"></td>
+			</tr>
+			<tr>
+				<td>改期费</td>
+				<td name="minC1"></td>
+				<td name="maxC1"></td>
+			</tr>
+
+			<tr>
+				<td rowspan="2">第二段</td>
+				<td>退票费</td>
+				<td name="minR2"></td>
+				<td name="maxR2"></td>
+			</tr>
+			<tr>
+				<td>改期费</td>
+				<td name="minC2"></td>
+				<td name="maxC2"></td>
+			</tr>
+		</table>
+		<div style="text-align: left;font-size:16px">温馨提示</div>
+		<div class="tipDetailPrice" style="display: block; margin-top: 0px;">
+			<div>1、以上金额仅供参考，实际以执行退改时金额为准；</div>
+			<div>2、4折以下自定义舱位改期必须升舱至公布运价舱位；改期舱位差价多不退少补，差价与手续费同时收取；</div>
+			<div>3、已办理选座值机的旅客无法办理改期或退票，请先取消选座值机再进行办理。</div>
+			<div>4、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+		</div>
+		<div style="text-align: left;font-size:16px">行李规定</div>
+		<div name="bgTipDC" style="color: #808080;margin-top: 0px;text-align: left;">
+
+		</div>
+	</div>
+
+	<div id="tipDetailWF_new" class=" tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow" style="left: 165px">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<table class="border-radius-tab" style="width:100% ">
+			<tr>
+				<!--ued --yang-lb-->
+				<th width="50%" colspan="3" class="top-left-td">飞行里程</th>
+				<th width="50%" colspan="2" class="top-right-td">总累计里程</th>
+			</tr>
+			<tr>
+				<td colspan="3" name="mil" class="border-left-td"></td>
+				<td colspan="2" name="mil"></td>
+			</tr>
+			<tr>
+				<th width="6%" class="border-left-td"></th>
+				<th width="9%"></th>
+				<th width="35%"></th>
+				<th width="25%">改期费</th>
+				<th width="25%">退票费</th>
+			</tr>
+			<tr>
+				<td rowspan="8" class="bottom-left-td">成人</td>
+				<td rowspan="4">第一段</td>
+				<td align="left" class="flightInfoTd">起飞前7 天(含)之前</td>
+				<td name="bWRe1"></td>
+				<td name="bWR1"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前7天至72小时(含)之前</td>
+				<td name="bDRe1"></td>
+				<td name="bDR1"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前72小时至4小时(含)之前</td>
+				<td name="bHRe1"></td>
+				<td name="bHR1"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前4小时内及起飞后</td>
+				<td name="aHRe1"></td>
+				<td name="aHR1"></td>
+			</tr>
+
+			<tr>
+				<td rowspan="4">第二段</td>
+				<td align="left" class="flightInfoTd">起飞前7 天(含)之前</td>
+				<td name="bWRe2"></td>
+				<td name="bWR2"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前7天至72小时(含)之前</td>
+				<td name="bDRe2"></td>
+				<td name="bDR2"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前72小时至4小时(含)之前</td>
+				<td name="bHRe2"></td>
+				<td name="bHR2"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前4小时内及起飞后</td>
+				<td name="aHRe2"></td>
+				<td name="aHR2" class="bottom-right-td"></td>
+			</tr>
+		</table>
+		<div style="text-align: left;font-size:16px">温馨提示</div>
+		<div class="tipDetailPrice" style="display: block; margin-top: 0px;">
+			<div>1、以上金额仅为当前客票舱位对应的退改收费标准，仅供参考，实际以办理退改时金额为准，7天以168小时为标准；</div>
+			<div>2、在客票有效期内，改期舱位差价多不退少补，差价与手续费同时收取。</div>
+			<div>3、往返程客票改期：在产品适用舱位内改期，仍可享受往返优惠，改期至此产品规定外的舱位，则需将优惠收回；往返程两段均未使用要求改期时，去程不允许更改到回程时间之后；如客票未按顺序使用，先使用了回程时，未使用的去程则不能改期和退票，仅退还未使用航段的民航发展基金和燃油附加费。</div>
+			<div>4、往返程客票退票：已部分使用客票情况下办理退票，已使用部分的客票不退还，未使用部分的客票收取航段实收票价*该航段票面舱位对应的退票费；客票全部未使用情况下，不允许办理单程退票，须往返程同时办理退票；未按顺序使用的客票不允许退票，仅退还未使用航段的民航发展基金和燃油附加费。</div>
+			<div>5、已办理选座值机的旅客无法办理改期或退票，请先取消选座值机再办理；该产品客票暂不支持线上自助改期，请致电95361办理。</div>
+			<div>6、改期订单的退票手续费计算规则：退票费=原票价*原舱位费率（注：改期产生的舱位差价不收取退票手续费用）。</div>
+			<div>7、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+		</div>
+		<div style="text-align: left;font-size:16px">行李规定</div>
+		<div name="bgTipDCT" style="color: #808080;margin-top: 0px;text-align: left;">
+
+		</div>
+
+	</div>
+
+
+
+
+	<div id="tipDetailWF_easyFly" class=" tipDetail tipDetailDiv lightTableTh">
+		<div class="tipDetial_arrow">
+			<div class="tipDetial_arrow tipso_arrow1"></div>
+		</div>
+		<table style="width:100%">
+			<tr>
+				<!--ued --yang-lb-->
+				<th width="50%" colspan="3">飞行里程</th>
+				<th width="50%" colspan="2">总累计里程</th>
+			</tr>
+			<tr>
+				<td colspan="3" name="mil"></td>
+				<td colspan="2" name="mil"></td>
+			</tr>
+			<tr>
+				<th width="6%"></th>
+				<th width="9%"></th>
+				<th width="35%"></th>
+				<th width="25%">改期费</th>
+				<th width="25%">退票费</th>
+			</tr>
+			<tr>
+				<td rowspan="8">成人</td>
+				<td rowspan="4">第一段</td>
+				<td align="left" class="flightInfoTd">起飞前7 天(含)之前</td>
+				<td name="bWRe1"></td>
+				<td name="bWR1"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前7天至72小时(含)之前</td>
+				<td name="bDRe1"></td>
+				<td name="bDR1"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前72小时至4小时(含)之前</td>
+				<td name="bHRe1"></td>
+				<td name="bHR1"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前4小时内及起飞后</td>
+				<td name="aHRe1"></td>
+				<td name="aHR1"></td>
+			</tr>
+
+			<tr>
+				<td rowspan="4">第二段</td>
+				<td align="left" class="flightInfoTd">起飞前7 天(含)之前</td>
+				<td name="bWRe2"></td>
+				<td name="bWR2"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前7天至72小时(含)之前</td>
+				<td name="bDRe2"></td>
+				<td name="bDR2"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前72小时至4小时(含)之前</td>
+				<td name="bHRe2"></td>
+				<td name="bHR2"></td>
+			</tr>
+			<tr>
+				<td align="left" class="flightInfoTd">起飞前4小时内及起飞后</td>
+				<td name="aHRe2"></td>
+				<td name="aHR2"></td>
+			</tr>
+		</table>
+		<div style="text-align: left;font-size:16px">温馨提示</div>
+		<div class="tipDetailPrice" style="display: block; margin-top: 0px;">
+			<div>1、以上金额仅供参考，实际以执行退改时金额为准。</div>
+			<div>2、该产品不允许单程退票，不支持自愿签转，产品有效期内且有产品舱位情况下，可自愿变更一次，改期舱位差价多不退少补，差价与手续费同时收取。</div>
+			<div>注：去程航段乘机日期变更范围在2021年1月16日（含）-2021年2月10日（含）；返程航段乘机日期变更范围在2021年2月11日(含)-2021年3月8日(含)。</div>
+			<div>3、一张机票优惠券仅可使用一次，退票/改期后此优惠券失效（双城次卡等特殊产品除外）。</div>
+		</div>
+		<div style="text-align: left;font-size:16px">行李规定</div>
+		<div name="bgTipDCT" style="color: #808080;margin-top: 0px;text-align: left;">
+
+		</div>
+	</div>
+
+
+	<div id="templateForTip" style="display:none">
+		<div class=tipsoTing>
+			<ul>
+				<li><b>经停城市：&nbsp;</b>
+					<div class="routeName">
+						<div />
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="templateForTip1" style="display:none">
+		<table border="0" class="tipZhuan">
+			<tr>
+				<td width="130">
+					<img class="img" width="130" height="33" src="/szair_B2C/static/ued2/img2/logo_small.jpg" />
+				</td>
+				<td width="10"></td>
+				<td width="75"><span class="flightNo F18 gray">ZH9101</span></td>
+				<td width="75"><span class="startTime F22">08:35</span></td>
+				<td width="20"><img src="/szair_B2C/static/ued2/img2/i_top_line.png" /></td>
+				<td width="870" align="left">
+					<span class="from F18">保安机场T3</span>
+					<img src="/szair_B2C/static/ued2/img2/rightArrow.png" style="margin-bottom:10px;" />
+					<span class="endTime F22">12:00</span>
+					<span class="to F18">蓬莱国际机场</span>
+					<span class="info F18 gray" style="margin-left:20px;">机型:738 &nbsp; 餐食:有 &nbsp; ZH9441</span>
+				</td>
+			</tr>
+			<tr>
+				<td width="130">&nbsp;</td>
+				<td width="10">&nbsp;</td>
+				<td width="75">&nbsp;</td>
+				<td width="75">&nbsp;</td>
+				<td width="20"><img src="/szair_B2C/static/ued2/img2/i_mid_line.png" /></td>
+				<td width="870" align="left">
+					<span class="during F22">00小时55分</span>
+					<span class="info F18 gray">中转：烟台</span>
+				</td>
+			</tr>
+			<tr>
+				<td width="130">
+					<img class="img" width="130" height="33" src="/szair_B2C/static/ued2/img2/logo_small.jpg" />
+				</td>
+				<td width="10"></td>
+				<td width="75"><span class="flightNo F18 gray">ZH9101</span></td>
+				<td width="75"><span class="startTime F22">08:35</span></td>
+				<td width="20"><img src="/szair_B2C/static/ued2/img2/i_bottom_line.png" /></td>
+				<td width="870" align="left">
+					<span class="from F18">保安机场T3</span>
+					<img src="/szair_B2C/static/ued2/img2/rightArrow.png" style="margin-bottom:10px;" />
+					<span class="endTime F22">12:00</span>
+					<span class="to F18">蓬莱国际机场</span>
+					<span class="info F18 gray" style="margin-left:20px">机型:738 &nbsp; 餐食:有 &nbsp;ZH9441</span>
+				</td>
+			</tr>
+			<tr>
+				<td width="130">&nbsp;</td>
+				<td width="10">&nbsp;</td>
+				<td width="75">&nbsp;</td>
+				<td width="75">&nbsp;</td>
+				<td width="20">&nbsp;</td>
+				<td width="870" align="left">
+					<span class="F18 gray">飞行时长：</span>
+					<span class="during F22">06小时55分</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="templateForTip3" style="display:none">
+		<table border="0" class="">
+			<tr>
+				<td width="130">
+					<img class="img" width="130" height="33" src="/szair_B2C/static/ued2/img2/logo_small.jpg" />
+				</td>
+				<td width="10"></td>
+				<td width="75"><span class="flightNo F18 gray">ZH9101</span></td>
+				<td width="75"><span class="startTime F22">08:35</span></td>
+				<td width="20"><img src="/szair_B2C/static/ued2/img2/i_top_line.png" /></td>
+				<td width="870" align="left">
+					<span class="from F18">保安机场T3</span>
+					<img src="/szair_B2C/static/ued2/img2/rightArrow.png" style="margin-bottom:10px;" />
+					<span class="endTime F22">12:00</span>
+					<span class="to F18">蓬莱国际机场</span>
+					<span class="info F18 gray" style="margin-left:20px;">机型:738 &nbsp; 餐食:有 &nbsp; ZH9441</span>
+				</td>
+			</tr>
+			<tr>
+				<td width="130">&nbsp;</td>
+				<td width="10">&nbsp;</td>
+				<td width="75">&nbsp;</td>
+				<td width="75">&nbsp;</td>
+				<td width="20"><img src="/szair_B2C/static/ued2/img2/i_mid_line.png" /></td>
+				<td width="870" align="left">
+					<span class="F18 gray"></span>
+					<span class="during F22">00小时55分</span>
+				</td>
+			</tr>
+			<tr>
+				<td width="130">
+					<img class="img" width="130" height="33" src="/szair_B2C/static/ued2/img2/logo_small.jpg" />
+				</td>
+				<td width="10"></td>
+				<td width="75"><span class="flightNo F18 gray">ZH9101</span></td>
+				<td width="75"><span class="startTime F22">08:35</span></td>
+				<td width="20"><img src="/szair_B2C/static/ued2/img2/i_bottom_line.png" /></td>
+				<td width="870" align="left">
+					<span class="from F18">保安机场T3</span>
+					<img src="/szair_B2C/static/ued2/img2/rightArrow.png" style="margin-bottom:10px;" />
+					<span class="endTime F22">12:00</span>
+					<span class="to F18">蓬莱国际机场</span>
+					<span class="info F18 gray" style="margin-left:20px">机型:738 &nbsp; 餐食:有 &nbsp;ZH9441</span>
+				</td>
+			</tr>
+			<tr>
+				<td width="130">&nbsp;</td>
+				<td width="10">&nbsp;</td>
+				<td width="75">&nbsp;</td>
+				<td width="75">&nbsp;</td>
+				<td width="20">&nbsp;</td>
+				<td width="870" align="left">
+					<span class="F18 gray">飞行时长：</span>
+					<span class="during F22">06小时55分</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="templateForTip2" style="display:none">
+		<table border="0" class="tipZhuan">
+			<tr>
+				<td width="130">
+					<img class="img" width="130" height="33" src="/szair_B2C/static/ued2/img2/logo_small.jpg" />
+				</td>
+				<td width="10"></td>
+				<td width="75"><span class="flightNo F18 gray">ZH9101</span></td>
+				<td width="75"><span class="startTime F22">08:35</span></td>
+				<td width="870" align="left">
+					<span class="from F18">保安机场T3</span>
+					<img src="/szair_B2C/static/ued2/img2/rightArrow.png" style="margin-bottom:10px;" />
+					<span class="endTime F22">12:00</span>
+					<span class="to F18">蓬莱国际机场</span>
+					<span class="info F18 gray" style="margin-left:20px;">机型:738 &nbsp; 餐食:有 &nbsp; ZH9441</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div class="tipso_bubble bottom" style="background: rgb(255, 255, 255); color: rgb(51, 51, 51); width: 400px; left: 0px; top: 1944px;display:none;">
+		<div class="tipso_content" style="text-align:left">
+			<p>1、购买易惠经济舱产品，含龙腾休息室，可享受2小时龙腾休息室服务。休息室由指定运营商提供服务，适用标准请以实际情况为准。</p>
+			<p>2、该产品不适用于儿童、婴儿，如有随行儿童需要进入龙腾休息室，需要现场购买（以龙腾休息室收费标准为准），但小于2周岁的随行婴儿可免费进入休息室。</p>
+			<p>3、易惠经济舱（含休息室）客票暂不支持改期，如有疑问请致电95361。</p>
+		</div>
+		<div class="tipso_arrow" style="margin-left: -63.0313px; border-bottom-color: rgb(204, 204, 204); border-top-color: transparent;">
+			<div class="tipso_arrow1"></div>
+		</div>
+	</div>
+
+
+
+
+	<div id="templateForTip4" style="display:none">
+		<div class="tipXiang">
+			<div class="F22" style="padding-bottom:5px"><b>承运：<span class="routeName">国航CA1320</span></b></div>
+			<ul>
+				<li><b>代码共享(codeshare)</b>指一航空公司通过协议在另一航空公司航班上使用自己公司的代码或多家航空公司在同一航班上使用各自的航班号的航班。</li>
+				<li>共享航班的行程单由深航提供；旅客需到承运航空公司的机场柜台办理值机手续，具体办理地址请到机场确认。</li>
+				<li>地面服务、不正常航班保障及常旅客计划等按实际承运航司标准执行。</li>
+				<li>如需预订婴儿、无陪等特殊旅客客票及申请特殊餐食等特殊服务，请咨询实际承运航司办理。</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="caTipsDiv" style="display:none">
+		<div style="text-align: left;line-height: 22px;">
+			<ul>
+				<li>1、该航班为中国国际航空公司承运，订单将由国航出票。</li>
+				<li>2、国航旗舰店订单不支持使用优惠券、购买保险和申请特殊餐食；客票改期、值机服务请联系国航客服95583办理。</li>
+				<li>3、凤凰知音里程积分、享受的地面服务、不正常航班服务及补偿等按照国航标准执行，详情请咨询国航客服95583。</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="meal_content">
+		<table width="100%" style="text-align: center;border-collapse: separate;">
+			<tbody>
+				<tr height="35px">
+					<th width="33%" style="border-top-left-radius: 4px;">航班号</th>
+					<th width="33%">航段</th>
+					<th width="33%" style="border-top-right-radius: 4px">餐食</th>
+				</tr>
+				<tr height="35px">
+					<td class="meal_flightNo" style="border-bottom-left-radius: 4px;">'+flightNo+'</td>
+					<td class="meal_flight">'+city+'</td>
+					<td class="meal_detail" style="border-bottom-right-radius: 4px;">'+meal+'</td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="text-align: left;font-size: 16px;margin: 10px 0">温馨提示</div>
+		<div style="margin-top: 0px;text-align: left;color: #808080;line-height: 22px;letter-spacing: 1px">
+			<div>1.具体餐别以该航班实际配备为准；</div>
+			<div>2.代码共享航班的餐食以实际承运航班为准；</div>
+			<div>3.如遇航班延误、机型变更、突发公共卫生事件等特殊情况可能造成配餐计划调整，请以航班实际配备为准</div>
+
+		</div>
+		<div class="meal_arrow" style="left: 250px; border-bottom-color: rgb(204, 204, 204); border-top-color: transparent;">
+			<div class="meal_arrow1"></div>
+		</div>
+	</div>
+	<div class="yearcontent">
+		<div><img style="width:698px;height:303px" src="/szair_B2C/static/ued2/img2/30yearintroduction.png" /></div>
+		<div style="margin-top: 0px;text-align: left;color: #808080;line-height: 22px;letter-spacing: 1px">
+			<div style="font-weight:bold">1.享大额里程</div>
+			<div>凡购买凤凰知音30周年深航主题航班（2024年11月26日ZH9105航班，以下称主题航班）经济舱指定舱位（Y/B）成行后额外加享19999里程，购买两舱指定舱位(J/C/D)成行后额外加享29999里程，里程可用于升保级及消费。</div>
+			<div style="font-weight:bold">2.快速升保级</div>
+			<div>乘坐主题航班指定舱位（J/C/D/Y/B）成行次月1日，会员最高级别如为银卡、金卡、白金卡，则级别有效期在当前基础上延长一年；会员如为普通卡，则升级为银卡，有效期一年。</div>
+			<div style="font-weight:bold">3.机上限时抽奖</div>
+			<div>主题航班机上抽奖活动涉及奖品有金卡（有效期1年）、定级航段、非定级里程。</div>
+			<div style="font-weight:bold">4.乘机旅客权益</div>
+			<div>（1）机上特色主题餐食。</div>
+			<div>（2）乘机旅客享主题航班精美伴手礼（30周年纪念版熊猫1个及30周年纪念徽章1个），乘坐深航主题航班加享神秘礼品1份。</div>
+			<div style="font-weight:bold">5.活动细则</div>
+			<div>（1）旅客需在购票前申请成为凤凰知音会员，本活动可与其他凤凰知音促销活动奖励并行。</div>
+			<div>（2）参与方式：活动无须报名，会员乘坐符合活动规则的指定航班且自动累积飞行里程，即可于飞行结束后获得额外里程奖励。</div>
+			<div>（3）活动一：奖励里程可用于升保级及消费。里程将随正常飞行累积入账发放至乘机人账户；若未自动累积则需在2024年12月31日补登里程且入账，会员可以获得活动奖励。2025年1月1日起至里程补登时限内到账或申请的正常飞行累积里程，不再进行奖励里程补登及补登后的保级延期操作。</div>
+			<div>（4）抽奖金卡信息（姓名、证件号、手机号、知音卡号）提交时间截至2024年11月30日。</div>
+			<div>（5）活动二：主题航班结束后15个工作日内完成贵宾卡延期、升级及抽奖奖品发放。非定级里程仅可用于里程消费，不可用于升保级，里程有效期自入账当月起36个月内有效。</div>
+			<div>（6）主题航班活动最终执行以实际为准，其他未尽述内容，以深圳航空App最新内容为准。</div>
+		</div>
+		<div class="year_arrow" style="left: 200px; border-bottom-color: rgb(204, 204, 204); border-top-color: transparent;">
+			<div class="year_arrow1"></div>
+		</div>
+	</div>
+	<div class="year32content">
+		<div style="margin-top: 0px;text-align: left;line-height: 22px;letter-spacing: 1px;">
+			<div style="font-weight:bold;font-size: 18px;text-align: center">深圳航空开航32周年主题航班权益</div>
+			<br>
+			<div style="font-weight:bold;text-indent:2em">一、非定级里程奖励</div>
+			<div style="text-indent:2em">购买主题航班指定舱位并实际成行的凤凰知音会员，可于飞行结束后获得额外非定级里程奖励。</div>
+			<div style="text-indent:2em">公务舱（J舱）额外获赠200%非定级里程；舒适经济舱（G舱）、经济舱(Y舱)额外获赠150%非定级里程。</div>
+			<div style="text-indent:2em">旅客需在乘机前加入凤凰知音会员，非会员将无法获得相关里程奖励。</div>
+			<div style="font-weight:bold;text-indent:2em">二、主题航班徽章权益</div>
+			<div style="text-indent:2em">购买公务舱（J舱）并实际成行获赠“机长教员”徽章头衔及对应权益；购买舒适经济舱（G舱）和经济舱（Y舱）并实际成行获赠“机长”徽章头衔及对应权益。</div>
+			<div style="text-indent:2em">
+				上述徽章头衔和对应权益可转赠，有效期一年；若本人使用，有效期可叠加，优先享受级别高的等级权益。旅客需注册并登录深圳航空微信小程序/App，系统将于飞行结束后10个工作日内发放徽章奖励。
+			</div>
+			<div style="font-weight:bold;text-indent:2em">三、专属伴手礼</div>
+			<div style="text-indent:2em">全体乘机旅客可获赠精美伴手礼一份。</div>
+		</div>
+		<div class="year32_arrow" style="left: 200px; border-bottom-color: rgb(204, 204, 204); border-top-color: transparent;">
+			<div class="year32_arrow1"></div>
+		</div>
+	</div>
+	<script src="/szair_B2C/static/js/eluminateSecureDE.js?t=3"></script>
+	<script src="/szair_B2C/static/js/coremetrics.js?t=3"></script>
+	<!-- NEB-1739 神策埋点  start-->
+	<!--跟header里重复了 -->
+
+	<!-- NEB-1739 神策埋点  end-->
+</body>
+<script type='text/javascript'>
+	var htmlString = '&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;经济舱前排宽敞座位&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;提供经济舱前排&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;、宽敞&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;座位&#60;/span&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;会员升级加速&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;E舱：&#60;/strong&#62;凤凰知音会员乘坐舒适经济舱里程累积率为90%，定级航段数可按0.9个累积。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;G舱：&#60;/strong&#62;凤凰知音会员乘坐舒适经济舱里程累积率为110%，定级航段数可按1.1个累积。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;特色服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;提供舒适拖鞋、毛毯、靠枕；机上专属行李架；部分城市提供优先登机服务。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;餐食服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;优先餐饮服务。提供专属优质餐食，配备&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(0, 0, 0); font-size:14px&#34;&#62;瓶装水、&#60;/span&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;挂耳咖啡（按需提供）。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;*&#60;/span&#62;&#60;/span&#62;&#60;span style=&#34;color:rgb(24, 28, 31); font-family:microsoft yahei,segoe ui,system-ui,roboto,droid sans,helvetica neue,sans-serif,tahoma,segoe ui symbol,myanmar text,微软雅黑; font-size:14px&#34;&#62;为践行绿色飞行，合理利用机上空间，我们的机供品将进行动态配备，若未能满足阁下的选择，敬请谅解。&#60;/span&#62;&#60;/p&#62;';
+	htmlString = htmlString.replaceAll("&#60;", "<").replaceAll("&#62;", ">").replaceAll("&#38;deg;", "°").replaceAll("&#34;", "'");
+	var htmlStringBusiness = '&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;贵宾休息室服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;公务舱旅客享贵宾休息室服务，&#60;/span&#62;&#60;span style=&#34;color:#FF0000&#34;&#62;&#60;strong&#62;可免费携带同航班1人入休息室。&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;舒适座椅&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;窄体机：宽敞间距，椅背仰角最大可达120&#38;deg;或150&#38;deg;。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;宽体机：宽敞座椅，180&#38;deg;舒适平躺及机上智能娱乐。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:12px&#34;&#62;*不同飞机座椅调节度数可能存在差异，请以实际乘机为准。&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;尊享服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;1）专属值机柜台&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;2）优先登机&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;3）快速安检通道&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;4）VIP摆渡车：远机位专车摆渡服务&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;5）优先提取行李&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;空中特色服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;机上提供非一次性餐具、餐前饮料、公务舱餐食、小支矿泉水、热毛巾、拖鞋等。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;&#60;strong&#62;接送机&#60;/strong&#62;&#60;strong&#62;服务&#60;/strong&#62;&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;&#60;p&#62;&#60;span style=&#34;font-size:14px&#34;&#62;&#60;span style=&#34;color:#000000&#34;&#62;指定舱位及城市可享深航易行免费机场接/送、乘机泊车服务，详情请致电深航官方客服95361查询及预订。&#60;/span&#62;&#60;/span&#62;&#60;/p&#62;';
+	htmlStringBusiness = htmlStringBusiness.replaceAll("&#60;", "<").replaceAll("&#62;", ">").replaceAll("&#38;deg;", "°").replaceAll("&#34;", "'");
+	if (htmlString == "") {
+		$(".ComfortEconomy img").css("display", "none");
+	}
+	if (htmlStringBusiness == "") {
+		$(".BusinessEconomy img").css("display", "none");
+		$(".FirstEconomy img").css("display", "none");
+	}
+
+	$(".ComfortEconomyTitle").each(function(index) {
+		$(this).html(htmlString)
+	});
+	$(".BusinessEconomyTitle").each(function(index) {
+		$(this).html(htmlStringBusiness)
+	});
+	$(".FirstEconomyTitle").each(function(index) {
+		$(this).html(htmlStringBusiness)
+	});
+
+	//嵌码---start
+	//var hcType="DC";
+	String.prototype.replaceAll = function(s1, s2) {
+		return this.replace(new RegExp(s1, "gm"), s2);
+	}
+
+	function doSearchCM() {
+		var cm_startCity = "SZX";
+		var cm_endCity = "HFE";
+		var cm_startDates = "2025-11-24";
+		var cm_startDate = cm_startDates.replace(/\-/g, "/");
+		var airline = "DC_" + cm_startCity + "-" + cm_endCity + "_" +
+			cm_startDate + "-null";
+		cmCreatePageviewTag("web-step1_flightChoose", "Flights", null,
+			null, airline);
+	}
+	cmCreatePageviewTag("web-bookFlightLoading", "Flights", null, null);
+	//嵌码---end----
+</script>
+
+
+<!-- <script src="/szair_B2C/static/ued2/js2/layui/layui.all.js?t=0.7810540806551676" charset="utf-8"></script> -->
+<script src="/szair_B2C/static/ued2/js2/tip/tipso.js?t=0.7810540806551676"></script>
+<script type='text/javascript' src="/szair_B2C/static/js/uedjs/js/cityPicker.js?t=0.7810540806551676"></script>
+<script type='text/javascript' src="/szair_B2C/static/js/uedjs/js/datePicker.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/checkInMsgBox.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/comboBox.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/uedjs/captcha.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/interCaptcha.js?t=0.7810540806551676"></script>
+<script src="http://static.geetest.com/static/tools/gt.js?t=0.7810540806551676"></script>
+<script src="/szair_B2C/static/js/uedjs/uedFlightSearch.js?t=0.7810540806551676"></script>
+
+</html>
