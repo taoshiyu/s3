@@ -922,6 +922,7 @@ _s3["_st"] = [0x0, 0x0, {
   enc_fp = _0x26644a
   // alert(key)
   // alert(window["_s3"]["_sc"][window["_s3"]['_sc']["length"] - 0x1])
+  console.log('key',key)
     console.log(window["_s3"]["_sc"][window["_s3"]['_sc']["length"] - 0x1])
   // alert([_0x26644a])
   // alert({key:key,fp:fp,enc_fp:enc_fp})

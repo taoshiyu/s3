@@ -1,4 +1,5 @@
 // CryptoJS = require('crypto-js')
+
 const window = global
 function safeAdd(_0x218693, _0x2cd067) {
   var _0xf1a82 = {
@@ -440,6 +441,22 @@ var md5 = function (_0x25f57b, _0x5ddf28, _0xe52c88) {
   }
   return rawHMACMD5(_0x5ddf28, _0x25f57b);
 };
+var _0x56055b = function (_0xd62ffc) {
+        var _0x340501, _0x595b7e = (typeof _0xd62ffc === "undefined") ? -0x1 : _0xd62ffc;
+        do {
+            _0x340501 = Math['round']((Math['random']() * 0xff));
+        } while (_0x340501 === _0x595b7e);
+        var _0x3aefc8 = _0x340501['toString'](0x10);
+        return (_0x3aefc8['length'] == 0x1) ? ('0' + _0x3aefc8) : _0x3aefc8;
+    };
+
+function _0x3ffcf8(_0x5f0ceb) {
+    var _0xfdf81d = '';
+    for (var _0x105424 = 0x0; _0x105424 < _0x5f0ceb; _0x105424++) {
+        _0xfdf81d += _0x56055b();
+    }
+    return _0xfdf81d;
+}
 // x_s3_s4e= _s3[_0x2ae1('0x13')][0x5a](window[_0xd71476[_0x2ae1('0x156')](_ssc[0x14] + _ssc[0x13], _ssc[0x12]) + _ssc[0x16]](_0x26644a) + _0xd71476['BAPox'] + _s3_tid, _0x214f53, _0x51fc87, _0x47b591)
 function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
     let fcp ='c2331586'
@@ -474,22 +491,6 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
     _0x7db3eb.push(-480)
     _0x7db3eb.push("https://www.shenzhenair.com/szair_B2C/")
 
-    var _0x56055b = function (_0xd62ffc) {
-        var _0x340501, _0x595b7e = (typeof _0xd62ffc === "undefined") ? -0x1 : _0xd62ffc;
-        do {
-            _0x340501 = Math['round']((Math['random']() * 0xff));
-        } while (_0x340501 === _0x595b7e);
-        var _0x3aefc8 = _0x340501['toString'](0x10);
-        return (_0x3aefc8['length'] == 0x1) ? ('0' + _0x3aefc8) : _0x3aefc8;
-    };
-
-    function _0x3ffcf8(_0x5f0ceb) {
-        var _0xfdf81d = '';
-        for (var _0x105424 = 0x0; _0x105424 < _0x5f0ceb; _0x105424++) {
-            _0xfdf81d += _0x56055b();
-        }
-        return _0xfdf81d;
-    }
     var random_hash
     random_hash = _0x3ffcf8(0x14)
     fm = "bbe972d3a8df39f58c12b1a0bafdf772" //对 on88Mode1 的MD5加密
@@ -1263,14 +1264,14 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
      return {fp:_0x7db3eb,x_s3_s4e:x_s3_s4e}
 }
 // key = [4,109,32,87,114,19,10,10,85,79,94,98,79,76,91,9]
-fp = ["01c31d377bc73e1c9a1533f5cf7b8ccf4c26a056:48:58e5ea7b-c9e5-11f0-a33d-3cd2e55daed6:0420c32072;S143Oer6fp2oe344z4nal7q27","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",[],"c2331586",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","5a5a31ae2f65cb467a16e4ea8de74c2d14d2d0cf","c8823e45","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5970:15)\n","fb5cc0aecacf6f00335e6014d35f99f2f6f7852c",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
+fp = ["5a05de52c90f3ebe7ef1a77124059c0c6b574fbc:48:31d2c016-ca12-11f0-a33d-3cd2e55daed6:041643203a;S150Wu11spSfe34413lm9ba19","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",[],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","6cd27f4f70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5971:15)\n","b34d6e26b19b2abb102e15d38b599cecb42d13f0",[[2,2,2,2,2],[2,2,3,2,3,3],0,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],0]
 // console.log(fp)
 x_s3_tid = "01c31d377bc73e1c9a1533f5cf7b8ccf4c26a056:48:58e5ea7b-c9e5-11f0-a33d-3cd2e55daed6:0420c32072"
 x_s3_sid =  "S143Oer6fp2oe344z4nal7q27"
 ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
 // ip = "120.229.99.37"
 ip = undefined
-right_cookie = 'b007hgQttikSD9lcIsd4rAu7C%2F6bhiLlh48rR9IQSLdERZeYJcm%2B2oTkz2eG39OuwdLy%2Bt%2FL0t6aNDTdlRXjN6fEcHAFPh2hZcCpMtkk3PsJVkzi%2B%2BW%2BgTbEjXapZ9CmmhkoI9LeElC%2FIpczMs07DaVeIhqWwKaV0rl1XY4MSK%2BRB5ODnE%2FX6r55qIor71otvVAcPhyAGTXcRV2si3JN%2BR2Z%2BrW%2Bf7G8tpVgDEcIEUhssc8CR%2FcrJPBiBBVK89NAafiS8sgf%2FMny1ezxkWQsvnYG2pzRTPqwhHrCMEUWWVSnGgndm%2Fhfcg8g0zKwIePMN%2BdwBdCKJvL%2FjkRXTdZPOtzAC6dyiyZK%2BfhrT4h5U7POCDU7YeUeUBL44aYcfYiR8ZY8yNSQ%2F3tOHMdrjOpwp9ZKtyKRTuLR%2FEbQ%2FAiCGtiVBEwVKnk7d6wIJWFdE4%2BHQpsVKNRexb8vuxHuaddfGfleDi93lShgnnoHG2VItnY6IVEKZl0qaRb6JlTcvqoXtO0dYUBoVAQ5iAk5PvwBcemgyspYTRe4Q4KIyertz9WVBEwVKnk7d6wIJWFdE4%2BH%2B8yddewbUUuPrWicbl992i5FXbt8dkgkJ1AQKsSZ4vb3iSjG9Fk8ROmUWiNgqZEu2xjchTBHUxR9bueOqEgcMIkXMk0pBbn0fy3%2BbwUY7NXmQyRbv24CIHxX1fH6dBYJcOTS7nceXMUAfj6XSZ88HBNzGgYqfOM006wvq1KAVh%2BggXScrPNB0j305QF%2BLCn0GM1Lu%2BWm1%2Fi9u2KpYCIBYG8zIQkXJwrH8EGXrceZI5gEr5qNj%2BTIydNBnyMv%2Bw9G3sSs01c31d377bc73e1c9a1533f5cf7b8ccf4c26a056:48:58e5ea7b-c9e5-11f0-a33d-3cd2e55daed6:0420c32072'
+right_cookie = 'mw21cGCICSz8k6UVIJGjwhN%2BfVYcsIjRU6AgDJHnf5aZgVXcuYhDJmuNpqIyF7pSqOZPj48t8Y9N9qBMazLIspe2hYXHyzZ9w6BM6DqLO1tVo7IK57Y7OvpTZMLRh9PVOL9cCV5yu9fyCWrEPRQAhjxI7AS%2FkULFWy%2FewQxRKtTPWyIYHW9fq0UZEYdjgYzFEbPDvmu4B7ie9jGBfKDb3wObjFXNO5HdCL2V1lCNFjUTZlWVa2qnpnyj29yCbHCZrwPmtq%2FYtOM8%2FBB%2FkQ7SgEqKrnyHwvKWem4o5g4gEcTFtaoE%2F1vZFs3nbiXrPneOEVCbV4fmrMjlwpJQA2njQ8o%2BlgJyWLphsnp%2BkX4eg%2Bm6etcRrwjMJw4%2BzqPxgw%2BtaDNGBzpbvAuGwKeFplyOwY3c6Sba7VYuvcg%2Fm6k3rcYF044ESkOcGNuD3hEFg9VHXm2slWnuHZ7DAS0Q7IubEha3NC3%2F0ikjQGzEnIym7hcPpb1AXlrON21skKZ7bH1B7XlORIKtc1b8kcy1D2m35AKlrHEBANyEBn7HRxacQjEF044ESkOcGNuD3hEFg9VH8spxQKKGnmsXzIGWTGxf0JFmJQ6mEaksSdraR1EPGXP%2BbnQPd%2FdnNskkBj0HV88pBmHnc6SkpxtbhP1dyJ0gLdE9DTZy9FfxHGss0Rz1RIc6Q3J7RLtbuEwSqiuZxlLUR7cR5QSBgn3CoSHU4O85l7avNKD1OrmpBpbXKN2Smqhsb8WV1fAju%2Fo%2BitRNuq%2FudlUcK13t1XAxNpghjqtX2VfAJQhFZ5Y0n99YeYGRpqKb38iK5QegJ4BbGAp2x4h13sSs5a05de52c90f3ebe7ef1a77124059c0c6b574fbc:48:31d2c016-ca12-11f0-a33d-3cd2e55daed6:041643203a'
 cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,fp)
 cookie = cookie['x_s3_s4e']
 console.log(cookie===right_cookie)

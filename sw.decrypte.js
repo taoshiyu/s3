@@ -1140,6 +1140,7 @@ var _0x1c61 = function (_0x2d352d, _0x5f3796) {
       if (["cbc", "ecb"]["indexOf"](_0x4a7fee["mode"]) >= 0x0) {
         this["mode"] = _0x4a7fee["mode"];
       }
+      console.log('mode',this.mode)
       this["cipherType"] = "base64";
       if (["base64", "text"]["indexOf"](_0x4a7fee["outType"]) >= 0x0) {
         this["cipherType"] = _0x4a7fee["outType"];
