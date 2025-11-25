@@ -870,6 +870,11 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
     }
     // _0x253bc1["key"] = new Uint8Array([63,31,93,33,85,63,115,17,97,85,85,85,63,117,93,33])
     _0x253bc1["mode"] = 'ecb';
+    if (mode===1){
+      _0x253bc1["mode"] = 'ecb';
+    } else {
+      _0x253bc1["mode"] = 'cbc';
+    }
 
 
     function _0x1f9a1e(_0x3d15ce, _0x12a973) {
@@ -1248,7 +1253,7 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
     var x_s3_s4e = encrypt(JSON.stringify(_0x7db3eb))
     x_s3_s4e.replace(/(\s*|\t|\r|\n)/g, '')
     x_s3_s4e = window.encodeURIComponent(x_s3_s4e) + '3sSs' + x_s3_tid
-     return {fp:_0x7db3eb,x_s3_s4e:x_s3_s4e}
+     return {fp:_0x7db3eb,x_s3_s4e:x_s3_s4e,mode:mode,key:_0x55d0ca}
 }
 // key = [4,109,32,87,114,19,10,10,85,79,94,98,79,76,91,9]
 
@@ -1256,6 +1261,7 @@ only_one = ['3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d
 only_cookie  = '48uN1QWkoG8zFM7u4BqgD9KpMDrtofMLWjP4wmazcxPt9LFbfmy9ytef4gVOoiY4MfYXL%2B9tb7qZ1nzEEu1pglSY0axrrOPxICcNWlCn4fJhtbT1arKuNdwlXZNGAj43qeNrVT33fg7qb4bYFSZkrynARkWDdNHH%2Fu9ZXpktOIwA8ExqkCSnF4wglTUSSRLit1%2BxqGht%2FVqw035EFihmnApVLf1frHFgG6ni6r3DpsKbgFfYBHs9KTAuhIsiuH8WlYToJ9MAu1uREbyo7Y1cGVRgEupuoK9fJaPUEV%2FoqE7%2B9RNgmkp8WxIPR95kRxoKJq49ZcGtGTvv4sr2UljUkHAoHa4qB8gvgxXVtBtcW9fJRl%2B%2FOgpiwEdKlqpDwGtWX3jkHCMybkD%2FIpPCFrA%2F9JkgjqfFRaYTio%2BRAMdkv65qo55f5xnBOo3sEPOlk0eNENk2wTN1G%2FmhNIBvrL9fr1knWSdcyAmaN30AfIIcJRP%2BVvB6fVglCQjq8QdT4c3I0YRUo2bwYg0jlBZt2eJq0MT9okRIql54wmszGcftUdDssq2gXwchIzH%2FS%2F2jabQMENk2wTN1G%2FmhNIBvrL9fr%2FYM4OfPmp2k2vhNpjeNRjjU1XBrJ5f92K7%2B0fB9c4Sk38PhXI0cy4LOpa4isAYT2qsRa%2FDs4IdOrTcbpf8HUEyIiJSjRFSlNo26yB5Pa0ummyvZJYBj55Vkl%2BTz2Qhe6QXokEwgrE9eGM340hVB293Oo7fJns%2FCwiSyjxbC2mDid%2BLDODokl0gJtj8BQx%2FDnnnm8WC5ERNazMrV2AxpIHoTbVvWbKq70enAAiBT55YJKqE0E1UNs9YIyQ81uAaw9g%3D%3D3sSs3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c'
 
 fp = only_one
+fp = ['b46f17c75b4d888e08a5e5efeb59779de83ccca0:48:870290f8-ca07-11f0-a33d-3cd2e55daed6:0840422077;S1uxfH5yopi7e34413lm9bazj', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'zh-CN', '124.04347527516074', 'Win32', ['38.87.67.154'], 'c2331586', ['1920', '1080', '1', '24'], -480, 'https://www.shenzhenair.com/szair_B2C/', 'be6f2fa92f65cb467a16e4ea8de74c2d14d2d0cf', 'c8823e45', '(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n', '7c653eb1a1d7e0c3c240cd0657ba3d7b532b63bf', [[2, 2, 2, 2, 2], [2, 2, 3, 2, 3, 3], 2, 2, 2, [3, 2, 3, 2, 2, 3], [2, 2, 2, 1, 1, 1, 3, 0], [2], [2], 2, [2], [2, 2], 2, 2], [], 2]
 // console.log(fp)
 x_s3_tid = "3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c"
 x_s3_sid =  "S1i5mQ4jwpbVe34413lm9ba1d"
@@ -1264,7 +1270,7 @@ ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 ip = "120.229.99.37"
 right_cookie = '48uN1QWkoG8zFM7u4BqgD9KpMDrtofMLWjP4wmazcxPt9LFbfmy9ytef4gVOoiY4MfYXL%2B9tb7qZ1nzEEu1pglSY0axrrOPxICcNWlCn4fJhtbT1arKuNdwlXZNGAj43qeNrVT33fg7qb4bYFSZkrynARkWDdNHH%2Fu9ZXpktOIwA8ExqkCSnF4wglTUSSRLit1%2BxqGht%2FVqw035EFihmnApVLf1frHFgG6ni6r3DpsKbgFfYBHs9KTAuhIsiuH8WlYToJ9MAu1uREbyo7Y1cGVRgEupuoK9fJaPUEV%2FoqE7%2B9RNgmkp8WxIPR95kRxoKJq49ZcGtGTvv4sr2UljUkHAoHa4qB8gvgxXVtBtcW9fJRl%2B%2FOgpiwEdKlqpDwGtWX3jkHCMybkD%2FIpPCFrA%2F9JkgjqfFRaYTio%2BRAMdkv65qo55f5xnBOo3sEPOlk0eNENk2wTN1G%2FmhNIBvrL9fr1knWSdcyAmaN30AfIIcJRP%2BVvB6fVglCQjq8QdT4c3I0YRUo2bwYg0jlBZt2eJq0MT9okRIql54wmszGcftUdDssq2gXwchIzH%2FS%2F2jabQMENk2wTN1G%2FmhNIBvrL9fr%2FYM4OfPmp2k2vhNpjeNRjjU1XBrJ5f92K7%2B0fB9c4Sk38PhXI0cy4LOpa4isAYT2qsRa%2FDs4IdOrTcbpf8HUEyIiJSjRFSlNo26yB5Pa0ummyvZJYBj55Vkl%2BTz2Qhe6QXokEwgrE9eGM340hVB293Oo7fJns%2FCwiSyjxbC2mDid%2BLDODokl0gJtj8BQx%2FDnnnm8WC5ERNazMrV2AxpIHoTbVvWbKq70enAAiBT55YJKqE0E1UNs9YIyQ81uAaw9g%3D%3D3sSs3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c'
 // right_cookie = 'GqRqMtuwdWh0JYGw1Ck7CC3tCxCEyAYPCZCzypoiPi%2BRpZTEwfpZFuE4w5otnocYmfFQ00sQdilqaviK%2BqMhGx0lrd9wO5mhpyKYUZci3NiBJpZ3AUIbqy3CpWOPRQRLogoaD4tY6cK%2BiC0Ho9bTIsmG9bvuOdBo8VmnGW009b301yTXDKKmvaQmxswnjl%2B1FbPpIMjkbFkx16iTNpjbE89VArAF7uvHY2yohOWo5aTmYVVzOtHyvCEEtQ4ElurdU4nkb1xvWZ9sQsE5JljWtyqe6e4RdRR9jO5dZKcq%2B%2BvuZLvhCCYPaOwcavwbmRZQ5helDLuleMJ7O%2BX4uqxvTaIECQuigNfs7LE4ory%2BlBTzOgoKMoxNYZb%2BZ3Xe80IGp7aVZ2y3ktjo%2ByeLSoZLKgbADjWaRFCcxayiBun8SvkjQz2khrZZswkD8yR0sSSAwzjyHOd%2Fpp0bmPndinwCeShVVxEaG%2FZaMoRyLyM1cbU6y9h3HfsAIMH6IiXtRA6DXoXwlXtho7UFzj3BqdId3g84a7d0O1aPPFcwtvHc6iAAayccVvTWd6YO9vSdIUkKwzjyHOd%2Fpp0bmPndinwCeQcc%2FKpgdsGPoko4rb8NBMyJ04D7zCant6iLyy5zLaFBbNdBXdZAIlurWQCg3OdUOm%2FpkhfAWwn8IQeZ6ZyUB6lZhH6sla6AqpUVtJc%2BnDDd5WDKj3NWu6sq78v%2FXr8xFcBV%2BCSlXf0kIgbZUfpoZEkkKUEu0HvuI%2BPYCYIoUJcJ3jRk9sUpGkwqVC%2F36Yg1rimrYFC952kC3LcK8IaQJzaga9cPtN%2FWsBHeG08qY3Uly%2FUWxl0OoM%2BwE8jU0T%2B6bw%3D%3D3sSs73c418a8f10e72b4cd6c13bfe8075a4f0d80beb8:48:b7fcb954-ca26-11f0-a740-005056ae692b:9c20c12026'
-cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,undefined,'136ca139','b7a49df6')
+cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,fp,'136ca139','b7a49df6')
 cookie = cookie['x_s3_s4e']
 console.log(cookie===right_cookie)
 console.log(cookie)

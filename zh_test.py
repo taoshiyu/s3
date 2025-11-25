@@ -5,6 +5,7 @@ import requests
 import time
 import execjs
 from curl_cffi.requests.session import Session
+from pprint import pprint
 
 
 
@@ -97,7 +98,6 @@ def test():
     print(response.cookies.get_dict())
     data_json = json.loads(response.text)
     x_s3_tid = data_json['_a'][0]
-
     x_s3_sid = data_json['_a'][1]
     s.cookies.set('x-s3-sid', x_s3_sid, domain='.shenzhenair.com', path='/')
     print(x_s3_tid)
@@ -123,6 +123,7 @@ def test():
     #     [[2, 2, 2, 2, 2], [2, 2, 3, 2, 3, 3], 2, 2, 2, [3, 2, 3, 2, 2, 3], [2, 2, 2, 1, 1, 1, 3, 0], [2], [2], 2, [2],
     #      [2, 2], 2, 2], [], 2]
     data = context.call('get_x_s3_s4e', x_s3_tid,x_s3_sid,ip,ua,None,None,fcp,cvp)
+    pprint(data)
     fp = data['fp']
     print(fp)
     x_s3_s4e = data['x_s3_s4e']
