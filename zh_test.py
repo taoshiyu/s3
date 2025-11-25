@@ -13,14 +13,18 @@ from requests import session
 import warnings
 warnings.filterwarnings('ignore')
 def test():
-    proxy = requests.get('http://api.tianqiip.com/getip?secret=j6sjjczp&num=1&type=txt&port=1&mr=1&sign=91ac51fd3232c447486480bcb89d831f').text.strip()
-    ip_port = proxy.split(':')
-    ip = ip_port[0]
-    print(ip)
-    proxies = {
-        'http':f'http://{proxy}',
-        'https': f'http://{proxy}'
-    }
+    fcp = '136ca139'
+    cvp = 'b7a49df6'
+    # proxy = requests.get('http://api.tianqiip.com/getip?secret=j6sjjczp&num=1&type=txt&port=1&mr=1&sign=91ac51fd3232c447486480bcb89d831f').text.strip()
+    # ip_port = proxy.split(':')
+    # ip = ip_port[0]
+    # print(ip)
+    # # ip = None
+    # proxies = {
+    #     'http':f'http://{proxy}',
+    #     'https': f'http://{proxy}'
+    # }
+    proxies = None
     context = execjs.compile(open('get_x_s3_s4e.js', 'r', encoding='utf-8').read())
     s = Session()
     s.proxies = proxies
@@ -28,7 +32,7 @@ def test():
     ts = int(time.time() * 1000)
     print(ts)
     ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
-    # ip = "120.229.99.37"
+    ip = "120.229.99.37"
 
     # ip = None
     headers = {
@@ -99,28 +103,26 @@ def test():
     print(x_s3_tid)
     print(x_s3_sid)
     r = s.get('https://www.shenzhenair.com/vodka/v1/js/sw.js',headers=headers_js,proxies=proxies, verify=False)
-    cvp = 'c8823e45'
-    nvp = '136ca139'
     random_str = context.call('_0x3ffcf8',4)
     random_str1 = context.call('_0x3ffcf8',4)
-    fp = [
-        f'{x_s3_tid};{x_s3_sid}',
-        ua,
-        'zh-CN',
-        '124.04347527516074',
-        'Win32',
-        [ip],
-        nvp,
-        ['1920', '1080', '1', '24'],
-        -480,
-        'https://www.shenzhenair.com/szair_B2C/',
-        f'{random_str1}70e9495d8a8a2466dd5df8900ddeaa3c',
-        cvp,
-        '(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n',
-        f'{random_str}c35b1b8f56f77ec57d5c1f0dfa817d61',
-        [[2, 2, 2, 2, 2], [2, 2, 3, 2, 3, 3], 2, 2, 2, [3, 2, 3, 2, 2, 3], [2, 2, 2, 1, 1, 1, 3, 0], [2], [2], 2, [2],
-         [2, 2], 2, 2], [], 2]
-    data = context.call('get_x_s3_s4e', x_s3_tid,x_s3_sid,ip,ua,None,None)
+    # fp = [
+    #     f'{x_s3_tid};{x_s3_sid}',
+    #     ua,
+    #     'zh-CN',
+    #     '124.04347527516074',
+    #     'Win32',
+    #     [ip],
+    #     nvp,
+    #     ['1920', '1080', '1', '24'],
+    #     -480,
+    #     'https://www.shenzhenair.com/szair_B2C/',
+    #     f'{random_str1}70e9495d8a8a2466dd5df8900ddeaa3c',
+    #     cvp,
+    #     '(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n',
+    #     f'{random_str}c35b1b8f56f77ec57d5c1f0dfa817d61',
+    #     [[2, 2, 2, 2, 2], [2, 2, 3, 2, 3, 3], 2, 2, 2, [3, 2, 3, 2, 2, 3], [2, 2, 2, 1, 1, 1, 3, 0], [2], [2], 2, [2],
+    #      [2, 2], 2, 2], [], 2]
+    data = context.call('get_x_s3_s4e', x_s3_tid,x_s3_sid,ip,ua,None,None,fcp,cvp)
     fp = data['fp']
     print(fp)
     x_s3_s4e = data['x_s3_s4e']
