@@ -1,4 +1,5 @@
 // CryptoJS = require('crypto-js')
+const jsdom = require("jsdom");
 const window = global
 function safeAdd(_0x218693, _0x2cd067) {
   var _0xf1a82 = {
@@ -445,14 +446,13 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
 
 
     var _0x7db3eb = [x_s3_tid + ';' + x_s3_sid];
-
     ua = ua
     _0x7db3eb.push(ua)
     _0x7db3eb.push("zh-CN")
     _0x7db3eb.push('124.04347527516074')
     _0x7db3eb.push("Win32")
     _0x7db3eb.push([ip])
-    _0x7db3eb.push("136ca139")
+    _0x7db3eb.push("c2331586")
     _0x7db3eb.push([
         "1920",
         "1080",
@@ -464,17 +464,22 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
 
     var _0x56055b = function (_0xd62ffc) {
         var _0x340501, _0x595b7e = (typeof _0xd62ffc === "undefined") ? -0x1 : _0xd62ffc;
+
         do {
             _0x340501 = Math['round']((Math['random']() * 0xff));
+
         } while (_0x340501 === _0x595b7e);
         var _0x3aefc8 = _0x340501['toString'](0x10);
-        return (_0x3aefc8['lengtwh'] == 0x1) ? ('0' + _0x3aefc8) : _0x3aefc8;
+
+        return (_0x3aefc8['length'] == 0x1) ? ('0' + _0x3aefc8) : _0x3aefc8;
     };
 
     function _0x3ffcf8(_0x5f0ceb) {
         var _0xfdf81d = '';
         for (var _0x105424 = 0x0; _0x105424 < _0x5f0ceb; _0x105424++) {
-            _0xfdf81d += _0x56055b();
+            let delta = _0x56055b()
+            _0xfdf81d += delta;
+            console.log(delta)
         }
         return _0xfdf81d;
     }
@@ -488,8 +493,9 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
     }
     _0x7db3eb.push(random_hash)
   // _0x7db3eb.push('2de79d1770e9495d8a8a2466dd5df8900ddeaa3c')
-    _0x7db3eb.push("b7a49df6")
+    _0x7db3eb.push("c2331586")
     _0x7db3eb.push('(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n')
+
     _0x245c1f = [
         ua,
         "Win32",
@@ -500,7 +506,7 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
         "24",
         -480,
         "https://www.shenzhenair.com/szair_B2C/",
-        "b7a49df6",
+        "c2331586",
         "124.04347527516074",
         [ip]
     ]['join']('') + 'c'
@@ -512,8 +518,8 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
         break
       }
     }
-    _0x7db3eb.push(random_hash_4 + md5(_0x245c1f))
-  // _0x7db3eb.push('8af48058' + md5(_0x245c1f))
+    // _0x7db3eb.push(random_hash_4 + md5(_0x245c1f))
+  _0x7db3eb.push(random_hash_4 + '1d0103ce77ba72408a64f6db5ca210bc')
     // console.log('crypto-js-md5',CryptoJS.MD5(_0x245c1f).toString())
     _0x7db3eb.push( [
         [ 2, 2, 2, 2, 2 ],
@@ -1256,21 +1262,18 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
     x_s3_s4e = window.encodeURIComponent(x_s3_s4e) + '3sSs' + x_s3_tid
     return x_s3_s4e
 }
-key = [45,63,85,63,117,33,117,23,85,23,3,55,3,111,85,105]
-fp = ["6927080d5b9d8d9f288ceba746ba8d10f6ceeb46:48:d344c223-c8a2-11f0-a740-005056ae692b:0480412031;S1orTHwurmdne34413lm9ba18","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","81b419c870e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","8181f2efc35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-x_s3_tid = "1ef59452806deee43d64a84021216d6120b3f98a:48:7fc7cbb8-c8a4-11f0-a740-005056ae692b:0c2080201e"
-x_s3_sid =  "S1dq1gibsmSIe34413lm9ba38"
+key = [71,93,105,45,17,3,117,41,47,63,95,87,61,81,23,117]
+fp = ["b5ddc634a6247e4838af5486468d76b60f2bef0a:48:91d7984c-c8fd-11f0-a33d-3cd2e55daed6:c406c32082;S1apfZj8inCWe344z4naowp1u","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["38.87.67.251"],"c2331586",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","0c1b60012f65cb467a16e4ea8de74c2d14d2d0cf","c8823e45","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","aaf641171d0103ce77ba72408a64f6db5ca210bc",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
+x_s3_tid = "b5ddc634a6247e4838af5486468d76b60f2bef0a:48:91d7984c-c8fd-11f0-a33d-3cd2e55daed6:c406c32082"
+x_s3_sid =  "S1apfZj8inCWe344z4naowp1u"
 ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
-ip = "120.229.99.37"
-cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined)
-  right_cookie = '%2FNVDZy0Cx6pVW0zDDFE2T%2BW5ZYHAwoS%2BVl4JgiEXZG2p0QMGG31EgI227MiUbYSjS1AUm4RptOfIRIdqcTbZqvIpmYB9QhErrcr8sd%2FrVitO2WIxwpn03RzwRP2B8JtUB6bvVRqqxMXrmM0xvWSWVyjGGF7bf9Sc3qPaZoqTqFo1pNXt2DPuEprEMKCOrQwzPPh7XvGG9rTIvuv63JqiaHM6dTjSlv%2FTq%2BEZYcUm%2FdeH4UQPQYMUY7epbxLy33OIBDWtqcYJOON%2B7IzVCIiu9vEXpX%2F78CfcTfQrblU68q4ea4WN%2FhooDPTFfCjdzOtrniBwXKKwZv9TVJIs7GMFQHgYCKtdkcwyfxYmt1SrEWBJ7XrCWxXsQvgWPML5rmCT6yfdHDcFj5viPE88a9DTdg7HqBiXIy0Tp59tIQKPLTPTs%2BDst%2FV9vTs9YPdn%2Bx%2FME0Wxy%2F8ot91aAvsmygROhPcirWCsF3HVHKsbOTVW%2FnuekZwVi7atImttoOLadDHlIr41UMztySit%2FuSFsft%2B9vfG25uwpFBVDLmInfcR6FArs2jc8BxeVLvghGG9HBD4E0Wxy%2F8ot91aAvsmygROhGkRWtkCfDUsarFJ7Wq7vqNxqBA0d6EHby4NYfk8PaYmIXGnFXrxeU%2FvriM77R9ObFIEYLuzZpxMxqT4%2BzKed7AprR%2B%2Bu6T58tcESYpv17VxSeF36gOY9qG2F4QFtF1DXNqMRpi2H8VfqN8Kd4Lty6gCrrzrrBsB0QWyQ0E3Xu%2BYwWSyif87TZpvJe4QUFdzc425ZqFuDMOGoirqFiG31vq8u0iWQmMwklyKVwZmwck06yn5Q14GgDB3TbuR%2FX%2FqhQ%3D%3D3sSs1ef59452806deee43d64a84021216d6120b3f98a:48:7fc7cbb8-c8a4-11f0-a740-005056ae692b:0c2080201e',
-
+ip = '38.87.67.251'
+cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,fp)
+right_cookie = '6VLEFRs0%2BXri9zMCRouwB7BmM455ghZRwWAyQCP%2BhPUfH2IXYurvbOXnXp2IVmmzedrrNbXO6XU6f2ra8G5W6VlVJXQZRfaavxwXUDmi3kYNeo%2FSOXKF8L6CrrX%2FAKqS3BQ1NTRDzQ%2BHOaHXW61W2oweN6k%2BNxjj4ACJYLP0rgmo0Wj0wK3FjIjNkjWMouQVLUMtUKK0UFWw5wl%2FzXfMKdtC%2FZJu0R5raKsh0fo5UdTMr3VbnHwZRxbosyHrvQdWHcnUTY5%2BTYVAvC4jIZ2D5gau6SoO7yj8mVIPsPtmjxUgG%2BnHPRmapntU9%2FP4GPOy57gLEy3XS9bm%2FBwojm8UXtYa9c3NH8ynLTwHo2wBVAvpNQJ%2Bl3z7J7g%2B73jz%2F9lRBWX6BTRLpk89JbxechtyIGrq8em8W14UOuaGFnpJcVjUhFJ%2FOGFgXuwiGf2LfWwxl5QENHuLU80xKakrJqvne%2BBHbFYqYb6QMoWLS%2FVYkh%2FVJOcLqAH6UTvBp3xmN9i5hjhMRnd40gUcePfbvDRm9K0nGgNnJt9dSdoGvpiMV%2BLAAAz%2F10Mt8NkfGGS8IrJgl5QENHuLU80xKakrJqvne3Pv977Pe8zhdYiRtNjgai0JcG8r56M7sjWhgc0ywaKZPh0uO3n%2B2fov%2FcBNeBo9h33lmECxZafHnvPgVbah9%2B4jvwasHFFD4hbZOxV7AkP7EyDnztl1%2BclmutlC1HwjUb2XuSh50hTPMNGoXWLdyZZmrmD%2FubuHEPocbVPRoEUc8%2FdSCyUH9JxzJzfPN%2BvZq042iTS8Go2vDSWL1r5NteA0koIvwU4ER1sdybwSaCq0v4Auph1Z4LEzd121TuSjWw%3D%3D3sSsb5ddc634a6247e4838af5486468d76b60f2bef0a:48:91d7984c-c8fd-11f0-a33d-3cd2e55daed6:c406c32082',
 console.log(cookie===right_cookie)
 console.log(cookie)
 console.log(right_cookie)
 // key = 43,42,20,87,68,114,31,124,0,10,91,107,10,122,121,122
 // fp = ["c52ab084e90fbd1c858b9faf57d2cd7223762b28:48:af2d26b8-c870-11f0-a33d-3cd2e55daed6:4410422012;S1tujCmidmvFe34413lm9ba15","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","ff03febd70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","e961ce75c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-
-
 // key = 63,31,93,33,85,63,115,17,97,85,85,85,63,117,93,33
 // fp = ["7eb6354f76337edff9e02070f9c5ff4b174aec49:48:25e82bc2-c77b-11f0-a33d-3cd2e55daed6:0c0a6420ba;S1qibF09dktje34413lm9d327","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.100"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","f35ef2b470e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","346ef9d9cbeb99dbefae1d2e178d2c739fd27dec",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]

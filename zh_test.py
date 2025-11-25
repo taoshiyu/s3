@@ -15,7 +15,7 @@ def test():
     ts = int(time.time() * 1000)
     print(ts)
     ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
-    ip = "120.229.99.37"
+    ip = '38.87.67.251'
     headers = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
@@ -106,9 +106,11 @@ def test():
     data_json = json.loads(response.text)
     x_s3_tid = data_json['_a'][0]
     x_s3_sid = data_json['_a'][1]
+    fp   = ["451ca9449eb2684bf486adbe29c794c0be67b8e0:48:b8817541-c8e8-11f0-a33d-3cd2e55daed6:08304020b4;S19sQw3vcnuSe344z4naowp1c","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",[],"c2331586",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","ce3c9a2f2f65cb467a16e4ea8de74c2d14d2d0cf","c8823e45","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","66a0fbd3cacf6f00335e6014d35f99f2f6f7852c",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
+
     print(x_s3_tid)
     print(x_s3_sid)
-    x_s3_s4e = execjs.compile(open('get_x_s3_s4e.js', 'r', encoding='utf-8').read()).call('get_x_s3_s4e', x_s3_tid,x_s3_sid,ip,ua)
+    x_s3_s4e = execjs.compile(open('get_x_s3_s4e.js', 'r', encoding='utf-8').read()).call('get_x_s3_s4e', x_s3_tid,x_s3_sid,ip,ua,None,fp)
     print(x_s3_s4e)
 
 
