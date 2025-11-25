@@ -541,7 +541,7 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
     _0x7db3eb.push(2)
 
     var _0x1ac89a = x_s3_tid.split(':')
-    _0x461fc8 = _0x1ac89a[2]
+    var _0x461fc8 = _0x1ac89a[2]
     console.log(_0x461fc8)
     function _0x10e125(_0x1b5e95) {
         var _0x308ae7 = _0x1b5e95['toString']();
@@ -559,7 +559,7 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
         return parseInt(_0x1bda09['split']('-')[0x0], 0x10) % 0x2;
     }
 
-    mode = getMode(_0x461fc8)
+    var mode = getMode(_0x461fc8)
     console.log(['mode',mode])
     var prime = [0x18b1d, 0x18b93, 0x18bd5, 0x18c17, 0x18c97, 0x18d1f, 0x18d9d, 0x18dcd, 0x18e33, 0x18e8f, 0x18ee9, 0x18f55, 0x18fb9, 0x1903d, 0x1909f, 0x19111, 0x191ad, 0x19229, 0x192af, 0x1933f, 0x193df, 0x19457, 0x194bd, 0x1952b, 0x195d1, 0x19637, 0x19697, 0x196f3, 0x19775, 0x197e1, 0x19865, 0x198e5, 0x28f7, 0x2903, 0x2905, 0x2911, 0x2921, 0x2923, 0x293f, 0x2947, 0x295d, 0x2965, 0x2969, 0x296f, 0x2975, 0x2983, 0x2987, 0x298f, 0x299b, 0x29a1]
 
@@ -653,11 +653,11 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
     //======================================================================countArray---->dyna1ing======================================================================
     if (mode === 0) {
         current_v = _0x29cc1a(_0x832dc7)
-      console.log('initcounting0',current_v)
+        console.log('initcounting0',current_v)
         current_v = pushCountingEvent('counting0', current_v)
     } else {
         current_v = _0x405f89(_0x832dc7)
-      console.log('initcounting',current_v)
+        console.log('initcounting',current_v)
         current_v = pushCountingEvent('counting', current_v)
     }
 
@@ -1253,16 +1253,18 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
 // key = [4,109,32,87,114,19,10,10,85,79,94,98,79,76,91,9]
 
 only_one = ['3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c;S1i5mQ4jwpbVe34413lm9ba1d', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'zh-CN', '124.04347527516074', 'Win32', ['120.229.99.37'], '136ca139', ['1920', '1080', '1', '24'], -480, 'https://www.shenzhenair.com/szair_B2C/', 'fa8c8d8870e9495d8a8a2466dd5df8900ddeaa3c', 'b7a49df6', '(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n', '9937ce64c35b1b8f56f77ec57d5c1f0dfa817d61', [[2, 2, 2, 2, 2], [2, 2, 3, 2, 3, 3], 2, 2, 2, [3, 2, 3, 2, 2, 3], [2, 2, 2, 1, 1, 1, 3, 0], [2], [2], 2, [2], [2, 2], 2, 2], [], 2]
+only_cookie  = '48uN1QWkoG8zFM7u4BqgD9KpMDrtofMLWjP4wmazcxPt9LFbfmy9ytef4gVOoiY4MfYXL%2B9tb7qZ1nzEEu1pglSY0axrrOPxICcNWlCn4fJhtbT1arKuNdwlXZNGAj43qeNrVT33fg7qb4bYFSZkrynARkWDdNHH%2Fu9ZXpktOIwA8ExqkCSnF4wglTUSSRLit1%2BxqGht%2FVqw035EFihmnApVLf1frHFgG6ni6r3DpsKbgFfYBHs9KTAuhIsiuH8WlYToJ9MAu1uREbyo7Y1cGVRgEupuoK9fJaPUEV%2FoqE7%2B9RNgmkp8WxIPR95kRxoKJq49ZcGtGTvv4sr2UljUkHAoHa4qB8gvgxXVtBtcW9fJRl%2B%2FOgpiwEdKlqpDwGtWX3jkHCMybkD%2FIpPCFrA%2F9JkgjqfFRaYTio%2BRAMdkv65qo55f5xnBOo3sEPOlk0eNENk2wTN1G%2FmhNIBvrL9fr1knWSdcyAmaN30AfIIcJRP%2BVvB6fVglCQjq8QdT4c3I0YRUo2bwYg0jlBZt2eJq0MT9okRIql54wmszGcftUdDssq2gXwchIzH%2FS%2F2jabQMENk2wTN1G%2FmhNIBvrL9fr%2FYM4OfPmp2k2vhNpjeNRjjU1XBrJ5f92K7%2B0fB9c4Sk38PhXI0cy4LOpa4isAYT2qsRa%2FDs4IdOrTcbpf8HUEyIiJSjRFSlNo26yB5Pa0ummyvZJYBj55Vkl%2BTz2Qhe6QXokEwgrE9eGM340hVB293Oo7fJns%2FCwiSyjxbC2mDid%2BLDODokl0gJtj8BQx%2FDnnnm8WC5ERNazMrV2AxpIHoTbVvWbKq70enAAiBT55YJKqE0E1UNs9YIyQ81uAaw9g%3D%3D3sSs3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c'
+
 fp = only_one
-// fp = ["73c418a8f10e72b4cd6c13bfe8075a4f0d80beb8:48:b7fcb954-ca26-11f0-a740-005056ae692b:9c20c12026;S1k08kwqxpTYe34413lm9ba1j","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","4c9d33e770e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5971:15)\n","f32f255fc35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
 // console.log(fp)
-x_s3_tid = "01c31d377bc73e1c9a1533f5cf7b8ccf4c26a056:48:58e5ea7b-c9e5-11f0-a33d-3cd2e55daed6:0420c32072"
-x_s3_sid =  "S143Oer6fp2oe344z4nal7q27"
+x_s3_tid = "3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c"
+x_s3_sid =  "S1i5mQ4jwpbVe34413lm9ba1d"
 ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
 // ip = "120.229.99.37"
 ip = "120.229.99.37"
-right_cookie = 'GqRqMtuwdWh0JYGw1Ck7CC3tCxCEyAYPCZCzypoiPi%2BRpZTEwfpZFuE4w5otnocYmfFQ00sQdilqaviK%2BqMhGx0lrd9wO5mhpyKYUZci3NiBJpZ3AUIbqy3CpWOPRQRLogoaD4tY6cK%2BiC0Ho9bTIsmG9bvuOdBo8VmnGW009b301yTXDKKmvaQmxswnjl%2B1FbPpIMjkbFkx16iTNpjbE89VArAF7uvHY2yohOWo5aTmYVVzOtHyvCEEtQ4ElurdU4nkb1xvWZ9sQsE5JljWtyqe6e4RdRR9jO5dZKcq%2B%2BvuZLvhCCYPaOwcavwbmRZQ5helDLuleMJ7O%2BX4uqxvTaIECQuigNfs7LE4ory%2BlBTzOgoKMoxNYZb%2BZ3Xe80IGp7aVZ2y3ktjo%2ByeLSoZLKgbADjWaRFCcxayiBun8SvkjQz2khrZZswkD8yR0sSSAwzjyHOd%2Fpp0bmPndinwCeShVVxEaG%2FZaMoRyLyM1cbU6y9h3HfsAIMH6IiXtRA6DXoXwlXtho7UFzj3BqdId3g84a7d0O1aPPFcwtvHc6iAAayccVvTWd6YO9vSdIUkKwzjyHOd%2Fpp0bmPndinwCeQcc%2FKpgdsGPoko4rb8NBMyJ04D7zCant6iLyy5zLaFBbNdBXdZAIlurWQCg3OdUOm%2FpkhfAWwn8IQeZ6ZyUB6lZhH6sla6AqpUVtJc%2BnDDd5WDKj3NWu6sq78v%2FXr8xFcBV%2BCSlXf0kIgbZUfpoZEkkKUEu0HvuI%2BPYCYIoUJcJ3jRk9sUpGkwqVC%2F36Yg1rimrYFC952kC3LcK8IaQJzaga9cPtN%2FWsBHeG08qY3Uly%2FUWxl0OoM%2BwE8jU0T%2B6bw%3D%3D3sSs73c418a8f10e72b4cd6c13bfe8075a4f0d80beb8:48:b7fcb954-ca26-11f0-a740-005056ae692b:9c20c12026'
-cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,fp,'136ca139','b7a49df6')
+right_cookie = '48uN1QWkoG8zFM7u4BqgD9KpMDrtofMLWjP4wmazcxPt9LFbfmy9ytef4gVOoiY4MfYXL%2B9tb7qZ1nzEEu1pglSY0axrrOPxICcNWlCn4fJhtbT1arKuNdwlXZNGAj43qeNrVT33fg7qb4bYFSZkrynARkWDdNHH%2Fu9ZXpktOIwA8ExqkCSnF4wglTUSSRLit1%2BxqGht%2FVqw035EFihmnApVLf1frHFgG6ni6r3DpsKbgFfYBHs9KTAuhIsiuH8WlYToJ9MAu1uREbyo7Y1cGVRgEupuoK9fJaPUEV%2FoqE7%2B9RNgmkp8WxIPR95kRxoKJq49ZcGtGTvv4sr2UljUkHAoHa4qB8gvgxXVtBtcW9fJRl%2B%2FOgpiwEdKlqpDwGtWX3jkHCMybkD%2FIpPCFrA%2F9JkgjqfFRaYTio%2BRAMdkv65qo55f5xnBOo3sEPOlk0eNENk2wTN1G%2FmhNIBvrL9fr1knWSdcyAmaN30AfIIcJRP%2BVvB6fVglCQjq8QdT4c3I0YRUo2bwYg0jlBZt2eJq0MT9okRIql54wmszGcftUdDssq2gXwchIzH%2FS%2F2jabQMENk2wTN1G%2FmhNIBvrL9fr%2FYM4OfPmp2k2vhNpjeNRjjU1XBrJ5f92K7%2B0fB9c4Sk38PhXI0cy4LOpa4isAYT2qsRa%2FDs4IdOrTcbpf8HUEyIiJSjRFSlNo26yB5Pa0ummyvZJYBj55Vkl%2BTz2Qhe6QXokEwgrE9eGM340hVB293Oo7fJns%2FCwiSyjxbC2mDid%2BLDODokl0gJtj8BQx%2FDnnnm8WC5ERNazMrV2AxpIHoTbVvWbKq70enAAiBT55YJKqE0E1UNs9YIyQ81uAaw9g%3D%3D3sSs3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c'
+// right_cookie = 'GqRqMtuwdWh0JYGw1Ck7CC3tCxCEyAYPCZCzypoiPi%2BRpZTEwfpZFuE4w5otnocYmfFQ00sQdilqaviK%2BqMhGx0lrd9wO5mhpyKYUZci3NiBJpZ3AUIbqy3CpWOPRQRLogoaD4tY6cK%2BiC0Ho9bTIsmG9bvuOdBo8VmnGW009b301yTXDKKmvaQmxswnjl%2B1FbPpIMjkbFkx16iTNpjbE89VArAF7uvHY2yohOWo5aTmYVVzOtHyvCEEtQ4ElurdU4nkb1xvWZ9sQsE5JljWtyqe6e4RdRR9jO5dZKcq%2B%2BvuZLvhCCYPaOwcavwbmRZQ5helDLuleMJ7O%2BX4uqxvTaIECQuigNfs7LE4ory%2BlBTzOgoKMoxNYZb%2BZ3Xe80IGp7aVZ2y3ktjo%2ByeLSoZLKgbADjWaRFCcxayiBun8SvkjQz2khrZZswkD8yR0sSSAwzjyHOd%2Fpp0bmPndinwCeShVVxEaG%2FZaMoRyLyM1cbU6y9h3HfsAIMH6IiXtRA6DXoXwlXtho7UFzj3BqdId3g84a7d0O1aPPFcwtvHc6iAAayccVvTWd6YO9vSdIUkKwzjyHOd%2Fpp0bmPndinwCeQcc%2FKpgdsGPoko4rb8NBMyJ04D7zCant6iLyy5zLaFBbNdBXdZAIlurWQCg3OdUOm%2FpkhfAWwn8IQeZ6ZyUB6lZhH6sla6AqpUVtJc%2BnDDd5WDKj3NWu6sq78v%2FXr8xFcBV%2BCSlXf0kIgbZUfpoZEkkKUEu0HvuI%2BPYCYIoUJcJ3jRk9sUpGkwqVC%2F36Yg1rimrYFC952kC3LcK8IaQJzaga9cPtN%2FWsBHeG08qY3Uly%2FUWxl0OoM%2BwE8jU0T%2B6bw%3D%3D3sSs73c418a8f10e72b4cd6c13bfe8075a4f0d80beb8:48:b7fcb954-ca26-11f0-a740-005056ae692b:9c20c12026'
+cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,undefined,'136ca139','b7a49df6')
 cookie = cookie['x_s3_s4e']
 console.log(cookie===right_cookie)
 console.log(cookie)
