@@ -6336,7 +6336,7 @@ var bT = function () {
         _0x4262aa ? _0x4262aa["push"](!!_0x69dd04 ? ["cvp", _0x69dd04] : ["cvp", 'W']) : 0x0;
         let random_hash = _0x3ffcf8(0x14)
         console.log(['random_hash',random_hash])
-        alert(random_hash)
+        // alert(random_hash)
         return [_0x5c9a04 ? [] : _0x52a783, _0x69dd04, random_hash];
       },
       '_a47': function (_0x45d9e3, _0x5dbe5a) {
@@ -7942,7 +7942,7 @@ var bT = function () {
       _0x2cfa35['da'] ? _0x2cfa35['da']['push'](_0x11e28b) : _0x2cfa35["da2"] ? _0x2cfa35["da2"]["push"](_0x11e28b) : 0x1;
       _0x4262aa ? _0x2cfa35['da']['push'](_0x4262aa["concat"](_s3["_mD"])) : 0x0;
       _0x5636f1["_sfm"]["_2dcng"]["_3kptn"]["_pvvt"]['a'] = _0xb1428;
-      alert(JSON.stringify(_0x2cfa35['da'][36]))
+      // alert(JSON.stringify(_0x2cfa35['da'][36]))
       console.log("fp",_0x2cfa35)
       var _0x46da12 = _0x334f7e["_ecd"] ? _0x334f7e["_ecd"](_0x2cfa35, _0x5636f1["_sfm"]["_2dcng"]['_3kptn']['_pvvt'], _0x334f7e['_tid'], _0x334f7e["_daSize"], _0x2dcd59) : 0x2;
       _0x46da12 = _0x334f7e['_url'] ? this['_kh2'](_0x2cfa35) : _0x46da12;
@@ -9140,7 +9140,7 @@ var bT = function () {
                           _0x5636f1["_sfm"]['_2dcng']["_3kptn"]["resetTimer"]();
                           _0x20428c = 0x2;
                           var _0x2a1e5d = _0x4c65f4;
-                          alert(_0x5636f1["_sfm"]["_2dcng"]["_3kptn"]["currentEvent"])
+                          // alert(_0x5636f1["_sfm"]["_2dcng"]["_3kptn"]["currentEvent"])
                           var _0x5929f5 = _0x5636f1["_sfm"]['_2dcng']["_3kptn"]["currentEvent"] && Array["isArray"](_0x5636f1["_sfm"]["_2dcng"]["_3kptn"]["currentEvent"]['v']) ? _0x5636f1["_sfm"]["_2dcng"]["_3kptn"]["currentEvent"]['v'][0x1] : _0x5636f1['_sfm']['_2dcng']["_3kptn"]["lastEvent"] && Array['isArray'](_0x5636f1["_sfm"]["_2dcng"]["_3kptn"]['lastEvent'][0x0]['v']) ? _0x5636f1['_sfm']["_2dcng"]["_3kptn"]['lastEvent'][0x0]['v'][0x1] : '';
                           _0x5929f5 == '' || typeof _0x5929f5 == "undefined" || _0x5929f5 == null ? _0x22db98(null, _0x46c1b3, 0x1) : _0x334f7e['_url'] ? _0x334f7e['r4'](_0x334f7e['_url'], _0x15a7c2, _0x388db0 + "%7C" + window["_s3did"] + "%7C" + _0x55d808() + "%7C" + _0x5929f5) : 0x0;
                           var _0x2a1e5d = _0x2436b1;

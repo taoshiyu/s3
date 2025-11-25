@@ -1,34 +1,20 @@
 import os
 import requests
 
-
-import execjs
-
-js_str = open('./get_x_s3_s4e.js').read()
-context = execjs.compile(js_str)
-fp = ["b96a1e2fcb7a436ac242fc4e5b101716973b521f:48:23b871d0-c8ff-11f0-a33d-3cd2e55daed6:08206d20db;S1apfZj8inCWe344z4naowp1u","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["38.87.67.251"],"c2331586",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","417985b62f65cb467a16e4ea8de74c2d14d2d0cf","c8823e45","(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n","f249f6811d0103ce77ba72408a64f6db5ca210bc",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-x_s3_tid,x_s3_sid = fp[0].split(';')
-ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
-ip = '38.87.67.251'
-x_s3_s4e = context.call('get_x_s3_s4e',x_s3_tid, x_s3_sid,ip,ua,None,fp)
-print(x_s3_s4e)
-
-cookies =  {
-    'JSESSIONID': '83D5E27DC591EA4D5227459424296D7D',
-    'AlteonP': 'AcO8B29ADgqJvMtzqoasVg$$',
-    'HMF_CI': 'a6ffdb81aa62d037a66373eb62e1add35f8abd5dd6f294d4356734e3bd117961bcba728428caa758c959841bef8a3bcac3e55ecb3fb9aabab18ef539032e41d470',
+cookies = {
+    'JSESSIONID': '332E7189F4A557F1DF641B65715FE376',
+    'AlteonP': 'BdX4IG9ADgo3m5UjhgokNQ$$' ,
+    'HMF_CI': '5730f48bdc2511b163627ff792eaafdacdf2df9bca48f241c5c7d84ff31fe863a96d5be106faad398e06525d360cba84bf1d0ec49647955e5bd5488ccae2e65ce4',
     'sajssdk_2015_cross_new_user': '1',
-    'sensorsdata2015jssdkcross': '%7B%22distinct_id%22%3A%2219ab47671322f8-07ca3e197847b28-26061b51-2073600-19ab4767133127c%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22%24device_id%22%3A%2219ab47671322f8-07ca3e197847b28-26061b51-2073600-19ab4767133127c%22%7D',
-    'arialoadData': 'false',
-    'x-s3-sid': x_s3_sid,
-    'sw_rtk': 'Wiez4naowpsja9npin4ue344LAz0',
+    'sensorsdata2015jssdkcross': '%7B%22distinct_id%22%3A%2219abaa58df036c-0e615822877ad1-26061b51-2073600-19abaa58df11269%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22%24device_id%22%3A%2219abaa58df036c-0e615822877ad1-26061b51-2073600-19abaa58df11269%22%7D',
+    'x-s3-sid': 'S1rsLC2dhpC5e344z4nal7q2j',
     'ariauseGraymode': 'false',
-    'x_s3_s4e':x_s3_s4e,
-    'x-s3-tid': x_s3_tid,
+    'arialoadData': 'false',
+    'x-s3-s4e': '8%2B%2BSZ8IL0aNAzaiGdsP%2FN5Ooly8Q%2BEFvUEeX%2F6Kk1kXemJdRmV9JbU9WTV9T2L4b2KCSJGRi2pwEvSdxhocIdY4AEkhrUvlR2DGg2X47D1CKj3dcDFWDibHkx7Ok4G0P7Ak%2FoBTPIOGHHD%2BFkyUWGGyjEGLqlpXuNrr6owbfJK1%2B5gegiByi4yajTfQeWUoSpLtiBy0RPKZHCpxjc4IWhmvYZeXrK%2FGERG353FL6r3yrdTWS8Er3%2BN80A153rwb3JH27c9mDHhbGBftiBvYGBT18noD845zHwopFD7W91dzej3oauuAud4yTGxQY1LnEby0Hij%2FuL9w5n6SbotP0oObwE4qluhiJhOA8AOYSZ0%2BkaZ1qPWo%2FB6EMdal%2FZlVD394AQ3IAHscPvUy%2B3BYW1DjBaVvji1%2F6ivDn3Ks59dgUjp2KTo59crw%2BKf%2B5s9qFbbyNuCtPdTkHkzv1zt9sdtotTV0nB82crLJiyxpHCYcKUWYd6hYV3Ep8BBhIOTEVQEApaVvTnATTvW%2FT9sHfO9BV%2Fhoyvf2XBkWX7W%2BiZ1dZ%2FEI4T3RbfhgGMSKt8xwabbyNuCtPdTkHkzv1zt9sdp9cXhSb%2Bdt5Dl84CiVHx82IWfAuve%2B0exq%2B6q%2FzI65yVj4ydjibImNDNAXnkPmOahhXcxh2mElEtuBJF22ZBMeDfwR%2BEUzKoIxx6P6dGyRKMW6h2Tvatt8IINDri0gO203dK7Zw9J1tny86B17Rx93nJAFiD%2FL42KFkNvZ841XR5ATKjfYJC9m2gstov4xvK7IeF9rbGMuvEBJhfSLFW2XFj6kuLyM4KU30J%2FoMTJeAfPDehNYh7Kuwq5QjgH9Avg%3D%3D3sSs00b1969588274b1d3a85934d345fcb08ba3552ea:48:f6f3e784-c9ec-11f0-a33d-3cd2e55daed6:0400f320f9',
+    'x-s3-tid': '00b1969588274b1d3a85934d345fcb08ba3552ea:48:f6f3e784-c9ec-11f0-a33d-3cd2e55daed6:0400f320f9',
     'fromPage': '%7BfromPage%3A%22index%22%7D',
     'sccode': '%7BsccodeInfo%3A%22%u9996%u9875%26%22%7D',
 }
-
 
 headers = {
     'Host': 'www.shenzhenair.com',
@@ -46,7 +32,7 @@ headers = {
     'Sec-Fetch-Dest': 'document',
     'Referer': 'https://www.shenzhenair.com/szair_B2C/',
     'Accept-Language': 'zh-CN,zh;q=0.9',
-    # 'Cookie': 'JSESSIONID=D1CDB3692E87C2BB051909E8B17A3275; AlteonP=A1CbQm9ADgoTQjUIHTQWJg' + os.getenv('$', '') + '; HMF_CI=dc0ef7d54da0dc5613bd7236a2bb7516c5c362f532d47f2fc60dd7c5ba043d37ee7a2bfa855dff11f1edc6eb2a1b2e96eedcc9a357e4236f8b002d60a33344764c; sajssdk_2015_cross_new_user=1; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%2219ab3ffb44dc55-0cde96db35cf98-26061b51-2073600-19ab3ffb44ec21%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22%24device_id%22%3A%2219ab3ffb44dc55-0cde96db35cf98-26061b51-2073600-19ab3ffb44ec21%22%7D; arialoadData=false; x-s3-sid=S14d5y12dnhFe344z4naowpzm; sw_rtk=WmSz4naowpeb3Jmgdn6Fe344x32t; ariauseGraymode=false; x-s3-s4e=os6BR%2FiMtv7gXnckVokXrat9iAkfQ%2BC6ldlTyOE8SqQDyr9GRbKID2Khn0Ut7ghi2L%2Fv6ptRS9TcoD0LVf6%2BCYWJjeMKVZcBcZDQfn3JW10vDo0BrN6TjT8BaRz3BhDPoum9OejfnnMrHXwPiS1HiQDICk%2FcERoOvp39XkSB%2FOKAHYwKyqfAeWP1cexTtJfqwq5xJ4m3zUwPR%2FMiclUbNlPG4719u3upDm9u0BmRDpCENHnHX2FtEu8brGzFf4iO1UtyYQGdpp4w7%2FNnsNwcLfAIuzBDNuRhwal%2BddoxYqpiURPNZe6OR2qLBdq1dSGBk%2FwvNxGUt%2FReBuQY5322OlVkR9qcoSass1IvNiCqwUcPDIetrgj7YWNqW5XCmqynreAocTH2%2FSsJ9%2F3z0qT3WIl2Nafg0rr2BS48FlbX7XzL%2BV4RTeeR4qfKCX0TeEtUz%2Fe4kERXbjST99uVBIfoYABaFKzmSkhb6Vl70hNw6%2BXHC19WQZvfoncy8IFN15DBGEt5rRexowunbIhfdfWD%2Fzs4o7lDSYHO%2Bof7BEKMMrhR76pFnx%2Feo%2Fvn415nOJ1Gz%2Fe4kERXbjST99uVBIfoYEEmhLi4PeH8ETYr9x4sJPQwDuDL8r8ewjz%2FcVyYMEZ2caJfivtXCxfwZldk2Ugew1b8rtxv4mEdkhsH23Ho0SyB8Ewq35UDPLcfW2NAvj0w%2BfeJu3Cd4u44o6u6R%2FTvYTL4Khgz91CW4Q5PyDsvpGBW6vW2Ib1JNo84WKynOuYMJjvwPp5BTkQ%2Fept2oMfnHh2tA4mk0ZPdIZJX84MhQfXCi6RN27jaIKALoQls0c3lM3tXyamvaWLCgrkYLo1a7A%3D%3D3sSs90b963c680e6c96bdc173fd83526e60642be1200:48:66b38f51-c8e9-11f0-a33d-3cd2e55daed6:0c008220c9; x-s3-tid=90b963c680e6c96bdc173fd83526e60642be1200:48:66b38f51-c8e9-11f0-a33d-3cd2e55daed6:0c008220c9; fromPage=%7BfromPage%3A%22index%22%7D; sccode=%7BsccodeInfo%3A%22%u9996%u9875%26%22%7D',
+    # 'Cookie': 'JSESSIONID=332E7189F4A557F1DF641B65715FE376; AlteonP=BdX4IG9ADgo3m5UjhgokNQ' + os.getenv('$', '') + '; HMF_CI=5730f48bdc2511b163627ff792eaafdacdf2df9bca48f241c5c7d84ff31fe863a96d5be106faad398e06525d360cba84bf1d0ec49647955e5bd5488ccae2e65ce4; sajssdk_2015_cross_new_user=1; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%2219abaa58df036c-0e615822877ad1-26061b51-2073600-19abaa58df11269%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22%24device_id%22%3A%2219abaa58df036c-0e615822877ad1-26061b51-2073600-19abaa58df11269%22%7D; x-s3-sid=S1rsLC2dhpC5e344z4nal7q2j; ariauseGraymode=false; arialoadData=false; x-s3-s4e=8%2B%2BSZ8IL0aNAzaiGdsP%2FN5Ooly8Q%2BEFvUEeX%2F6Kk1kXemJdRmV9JbU9WTV9T2L4b2KCSJGRi2pwEvSdxhocIdY4AEkhrUvlR2DGg2X47D1CKj3dcDFWDibHkx7Ok4G0P7Ak%2FoBTPIOGHHD%2BFkyUWGGyjEGLqlpXuNrr6owbfJK1%2B5gegiByi4yajTfQeWUoSpLtiBy0RPKZHCpxjc4IWhmvYZeXrK%2FGERG353FL6r3yrdTWS8Er3%2BN80A153rwb3JH27c9mDHhbGBftiBvYGBT18noD845zHwopFD7W91dzej3oauuAud4yTGxQY1LnEby0Hij%2FuL9w5n6SbotP0oObwE4qluhiJhOA8AOYSZ0%2BkaZ1qPWo%2FB6EMdal%2FZlVD394AQ3IAHscPvUy%2B3BYW1DjBaVvji1%2F6ivDn3Ks59dgUjp2KTo59crw%2BKf%2B5s9qFbbyNuCtPdTkHkzv1zt9sdtotTV0nB82crLJiyxpHCYcKUWYd6hYV3Ep8BBhIOTEVQEApaVvTnATTvW%2FT9sHfO9BV%2Fhoyvf2XBkWX7W%2BiZ1dZ%2FEI4T3RbfhgGMSKt8xwabbyNuCtPdTkHkzv1zt9sdp9cXhSb%2Bdt5Dl84CiVHx82IWfAuve%2B0exq%2B6q%2FzI65yVj4ydjibImNDNAXnkPmOahhXcxh2mElEtuBJF22ZBMeDfwR%2BEUzKoIxx6P6dGyRKMW6h2Tvatt8IINDri0gO203dK7Zw9J1tny86B17Rx93nJAFiD%2FL42KFkNvZ841XR5ATKjfYJC9m2gstov4xvK7IeF9rbGMuvEBJhfSLFW2XFj6kuLyM4KU30J%2FoMTJeAfPDehNYh7Kuwq5QjgH9Avg%3D%3D3sSs00b1969588274b1d3a85934d345fcb08ba3552ea:48:f6f3e784-c9ec-11f0-a33d-3cd2e55daed6:0400f320f9; x-s3-tid=00b1969588274b1d3a85934d345fcb08ba3552ea:48:f6f3e784-c9ec-11f0-a33d-3cd2e55daed6:0400f320f9; fromPage=%7BfromPage%3A%22index%22%7D; sccode=%7BsccodeInfo%3A%22%u9996%u9875%26%22%7D',
     'Content-Type': 'application/x-www-form-urlencoded',
 }
 
@@ -57,8 +43,8 @@ data = {
     'orgCityCode': 'SZX',
     'dstCity': '合肥',
     'dstCityCode': 'HFE',
-    'orgDate': '2025-11-24',
-    'dstDate': '2025-11-24',
+    'orgDate': '2025-11-25',
+    'dstDate': '2025-11-25',
     'quiz': [
         'Y',
         '1',
@@ -68,5 +54,4 @@ data = {
 }
 
 response = requests.post('https://www.shenzhenair.com/szair_B2C/flightsearch.action', cookies=cookies, headers=headers, data=data)
-print(response.status_code)
-print(response.text)
+print(response.status_code, response.cookies.get_dict())

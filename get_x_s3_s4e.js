@@ -442,6 +442,8 @@ var md5 = function (_0x25f57b, _0x5ddf28, _0xe52c88) {
 };
 // x_s3_s4e= _s3[_0x2ae1('0x13')][0x5a](window[_0xd71476[_0x2ae1('0x156')](_ssc[0x14] + _ssc[0x13], _ssc[0x12]) + _ssc[0x16]](_0x26644a) + _0xd71476['BAPox'] + _s3_tid, _0x214f53, _0x51fc87, _0x47b591)
 function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
+    let fcp ='c2331586'
+    let cvp = 'c8823e45'
     if (fp){
         let id_parts = fp[0].split(';')
         console.log(id_parts)
@@ -457,8 +459,12 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
     _0x7db3eb.push("zh-CN")
     _0x7db3eb.push('124.04347527516074')
     _0x7db3eb.push("Win32")
-    _0x7db3eb.push([ip])
-    _0x7db3eb.push("136ca139")
+    if (ip) {
+        _0x7db3eb.push([ip])
+    }else{
+        _0x7db3eb.push([])
+    }
+    _0x7db3eb.push(fcp)
     _0x7db3eb.push([
         "1920",
         "1080",
@@ -485,16 +491,23 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
         return _0xfdf81d;
     }
     var random_hash
-    while (1) {
-      random_hash = _0x3ffcf8(0x14)
-      console.log('random_hash',random_hash,random_hash.length)
-      if (random_hash.length===40){
-        break
-      }
-    }
+    random_hash = _0x3ffcf8(0x14)
+    fm = "bbe972d3a8df39f58c12b1a0bafdf772" //对 on88Mode1 的MD5加密
+    ftl = "025624f19c86ea78bcfb0c55f93b5dd5" //对 on88TimeLow 的MD5加密
+    ftm = "9e1d9673746408bc4677e54f73908176" // 对 on88TimeMid 的MD5加密
+    cm = _0x3ffcf8(0x4) + md5("1"+ua+0x0)
+    ctm = _0x3ffcf8(0x4) + md5('1' + 'Win32' + 0x0)
+    ctl = _0x3ffcf8(0x4) + md5('1' + cvp + 0x0)
+
+    console.log(cm)
+    console.log(ctm)
+    console.log(ctl)
+
+    random_hash = cm.substring(0, 8) + md5(cm.substring(8) + ctm.substring(8) + ctl.substring(8))
+    console.log('random_hash',random_hash)
     _0x7db3eb.push(random_hash)
   // _0x7db3eb.push('2de79d1770e9495d8a8a2466dd5df8900ddeaa3c')
-    _0x7db3eb.push("b7a49df6")
+    _0x7db3eb.push(cvp)
     _0x7db3eb.push('(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n')
     _0x245c1f = [
         ua,
@@ -506,21 +519,16 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
         "24",
         -480,
         "https://www.shenzhenair.com/szair_B2C/",
-        "b7a49df6",
+        cvp,
         "124.04347527516074",
         [ip]
     ]['join']('') + 'c'
     var random_hash_4
-    while(1){
-      random_hash_4 = _0x3ffcf8(0x4)
-      console.log('random_hash',random_hash_4,random_hash_4.length)
-      if (random_hash_4.length===8){
-        break
-      }
-    }
-    _0x7db3eb.push(random_hash_4 + md5(_0x245c1f))
+    random_hash_4 = _0x3ffcf8(0x4)
+
+    _0x7db3eb.push(random_hash_4 + 'a1d7e0c3c240cd0657ba3d7b532b63bf')
+    // _0x7db3eb.push(random_hash_4 + md5(_0x245c1f))
   // _0x7db3eb.push('8af48058' + md5(_0x245c1f))
-    // console.log('crypto-js-md5',CryptoJS.MD5(_0x245c1f).toString())
     _0x7db3eb.push( [
         [ 2, 2, 2, 2, 2 ],
         [ 2, 2, 3, 2, 3, 3 ],
@@ -1252,17 +1260,19 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp) {
     var x_s3_s4e = encrypt(JSON.stringify(_0x7db3eb))
     x_s3_s4e.replace(/(\s*|\t|\r|\n)/g, '')
     x_s3_s4e = window.encodeURIComponent(x_s3_s4e) + '3sSs' + x_s3_tid
-    return x_s3_s4e
+     return {fp:_0x7db3eb,x_s3_s4e:x_s3_s4e}
 }
-key = [4,109,32,87,114,19,10,10,85,79,94,98,79,76,91,9]
-fp = ["d8765e0021b43289d0dc3b9411bfe627d9b16b21:48:eead6325-c958-11f0-a33d-3cd2e55daed6:081001207b;S1ksAp8a6oswe34413lm9bazg","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","d101892a70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5970:15)\n","9faf4e0fc35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-console.log(fp)
-x_s3_tid = "9f0f050a6fb225b9e01bb43a8c74c73572646c9a:48:915fb989-c948-11f0-a33d-3cd2e55daed6:3c10002026"
-x_s3_sid =  "S1npSG8b5otqe34413lm9ba1f"
+// key = [4,109,32,87,114,19,10,10,85,79,94,98,79,76,91,9]
+fp = ["01c31d377bc73e1c9a1533f5cf7b8ccf4c26a056:48:58e5ea7b-c9e5-11f0-a33d-3cd2e55daed6:0420c32072;S143Oer6fp2oe344z4nal7q27","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",[],"c2331586",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","5a5a31ae2f65cb467a16e4ea8de74c2d14d2d0cf","c8823e45","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5970:15)\n","fb5cc0aecacf6f00335e6014d35f99f2f6f7852c",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
+// console.log(fp)
+x_s3_tid = "01c31d377bc73e1c9a1533f5cf7b8ccf4c26a056:48:58e5ea7b-c9e5-11f0-a33d-3cd2e55daed6:0420c32072"
+x_s3_sid =  "S143Oer6fp2oe344z4nal7q27"
 ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
-ip = "120.229.99.37"
-right_cookie = 'TpQO7Qw4gU%2BMHjKdGBi7Sw8grZyowdY12zrBAznFahMjEo%2BVYWYxjAZv19QmSk5LKsrhNrDBctbNTWKYA7WswEVu4WQqo%2FbAUrZDwIMuTRAwsnmjkK%2FtILOwQ2Y4UKiTR%2FOceyTGYxJgG2%2BPEIh7H5lGdAmKl3qM%2BKGsU1brtwz0frYxBhCrWWUgeSItwoF%2FVK66zdcTjKdJpAf0hOOtwpXPwbInInjHq3BTAmvKL%2Bd7hrarHYhCii3H7WUREaPtBOisH3D5fIhWm7zQj%2Fyhhk4Uu2onXFTf5WsKxMirGbu%2FVUh9qwNHXp4%2B16qz7MnpOT216Nm%2BJIwf8yZz5C%2BptjppsnEPpylzzcoWi8sasSu69r0lWMv2Wam5oIPglN%2BkcDbud9B9kg7Ql1oAi5%2ByYuyNcit8Bfg9YU0W%2FcbC2o973H691TPo1ZuGvvQKYPXm4%2FzK4LRnlbyFCw%2F24iR%2BPi3jMMivFWf4rUVLHU4QiQcqwUCYORJFRytdbJ2ifd3aM0oeyse9wj75GCjxDL9EDNeiwPhrJrwQt%2BGi33j2ujX6tiaBV%2BRSTYLs6x%2FyLo%2BX4%2FzK4LRnlbyFCw%2F24iR%2BPlRgum9ccV0HSWZu%2BeCoOSEES%2FzRZ0ShYAULpsTnRjbeo7fJ%2BZGwzx38u7EOvsk9hxprk5xqkDkwcNJO7RGvw6cCKpJw4jvI25dujY%2FExYg5ELkvkqYjOXjiFL4PobrQ1T9pDuM8%2FOdD9BmCEA99PHS4h3pS4VX8m9QCC%2Bb1jTO2dHldwCvi99YhysrBl1Un43WJDejCPL0%2BiK1aLkhjpa3Iu8sqrYRjQ3rTftO5aE1uRRjzWrrXslJZi1ycxtJrrA%3D%3D3sSsba29a9a030a1ea959937f4032bfec68fc50a3637:48:31b56915-c947-11f0-a33d-3cd2e55daed6:0bf0022053',
-cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined)
+// ip = "120.229.99.37"
+ip = undefined
+right_cookie = 'b007hgQttikSD9lcIsd4rAu7C%2F6bhiLlh48rR9IQSLdERZeYJcm%2B2oTkz2eG39OuwdLy%2Bt%2FL0t6aNDTdlRXjN6fEcHAFPh2hZcCpMtkk3PsJVkzi%2B%2BW%2BgTbEjXapZ9CmmhkoI9LeElC%2FIpczMs07DaVeIhqWwKaV0rl1XY4MSK%2BRB5ODnE%2FX6r55qIor71otvVAcPhyAGTXcRV2si3JN%2BR2Z%2BrW%2Bf7G8tpVgDEcIEUhssc8CR%2FcrJPBiBBVK89NAafiS8sgf%2FMny1ezxkWQsvnYG2pzRTPqwhHrCMEUWWVSnGgndm%2Fhfcg8g0zKwIePMN%2BdwBdCKJvL%2FjkRXTdZPOtzAC6dyiyZK%2BfhrT4h5U7POCDU7YeUeUBL44aYcfYiR8ZY8yNSQ%2F3tOHMdrjOpwp9ZKtyKRTuLR%2FEbQ%2FAiCGtiVBEwVKnk7d6wIJWFdE4%2BHQpsVKNRexb8vuxHuaddfGfleDi93lShgnnoHG2VItnY6IVEKZl0qaRb6JlTcvqoXtO0dYUBoVAQ5iAk5PvwBcemgyspYTRe4Q4KIyertz9WVBEwVKnk7d6wIJWFdE4%2BH%2B8yddewbUUuPrWicbl992i5FXbt8dkgkJ1AQKsSZ4vb3iSjG9Fk8ROmUWiNgqZEu2xjchTBHUxR9bueOqEgcMIkXMk0pBbn0fy3%2BbwUY7NXmQyRbv24CIHxX1fH6dBYJcOTS7nceXMUAfj6XSZ88HBNzGgYqfOM006wvq1KAVh%2BggXScrPNB0j305QF%2BLCn0GM1Lu%2BWm1%2Fi9u2KpYCIBYG8zIQkXJwrH8EGXrceZI5gEr5qNj%2BTIydNBnyMv%2Bw9G3sSs01c31d377bc73e1c9a1533f5cf7b8ccf4c26a056:48:58e5ea7b-c9e5-11f0-a33d-3cd2e55daed6:0420c32072'
+cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,fp)
+cookie = cookie['x_s3_s4e']
 console.log(cookie===right_cookie)
 console.log(cookie)
 console.log(right_cookie)
