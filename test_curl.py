@@ -85,6 +85,7 @@ def search_flight(session,ua):
     }
     response = session.post('https://www.shenzhenair.com/szair_B2C/flightsearch.action', headers=headers, data=data)
     if response.status_code == 200:
+
         logger.info('成功')
         logger.info(response.cookies)
         logger.info(session.cookies.get_dict())
@@ -118,60 +119,18 @@ def search_flight(session,ua):
         if response.status_code == 200:
 
             print(response.json())
+            return True
     else:
         logger.info(response.status_code)
         logger.info(response.headers)
         logger.info(response.text)
 
 
+context = execjs.compile(open('get_x_s3_s4e.js', 'r', encoding='utf-8').read())
 
 
-
-
-def test():
-    fcp = '136ca139'
-    # fcp = '123fsdff'
-    cvp = 'b7a49df6'
-    # cvp = 'b7sd9df6'
-    fcp = 'c2331586'
-    cvp = 'c8823e45'
-    proxy = requests.get('http://api.tianqiip.com/getip?secret=j6sjjczp&num=1&type=txt&port=1&mr=1&sign=91ac51fd3232c447486480bcb89d831f').text.strip()
-    print(proxy)
-    ip_port = proxy.split(':')
-    # ip = ip_port[0]
-    ip = None
-    proxies = {
-        'http':f'http://{proxy}',
-        'https':f'http://{proxy}',
-    }
-    fp = ["a9948d2aa9cd6ec48b9a0260a43452062d8f5475:48:958d034d-cb9c-11f0-a33d-3cd2e55daed6:03ee0220fc;S1lqOgrv0tr4e34413lm9baze","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","17b6f5bc70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5971:15)\n","43973898c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-
-    ip = '120.229.99.37'
-    context = execjs.compile(open('get_x_s3_s4e.js', 'r', encoding='utf-8').read())
-    ciphers = '18-11-17613-0-10-35-13-16-5-65037-23-65281-45-43-27-51'.split('-')
-    random.shuffle(ciphers)
-    print(ciphers)
-    ja3 = f'771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,{'-'.join(ciphers)},4588-29-23-24,0'
-
-    akamai_text="1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p"
-    extra_fp = ExtraFingerprints(
-        tls_grease=True,
-        tls_signature_algorithms=[]
-    )
-    s = Session(akamai=akamai_text,ja3=ja3,allow_redirects=False,proxies=proxies)
-    # s.cookies.set('x-s3-sid','S1esvxxhmrRte34413lm9bazc',domain='.shenzhenair.com',path='/')
-    # s.cookies.set('x-s3-s4e','w8mzWHv5z77Ef%2Ft22UwRL6qB3olpw02xtrRAyM%2F%2BpI%2BZetQPslKLRpl5EtQJ%2BTnih7SpG95QzZx7CuTWetmzF3drEVikj%2B9zHQm7VoixfnMNHD5q1%2FyG5uHWKc80jEFmiDiMu2HQ9xdYZkPVPzRr705Q3oLD5e6WRz%2FCIM58X2C6PTxLmrAbLxd1e5RefbBH067Wogvt9Qd%2FoxQ5dI4C5QhnfdUBrIGok5M%2BaO1zJ6Ubve7sVpSI2oFtMOXKhwBvmc%2FLdR0BhhzIhLEs6sHVDa5nZk901mhI%2BNy7TbE5ji4xBofq0Zb0LMEfJeOeY64UWkL1P%2BYU%2FCDNb25rGwbS9Y%2Ba89DGo1gCPn2hEN3FFKU5gk9n%2BH4dfN1HPEVB5%2BaYZo6EOUMBULhLpaUJ4gzQoXt6POWao3hoo04Kd6vLq1PF7NujUXefRP6FgeCaQFfuR4FL6%2BZJCp5986YXYDL6O2uXBxThVuDJqNmPMPc1ckneOPtXMoz1xAEVQdUyY7evNOjmqGv7HbubYM6ACGW2Vkt7BjEdwVxr4%2FYZKQJE8wEMYommqeIP3LtWSYXMyNpKR4FL6%2BZJCp5986YXYDL6O601gQaT5DVv5ITwnlTgYyykqediwKyc5L0QaYZlWDtRW3c5Ha%2BRqqE1MtlYAqSwRrQXYoc0miW34wf4hlWvVOkpqEmieECBvfesbkNgeILNC%2B5JyIUKNEY1iLrhrRslelGb0ezK3aZFyFdOamb6hHu7Kc083aEusdrGbJHie5qB6IrEz4sA5pCTuaOq%2FOnUzym%2B2lBY5ik6KcFVj%2Bbph8%2Fb%2Fqc%2FW%2BRXu16b7Rxs3rvVLfPW%2FIW6WXfrMA81yCc48Q%3D%3D3sSsed9fca8cf14b05d4ccb806fb033f297932e68eb0:48:2c69409b-cbb4-11f0-a33d-3cd2e55daed6:00164220bc',domain='.shenzhenair.com',path='/')
-    # s.cookies.set('JSSESSIONID','2EE6D12BF096A378A7B6EB186F80F251',domain='www.shenzhenair.com',path='/szair_B2C/')
-    print(s.get('https://tls.browserleaks.com/').json()['ja3_text'])
-    # s.proxies = proxies
-    s.verify = False
-
-    # ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0'
-
-    ua = random.choice([
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
-    ])
+def get_cookie(session, ip, ua, key,fp, fcp, cvp):
+    s  = session
     headers = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
         'Accept-Language': 'zh-CN,zh;q=0.9',
@@ -188,10 +147,10 @@ def test():
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"Windows"',
     }
-    r = s.get('https://www.shenzhenair.com/szair_B2C/', headers=headers,proxies=proxies)
-    with open('szair.html','w',encoding='utf-8') as f:
+    r = s.get('https://www.shenzhenair.com/szair_B2C/', headers=headers)
+    with open('szair.html', 'w', encoding='utf-8') as f:
         f.write(r.content.decode('utf-8'))
-    boot_strip_source=get_boot_strip_source(r.text)
+    boot_strip_source = get_boot_strip_source(r.text)
     logger.debug("boot_strip_source={}".format(boot_strip_source))
     print(s.cookies)
     headers_js = {
@@ -235,11 +194,11 @@ def test():
         headers=headers,
     )
     logger.info(dict(response.cookies))
-    # r = s.get('https://www.shenzhenair.com/vodka/v1/dfp/bootstrap.js',headers=headers_js)
-    # params_url = parse_params_url(r.text)
-    # with open('bootstrap.js', 'w') as f:
-    #     f.write(r.text)
-    # logger.debug(f'params_url={params_url}')
+    r = s.get('https://www.shenzhenair.com/vodka/v1/dfp/bootstrap.js',headers=headers_js)
+    params_url = parse_params_url(r.text)
+    with open('bootstrap.js', 'w') as f:
+        f.write(r.text)
+    logger.debug(f'params_url={params_url}')
     headers = {
         "Accept": "*/*",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
@@ -253,7 +212,6 @@ def test():
         "User-Agent": ua,
 
     }
-
     url = "https://www.shenzhenair.com/vodka/v1/bootstrap/param"
     ts = int(time.time() * 1000)
     params = {
@@ -265,21 +223,70 @@ def test():
     data_json = json.loads(response.text)
     x_s3_tid = data_json['_a'][0]
     x_s3_sid = data_json['_a'][1]
-    r = s.get('https://www.shenzhenair.com/vodka/v1/js/sw.js',headers=headers_js)
+    r = s.get('https://www.shenzhenair.com/vodka/v1/js/sw.js', headers=headers_js)
     # x_s3_sid = context.call('get_random_sid')
     # x_s3_tid = context.call('get_random_tid')
     # s.cookies.set('x-s3-sid', x_s3_sid, domain='.shenzhenair.com', path='/')
     # s.cookies.set('x-s3-tid', x_s3_tid, domain='.shenzhenair.com', path='/')
-    data = context.call('get_x_s3_s4e', x_s3_tid,x_s3_sid,ip,ua,None,None,fcp,cvp)
+    data = context.call('get_x_s3_s4e', x_s3_tid, x_s3_sid, ip, ua, key, fp, fcp, cvp)
     pprint(data)
     x_s3_s4e = data['x_s3_s4e']
-
     s.cookies.set('x-s3-tid', x_s3_tid, domain='.shenzhenair.com', path='/')
-    s.cookies.set('x-s3-s4e', x_s3_s4e,domain='.shenzhenair.com',path='/')
-    s.cookies.set('fromPage','%7BfromPage%3A%22index%22%7D',domain='.shenzhenair.com',path='/')
-    s.cookies.set('sccode','%7BsccodeInfo%3A%22%u9996%u9875%26%22%7D',domain='.shenzhenair.com',path='/')
-    s.cookies.set('ariauseGraymode','false',domain='.shenzhenair.com',path='/')
+    s.cookies.set('x-s3-s4e', x_s3_s4e, domain='.shenzhenair.com', path='/')
+    s.cookies.set('fromPage', '%7BfromPage%3A%22index%22%7D', domain='.shenzhenair.com', path='/')
+    s.cookies.set('sccode', '%7BsccodeInfo%3A%22%u9996%u9875%26%22%7D', domain='.shenzhenair.com', path='/')
+    s.cookies.set('ariauseGraymode', 'false', domain='.shenzhenair.com', path='/')
     logger.info(s.cookies.get_dict())
-    search_flight(s,ua)
+
+
+def test():
+    fcp = '136ca139'
+    # fcp = '123fsdff'
+    cvp = 'b7a49df6'
+    # cvp = 'b7sd9df6'
+    fcp = 'c2331586'
+    cvp = 'c8823e45'
+    proxy = requests.get('http://api.tianqiip.com/getip?secret=j6sjjczp&num=1&type=txt&port=1&mr=1&sign=91ac51fd3232c447486480bcb89d831f').text.strip()
+    print(proxy)
+    ip_port = proxy.split(':')
+    ip = ip_port[0]
+    proxies = {
+        'http':f'http://{proxy}',
+        'https':f'http://{proxy}',
+    }
+
+    # ip = '120.229.99.37'
+
+    ciphers = '18-11-17613-0-10-35-13-16-5-65037-23-65281-45-43-27-51'.split('-')
+    random.shuffle(ciphers)
+    print(ciphers)
+    ja3 = f'771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,{'-'.join(ciphers)},4588-29-23-24,0'
+
+    akamai_text="1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p"
+    extra_fp = ExtraFingerprints(
+        tls_grease=True,
+        tls_signature_algorithms=[]
+    )
+    s = Session(akamai=akamai_text,ja3=ja3,allow_redirects=False,proxies=proxies,extra_fp=extra_fp)
+    # s.cookies.set('x-s3-sid','S1esvxxhmrRte34413lm9bazc',domain='.shenzhenair.com',path='/')
+    # s.cookies.set('x-s3-s4e','w8mzWHv5z77Ef%2Ft22UwRL6qB3olpw02xtrRAyM%2F%2BpI%2BZetQPslKLRpl5EtQJ%2BTnih7SpG95QzZx7CuTWetmzF3drEVikj%2B9zHQm7VoixfnMNHD5q1%2FyG5uHWKc80jEFmiDiMu2HQ9xdYZkPVPzRr705Q3oLD5e6WRz%2FCIM58X2C6PTxLmrAbLxd1e5RefbBH067Wogvt9Qd%2FoxQ5dI4C5QhnfdUBrIGok5M%2BaO1zJ6Ubve7sVpSI2oFtMOXKhwBvmc%2FLdR0BhhzIhLEs6sHVDa5nZk901mhI%2BNy7TbE5ji4xBofq0Zb0LMEfJeOeY64UWkL1P%2BYU%2FCDNb25rGwbS9Y%2Ba89DGo1gCPn2hEN3FFKU5gk9n%2BH4dfN1HPEVB5%2BaYZo6EOUMBULhLpaUJ4gzQoXt6POWao3hoo04Kd6vLq1PF7NujUXefRP6FgeCaQFfuR4FL6%2BZJCp5986YXYDL6O2uXBxThVuDJqNmPMPc1ckneOPtXMoz1xAEVQdUyY7evNOjmqGv7HbubYM6ACGW2Vkt7BjEdwVxr4%2FYZKQJE8wEMYommqeIP3LtWSYXMyNpKR4FL6%2BZJCp5986YXYDL6O601gQaT5DVv5ITwnlTgYyykqediwKyc5L0QaYZlWDtRW3c5Ha%2BRqqE1MtlYAqSwRrQXYoc0miW34wf4hlWvVOkpqEmieECBvfesbkNgeILNC%2B5JyIUKNEY1iLrhrRslelGb0ezK3aZFyFdOamb6hHu7Kc083aEusdrGbJHie5qB6IrEz4sA5pCTuaOq%2FOnUzym%2B2lBY5ik6KcFVj%2Bbph8%2Fb%2Fqc%2FW%2BRXu16b7Rxs3rvVLfPW%2FIW6WXfrMA81yCc48Q%3D%3D3sSsed9fca8cf14b05d4ccb806fb033f297932e68eb0:48:2c69409b-cbb4-11f0-a33d-3cd2e55daed6:00164220bc',domain='.shenzhenair.com',path='/')
+    # s.cookies.set('JSSESSIONID','2EE6D12BF096A378A7B6EB186F80F251',domain='www.shenzhenair.com',path='/szair_B2C/')
+    print(s.get('https://tls.browserleaks.com/').json()['ja3_text'])
+    # s.proxies = proxies
+    s.verify = False
+
+    # ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0'
+
+    ua = random.choice([
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0',
+        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
+    ])
+    get_cookie(s,ip,ua,None,None,fcp,cvp)
+    # time.sleep(10)
+    r = search_flight(s,ua)
+    # if not r:
+    #     get_cookie(s,ip,ua,None,None,fcp,cvp)
+    #     r = search_flight(s, ua)
+
 
 test()
