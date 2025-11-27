@@ -5,14 +5,13 @@ import httpx
 
 import time
 import execjs
-from curl_cffi.requests.session import Session
-from pprint import pprint
 
+from pprint import pprint
+from pyhttpx import HttpSession
 
 
 import requests
-from requests import session
-from httpx import Client
+
 import warnings
 warnings.filterwarnings('ignore')
 def test():
@@ -29,7 +28,7 @@ def test():
     # }
     proxies = None
     context = execjs.compile(open('get_x_s3_s4e.js', 'r', encoding='utf-8').read())
-    s = Client(verify=False,http2=True)
+    s = HttpSession()
     # s = Session(impersonate='firefox',akamai='1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p',ja3='771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,0-5-10-11-16-23-35-13-43-45-51-65281,29-23-24-25-256-257,0')
     s.proxies = proxies
     s.verify = False
@@ -130,8 +129,7 @@ def test():
         'ariauseGraymode': 'false',
         'arialoadData': 'false',
     }
-    for k,v in cookies.items():
-        s.cookies.set(k,v)
+
 
     r = s.get('https://www.shenzhenair.com/vodka/v1/dfp/bootstrap.js',headers=headers_js)
     headers = {
@@ -198,15 +196,15 @@ def test():
     x_s3_s4e = data['x_s3_s4e']
     right_cookie = '6mRO97azy0JtLepEOE9X8jGmZbkDoalWH67Pm8SEE6bQGl9KdpIHrISWinUtPcNSmrj6%2BrC2AcQq2BK0gBgovZ8eqK2%2Be7JpvZKA8nkJVHcSYTUG0TgBdzOumQAopfjbUq4ZOgfYxi7y79IZFUjF6SNpEbjLgVRQNNJe7V8AYcaNNvHccaxmXE6wsuZ5vuDH6AOAh003U%2BFBLIVakp9bQyZ49H%2FKVO93UC2JBiDGGfvml2wED%2BrBamJSfgWZTZ9v8G9HcKqjzelmKIaB89tXUTSnKETe5imextj5zbpWX2G7eDMWt8JopvCu3p5HEnlczN2ram2Ddr%2FqpixHPN1ErmJkrFlY4u591IS%2Ba7ZptZuTCWZY4UkqIYqO1T99E5AqOlelnWlrBqYjkH83EPt0kk8TcGgVsTvbcQcVpknAdspxiC3S0lktiUKER0WbvPkxFYOeCNPnN7CrMR28ycSS6VKDYoDZci9MwDYouuuHbjaPPusEc87j%2BM%2BBhPpJbbwHXy16W6w8YtXHQf1l%2FXugeSW59x%2FO6aFNCZCEBPG36JK7ZI0N277yll45dcrDBRsNFYOeCNPnN7CrMR28ycSS6aeWkpfahw%2BuIoNlrt7w0cRRlnuCwwbff98QroC9arBWkYnYdKhkGGBV7MLUqttg%2FpmSaM2RW1WZvHbyF2aoAFq16McbdeLpAeXKzQfNfjXUMSq%2FwZYKLYTiOruB%2B43VFuJInEOk%2BZYQOAR9nvwEy8xyQ9fzDDMd5kFZQqGtvUyddaSvA2wp%2BgRyTeSntd068S1Yav%2FxkMdp0aBtudE11ZNICyvsvM5cSWOCWI8RfXfDfXDY9Tbz4yGWspK73D4YKA%3D%3D3sSs0924d00a39a2ae8fafd795e97ab61497a5da4593:48:dbeb1763-cad3-11f0-a33d-3cd2e55daed6:0c10c220cb'
     print(x_s3_s4e==right_cookie)
-    s.cookies.set('x-s3-s4e', x_s3_s4e, domain='.shenzhenair.com', path='/')
-    s.cookies.set('x-s3-tid', x_s3_tid, domain='.shenzhenair.com', path='/')
-    s.cookies.set('fromPage','%7BfromPage%3A%22index%22%7D',domain='.shenzhenair.com',path='/')
-    s.cookies.set('sccode','%7BsccodeInfo%3A%22%u9996%u9875%26%22%7D',domain='.shenzhenair.com',path='/')
-    # cookies = {
-    #     'x-s3-sid':x_s3_sid,
-    #     'x-s3-s4e':x_s3_s4e,
-    #     'x-s3-tid':x_s3_tid
-    # }
+    # s.cookies.set('x-s3-s4e', x_s3_s4e, domain='.shenzhenair.com', path='/')
+    # s.cookies.set('x-s3-tid', x_s3_tid, domain='.shenzhenair.com', path='/')
+    # s.cookies.set('fromPage','%7BfromPage%3A%22index%22%7D',domain='.shenzhenair.com',path='/')
+    # s.cookies.set('sccode','%7BsccodeInfo%3A%22%u9996%u9875%26%22%7D',domain='.shenzhenair.com',path='/')
+    cookies = {
+        'x-s3-sid':x_s3_sid,
+        'x-s3-s4e':x_s3_s4e,
+        'x-s3-tid':x_s3_tid
+    }
     # s.cookies.set('ariauseGraymode','false',domain='.shenzhenair.com',path='/')
     print(dict(s.cookies))
     time.sleep(3)
@@ -219,13 +217,13 @@ def test():
         'sajssdk_2015_cross_new_user': '1',
         'sensorsdata2015jssdkcross': '%7B%22distinct_id%22%3A%2219ac115701e0-0165b54d970da78-26061b51-2073600-19ac115701f16da%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22%24device_id%22%3A%2219ac115701e0-0165b54d970da78-26061b51-2073600-19ac115701f16da%22%7D',
         'arialoadData': 'false',
-        'x-s3-sid': s.cookies.get('x-s3-sid'),
-        'x-s3-s4e': s.cookies.get('x-s3-s4e'),
-        'x-s3-tid': s.cookies.get('x-s3-tid'),
+        'x-s3-sid': x_s3_sid,
+        'x-s3-s4e': x_s3_s4e,
+        'x-s3-tid': x_s3_tid,
         'fromPage': '%7BfromPage%3A%22index%22%7D',
         'sccode': '%7BsccodeInfo%3A%22%u9996%u9875%26%22%7D',
     }
-
+    print(cookies)
     headers = {
         'Host': 'www.shenzhenair.com',
         'Cache-Control': 'max-age=0',
@@ -262,8 +260,7 @@ def test():
         'bzcCertNo': '',
     }
 
-    response = requests.post('https://www.shenzhenair.com/szair_B2C/flightsearch.action', cookies=cookies, headers=headers,
-                  data=data)
+    response = s.post('https://www.shenzhenair.com/szair_B2C/flightsearch.action', cookies=cookies, headers=headers,data=data,verify=False)
     print(response.status_code)
 
 test()
