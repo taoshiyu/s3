@@ -1,5 +1,19 @@
+from curl_cffi.requests import Session
 
-import requests
-r=requests.post(url='http://ip.taobao.com/service/getIpInfo2.php', data={'ip': 'myip'},verify=False)
-print(r.status_code)
-print(r.json())
+
+ja3 = '771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,18-11-17613-0-10-35-13-16-5-65037-23-65281-45-43-27-51,4588-29-23-24,0'
+akamai_text="1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p"
+session = Session(
+    ja3=ja3,
+    akamai='1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p'
+)
+r = session.get('https://tls.browserleaks.com/')
+print('771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,43-11-13-17613-23-65037-51-45-0-5-10-35-18-65281-27-16,4588-29-23-24,0')
+resp = r.json()
+print(resp['ja3n_text'])
+print(akamai_text)
+print(resp['akamai_text'])
+
+
+
+
