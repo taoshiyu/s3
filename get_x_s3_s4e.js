@@ -457,6 +457,97 @@ function _0x3ffcf8(_0x5f0ceb) {
     }
     return _0xfdf81d;
 }
+var _0x170076
+var _0x529597 = typeof Uint8Array != "undefined" ? new Uint8Array(0x10) : new Array(0x10);
+var _0x3b682a = [];
+  for (var _0x24e55f = 0x0; _0x24e55f < 0x100; ++_0x24e55f) {
+    _0x3b682a['push']((_0x24e55f + 0x100)["toString"](0x10)["substr"](0x1));
+  }
+  function _0x3d426d() {
+    var _0x43a349 = 0x1 & 0x1f;
+    var _0x6fb59 = (_0x43a349 >> 0x1)["toString"](0x10);
+    _0x6fb59 = _0x6fb59 + ((_0x43a349 & 0x1) << 0x3 | 0x4)['toString'](0x10);
+    return _0x6fb59;
+  }
+ function _0x1329e1(_0x3f1df1, _0x48fd71) {
+    _0x48fd71 = !!_0x48fd71 ? _0x48fd71 : 0x0;
+    var _0x1dba19 = (_0x3b682a[_0x3f1df1[_0x48fd71 + 0x0]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x1]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x2]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x3]] + '-' + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x4]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x5]] + '-' + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x6]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x7]] + '-' + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x8]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0x9]] + '-' + _0x3b682a[_0x3f1df1[_0x48fd71 + 0xa]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0xb]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0xc]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0xd]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0xe]] + _0x3b682a[_0x3f1df1[_0x48fd71 + 0xf]])["toLowerCase"]();
+    return _0x1dba19;
+  }
+function _0x3dd9cb() {
+    var _0x120e69 = 0x0;
+    if (!_0x170076) {
+      _0x170076 = typeof crypto !== "undefined" && crypto["getRandomValues"] && crypto['getRandomValues']["bind"](crypto) || typeof msCrypto !== "undefined" && typeof msCrypto["getRandomValues"] === "function" && msCrypto["getRandomValues"]['bind'](msCrypto);
+    }
+    if (!_0x170076) {
+      return _0x426d89();
+    }
+    var _0x13bded = _0x170076(_0x529597);
+    _0x13bded[0x6] = _0x13bded[0x6] & 0xf | 0x40;
+    _0x13bded[0x8] = _0x13bded[0x8] & 0x3f | 0x80;
+    return _0x1329e1(_0x13bded);
+  };
+window["_gTnSd"] = {
+    'CHARS': "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"["split"](''),
+    'toBase61': function (_0x359a8b, _0x343a9c) {
+      var _0x4c1bf9;
+      var _0x17a5c0 = _0x359a8b;
+      var _0x447af0 = [];
+      if (_0x343a9c < 0x0 || _0x17a5c0 < 0x0) {
+        return null;
+      }
+      for (var _0x1a698a = _0x343a9c - 0x1; _0x1a698a >= 0x0; _0x1a698a--, _0x17a5c0 = Math["floor"](_0x17a5c0 / 0x3d)) {
+        if (_0x17a5c0 === 0x0 && _0x1a698a != _0x343a9c - 0x1) {
+          _0x447af0[_0x1a698a] = 'Z';
+          continue;
+        }
+        _0x4c1bf9 = this["CHARS"]["indexOf"](this["CHARS"][_0x17a5c0 % 0x3d]);
+        if (_0x4c1bf9 < 0xa) {
+          _0x447af0[_0x1a698a] = this["CHARS"][this['CHARS']['indexOf']('0') + _0x4c1bf9];
+          continue;
+        }
+        if (_0x4c1bf9 < 0x24 && _0x4c1bf9 >= 0xa) {
+          _0x447af0[_0x1a698a] = this["CHARS"][this["CHARS"]["indexOf"]('a') + _0x4c1bf9 - 0xa];
+          continue;
+        }
+        if (_0x4c1bf9 >= 0x24) {
+          _0x447af0[_0x1a698a] = this['CHARS'][this["CHARS"]['indexOf']('A') + _0x4c1bf9 - 0x24];
+          continue;
+        }
+      }
+      return _0x447af0["toString"]()["replace"](/,/gi, '');
+    },
+    'signSid': function (_0x12c7af) {
+      let _0xd791c = 0x39;
+      for (let _0x4af3e7 = 0x0; _0x4af3e7 < _0x12c7af["length"]; _0x4af3e7++) {
+        let _0x15ad5c = _0x12c7af['charCodeAt'](_0x4af3e7);
+        if (_0x4af3e7 == 0x9 || _0x4af3e7 == 0xa) continue;
+        _0xd791c ^= _0x15ad5c;
+      }
+      const _0x2cf126 = this["toBase61"](_0xd791c, 0x2);
+      return _0x2cf126["length"] < 0x2 ? 'Z' + _0x2cf126 : _0x2cf126;
+    },
+    'gnSd': function () {
+      const _0x321a5e = "TS1";
+      const _0x3c2cbf = Math["floor"](Date['now']() / 0x3e8);
+      const _0x278f47 = this["toBase61"](_0x3c2cbf, 0x6);
+      const _0x133b9b = Math['random']()["toString"](0x24)['slice'](-0x8);
+      const _0x1f5205 = this["signSid"]('' + _0x321a5e + _0x278f47 + 'ZZ' + _0x133b9b);
+      return '' + _0x321a5e + _0x278f47 + _0x1f5205 + _0x133b9b;
+    }
+  };
+function _0x5b5bbf() {
+    var _0xcb105c = Math["round"](Math["random"]() * 0xff);
+    var _0x2f5bc6 = _0xcb105c['toString'](0x10);
+    return _0x2f5bc6["length"] == 0x1 ? '0' + _0x2f5bc6 : _0x2f5bc6;
+  }
+get_random_tid = function (){
+ var  _0x576094 = _0x3dd9cb();
+      return "7fde1908ad7a3ae2c7b8f11332cabd924ab67863:" + '51' + ':' + _0x576094 + ':' + _0x5b5bbf() + _0x5b5bbf() + _0x5b5bbf() + _0x3d426d() + _0x5b5bbf();
+}
+get_random_sid = function(){
+   return window["_gTnSd"]['gnSd']()
+}
 // x_s3_s4e= _s3[_0x2ae1('0x13')][0x5a](window[_0xd71476[_0x2ae1('0x156')](_ssc[0x14] + _ssc[0x13], _ssc[0x12]) + _ssc[0x16]](_0x26644a) + _0xd71476['BAPox'] + _s3_tid, _0x214f53, _0x51fc87, _0x47b591)
 function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
     if (!fcp){
@@ -1275,4 +1366,6 @@ console.log(cookie===right_cookie)
 console.log(cookie)
 console.log(right_cookie)
 
-
+console.log(
+window["_gTnSd"]['gnSd']())
+console.log(get_random_tid())

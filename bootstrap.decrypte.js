@@ -1478,7 +1478,8 @@ function _sFh(_0x454536) {
         };
         if (_0x3086bc["status"] != 0xc8) {
           _0x4905ef(0x0);
-        } else {
+        }
+        else {
           var _0x409cf0 = _0x3086bc["responseText"];
           var _0x52f70e = _0x409cf0['match'](/^(.*)(\{\"_a\":)/);
           if (!!_0x52f70e[0x1]) {
