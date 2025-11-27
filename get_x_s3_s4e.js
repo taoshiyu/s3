@@ -455,7 +455,6 @@ function _0x3ffcf8(_0x5f0ceb) {
     for (var _0x105424 = 0x0; _0x105424 < _0x5f0ceb; _0x105424++) {
         _0xfdf81d += _0x56055b();
     }
-
     return _0xfdf81d;
 }
 // x_s3_s4e= _s3[_0x2ae1('0x13')][0x5a](window[_0xd71476[_0x2ae1('0x156')](_ssc[0x14] + _ssc[0x13], _ssc[0x12]) + _ssc[0x16]](_0x26644a) + _0xd71476['BAPox'] + _s3_tid, _0x214f53, _0x51fc87, _0x47b591)
@@ -479,7 +478,7 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
 
     _0x7db3eb.push(ua)
     _0x7db3eb.push("zh-CN")
-    _0x7db3eb.push("124.04347527516074")
+    _0x7db3eb.push('124.04347527516074')
     _0x7db3eb.push("Win32")
     if (ip) {
         _0x7db3eb.push([ip])
@@ -495,7 +494,9 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
     ])
     _0x7db3eb.push(-480)
     _0x7db3eb.push("https://www.shenzhenair.com/szair_B2C/")
+
     var random_hash
+    random_hash = _0x3ffcf8(0x14)
     fm = "bbe972d3a8df39f58c12b1a0bafdf772" //对 on88Mode1 的MD5加密
     ftl = "025624f19c86ea78bcfb0c55f93b5dd5" //对 on88TimeLow 的MD5加密
     ftm = "9e1d9673746408bc4677e54f73908176" // 对 on88TimeMid 的MD5加密
@@ -512,10 +513,8 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
     _0x7db3eb.push(random_hash)
   // _0x7db3eb.push('2de79d1770e9495d8a8a2466dd5df8900ddeaa3c')
     _0x7db3eb.push(cvp)
-  _0x7db3eb.push("(https://www.shenzhenair.com/vodka/v1/js/sw.js:5971:15)\n")
-
-    // _0x7db3eb.push('(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n')
-    var _0x245c1f = [
+    _0x7db3eb.push('(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n')
+    _0x245c1f = [
         ua,
         "Win32",
         "zh-CN",
@@ -871,11 +870,11 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
     }
     // _0x253bc1["key"] = new Uint8Array([63,31,93,33,85,63,115,17,97,85,85,85,63,117,93,33])
     _0x253bc1["mode"] = 'ecb';
-    // if (mode===1){
-    //   _0x253bc1["mode"] = 'ecb';
-    // } else {
-    //   _0x253bc1["mode"] = 'cbc';
-    // }
+    if (mode===1){
+      _0x253bc1["mode"] = 'ecb';
+    } else {
+      _0x253bc1["mode"] = 'cbc';
+    }
 
 
     function _0x1f9a1e(_0x3d15ce, _0x12a973) {
@@ -1245,7 +1244,7 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
             return this[_0x1c61('0xf6')]['utf8ArrayBufferToString'](_0x23f85f);
         }
     }
-    console.log('fp',JSON.stringify(_0x7db3eb))
+    console.log('fp',_0x7db3eb)
     if (fp){
         console.log('right_fp',fp)
         console.log(fp===_0x7db3eb)
@@ -1258,39 +1257,22 @@ function get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,key,fp,fcp,cvp) {
 }
 // key = [4,109,32,87,114,19,10,10,85,79,94,98,79,76,91,9]
 
-only_one = ['3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c;S1i5mQ4jwpbVe34413lm9ba1d', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'zh-CN', '124.04347527516074', 'Win32', ['120.229.99.37'], '136ca139', ['1920', '1080', '1', '24'], -480, 'https://www.shenzhenair.com/szair_B2C/', 'fa8c8d8870e9495d8a8a2466dd5df8900ddeaa3c', 'b7a49df6', '(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n', '9937ce64c35b1b8f56f77ec57d5c1f0dfa817d61', [[2, 2, 2, 2, 2], [2, 2, 3, 2, 3, 3], 2, 2, 2, [3, 2, 3, 2, 2, 3], [2, 2, 2, 1, 1, 1, 3, 0], [2], [2], 2, [2], [2, 2], 2, 2], [], 2]
-only_cookie  = '48uN1QWkoG8zFM7u4BqgD9KpMDrtofMLWjP4wmazcxPt9LFbfmy9ytef4gVOoiY4MfYXL%2B9tb7qZ1nzEEu1pglSY0axrrOPxICcNWlCn4fJhtbT1arKuNdwlXZNGAj43qeNrVT33fg7qb4bYFSZkrynARkWDdNHH%2Fu9ZXpktOIwA8ExqkCSnF4wglTUSSRLit1%2BxqGht%2FVqw035EFihmnApVLf1frHFgG6ni6r3DpsKbgFfYBHs9KTAuhIsiuH8WlYToJ9MAu1uREbyo7Y1cGVRgEupuoK9fJaPUEV%2FoqE7%2B9RNgmkp8WxIPR95kRxoKJq49ZcGtGTvv4sr2UljUkHAoHa4qB8gvgxXVtBtcW9fJRl%2B%2FOgpiwEdKlqpDwGtWX3jkHCMybkD%2FIpPCFrA%2F9JkgjqfFRaYTio%2BRAMdkv65qo55f5xnBOo3sEPOlk0eNENk2wTN1G%2FmhNIBvrL9fr1knWSdcyAmaN30AfIIcJRP%2BVvB6fVglCQjq8QdT4c3I0YRUo2bwYg0jlBZt2eJq0MT9okRIql54wmszGcftUdDssq2gXwchIzH%2FS%2F2jabQMENk2wTN1G%2FmhNIBvrL9fr%2FYM4OfPmp2k2vhNpjeNRjjU1XBrJ5f92K7%2B0fB9c4Sk38PhXI0cy4LOpa4isAYT2qsRa%2FDs4IdOrTcbpf8HUEyIiJSjRFSlNo26yB5Pa0ummyvZJYBj55Vkl%2BTz2Qhe6QXokEwgrE9eGM340hVB293Oo7fJns%2FCwiSyjxbC2mDid%2BLDODokl0gJtj8BQx%2FDnnnm8WC5ERNazMrV2AxpIHoTbVvWbKq70enAAiBT55YJKqE0E1UNs9YIyQ81uAaw9g%3D%3D3sSs3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c'
-
-fp = only_one
-fp = ["410f15c7cac8ed45cf1fa8454dbe4d30349f1d1c:48:a29ce8a4-caf7-11f0-a740-005056ae692b:05b083205c;S1fq5KnnnrmPe34413lm9ba3c","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","1a5a403c70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","130a5ae3c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp = ["879ccad508e191914a14618767065202476a1503:48:111ab56e-caf8-11f0-a33d-3cd2e55daed6:09600120d4;S1tdTrqsnrcze34413lm9bazc","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","d1a3d57a70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","636ec8a8c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp = ["16dd35dd22a3aab69924489f6328996bde1cccf6:48:618a6958-caf8-11f0-a33d-3cd2e55daed6:0bf0f020dd;S1jjXFvvnrcZe34413lm9baz6","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","0341db3070e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","9fb86db6c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp = ["414de2a924e996cc1e7d14565816832fcd5480a0:48:fa273297-caf9-11f0-a740-005056ae692b:02f0b020f7;S1c6Y6vcorPUe34413lm9baza","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","eb039a8770e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","7a18a6d1c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp=["016bdff2c074607cbf37ced5b5a8e724785badcd:48:63d74424-cafa-11f0-a33d-3cd2e55daed6:00311020ba;S1hwfr0horTCe34413lm9ba2u","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","4fa2bfbb70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","833ecfa8c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp=["a9560beb112efc3313a99fcdc6207f7ec2595930:48:e2c18c75-cafa-11f0-a33d-3cd2e55daed6:d100402000;S15qi5yloriRe34413lm9bazm","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","6ce2380f70e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","7f1ebb7bc35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp=["90182d7fb2528dacae902a6cb52a29752130ccca:48:644e0125-cafb-11f0-a33d-3cd2e55daed6:9430012056;S126Hk2rornRe34413lm9ba3i","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","c90160d970e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","d6fb934cc35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp = ["6c3e60260444dd80feadf6ff50f54ff3f6811d34:48:15595cea-cafc-11f0-a740-005056ae692b:0b4080201c;S1nmKcyxory4e34413lm9ba21","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","3148965470e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","f1a4dfa3c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp = ["0d48f338b32ee6918eea85cc0121f29649022cc7:48:7df2ff89-cafc-11f0-a740-005056ae692b:0c205520e6;S1nvFw23pr0ie34413lm9ba28","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","734492e070e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","c79d11cbc35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-fp=["0606e2f8f5671ea02b2253c5a8dc21a0bd01746f:48:211f596c-cafd-11f0-a740-005056ae692b:041081208d;S1cdTbg9prG5e34413lm9bazy","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36","zh-CN","124.04347527516074","Win32",["120.229.99.37"],"136ca139",["1920","1080","1","24"],-480,"https://www.shenzhenair.com/szair_B2C/","d92afa2370e9495d8a8a2466dd5df8900ddeaa3c","b7a49df6","(https://www.shenzhenair.com/vodka/v1/js/sw.js:5973:15)\n","4fbe5418c35b1b8f56f77ec57d5c1f0dfa817d61",[[2,2,2,2,2],[2,2,3,2,3,3],2,2,2,[3,2,3,2,2,3],[2,2,2,1,1,1,3,0],[2],[2],2,[2],[2,2],2,2],[],2]
-
-x_s3_tid = "ce1087ae2a551e2a01872d48f38ceba7f1cb0d80:48:8feff665-caff-11f0-a33d-3cd2e55daed6:6ab0c32004"
-x_s3_sid =  "S1wcxltxprese34413lm9ba12"
+// only_one = ['3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c;S1i5mQ4jwpbVe34413lm9ba1d', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'zh-CN', '124.04347527516074', 'Win32', ['120.229.99.37'], '136ca139', ['1920', '1080', '1', '24'], -480, 'https://www.shenzhenair.com/szair_B2C/', 'fa8c8d8870e9495d8a8a2466dd5df8900ddeaa3c', 'b7a49df6', '(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n', '9937ce64c35b1b8f56f77ec57d5c1f0dfa817d61', [[2, 2, 2, 2, 2], [2, 2, 3, 2, 3, 3], 2, 2, 2, [3, 2, 3, 2, 2, 3], [2, 2, 2, 1, 1, 1, 3, 0], [2], [2], 2, [2], [2, 2], 2, 2], [], 2]
+// only_cookie  = '48uN1QWkoG8zFM7u4BqgD9KpMDrtofMLWjP4wmazcxPt9LFbfmy9ytef4gVOoiY4MfYXL%2B9tb7qZ1nzEEu1pglSY0axrrOPxICcNWlCn4fJhtbT1arKuNdwlXZNGAj43qeNrVT33fg7qb4bYFSZkrynARkWDdNHH%2Fu9ZXpktOIwA8ExqkCSnF4wglTUSSRLit1%2BxqGht%2FVqw035EFihmnApVLf1frHFgG6ni6r3DpsKbgFfYBHs9KTAuhIsiuH8WlYToJ9MAu1uREbyo7Y1cGVRgEupuoK9fJaPUEV%2FoqE7%2B9RNgmkp8WxIPR95kRxoKJq49ZcGtGTvv4sr2UljUkHAoHa4qB8gvgxXVtBtcW9fJRl%2B%2FOgpiwEdKlqpDwGtWX3jkHCMybkD%2FIpPCFrA%2F9JkgjqfFRaYTio%2BRAMdkv65qo55f5xnBOo3sEPOlk0eNENk2wTN1G%2FmhNIBvrL9fr1knWSdcyAmaN30AfIIcJRP%2BVvB6fVglCQjq8QdT4c3I0YRUo2bwYg0jlBZt2eJq0MT9okRIql54wmszGcftUdDssq2gXwchIzH%2FS%2F2jabQMENk2wTN1G%2FmhNIBvrL9fr%2FYM4OfPmp2k2vhNpjeNRjjU1XBrJ5f92K7%2B0fB9c4Sk38PhXI0cy4LOpa4isAYT2qsRa%2FDs4IdOrTcbpf8HUEyIiJSjRFSlNo26yB5Pa0ummyvZJYBj55Vkl%2BTz2Qhe6QXokEwgrE9eGM340hVB293Oo7fJns%2FCwiSyjxbC2mDid%2BLDODokl0gJtj8BQx%2FDnnnm8WC5ERNazMrV2AxpIHoTbVvWbKq70enAAiBT55YJKqE0E1UNs9YIyQ81uAaw9g%3D%3D3sSs3ec5db91a167b288dd0c43b5abd53bae186dc256:48:f9e4d48d-ca21-11f0-a33d-3cd2e55daed6:0430c1206c'
+//
+// fp = only_one
+// fp = ['b46f17c75b4d888e08a5e5efeb59779de83ccca0:48:870290f8-ca07-11f0-a33d-3cd2e55daed6:0840422077;S1uxfH5yopi7e34413lm9bazj', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'zh-CN', '124.04347527516074', 'Win32', ['38.87.67.154'], 'c2331586', ['1920', '1080', '1', '24'], -480, 'https://www.shenzhenair.com/szair_B2C/', 'be6f2fa92f65cb467a16e4ea8de74c2d14d2d0cf', 'c8823e45', '(https://www.shenzhenair.com/vodka/v1/js/sw.js:1:256343)\n', '7c653eb1a1d7e0c3c240cd0657ba3d7b532b63bf', [[2, 2, 2, 2, 2], [2, 2, 3, 2, 3, 3], 2, 2, 2, [3, 2, 3, 2, 2, 3], [2, 2, 2, 1, 1, 1, 3, 0], [2], [2], 2, [2], [2, 2], 2, 2], [], 2]
+// // console.log(fp)
+x_s3_tid = "8a5a41fe771ddae5691a33468d80746e1c7fcb71:48:a1318ce3-cb3e-11f0-a33d-3cd2e55daed6:d830412016"
+x_s3_sid =  "S17efbl09sXhe344z4nal7qzv"
 ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'
-// ip = "120.229.99.37"
-ip = "120.229.99.37"
-
-
-right_cookie = '0HCTSN4sSxf%2Bk0cp2%2BhaCzvl3IUrr3pi%2F6%2FD1TXISnYjrKQ%2FrjfqKPdeWUHwEOaKbkMnBxlu7WE22OsdzXGAb9CNwm8b3rsXES7wDiboDxUY%2BGEM6HMKmVtXHpqdrGzgCnCqCTKnMbIy4bt0gTGcm9iDpXIRIavI8C4aAQyiLl7zAaupFWuhaWBkVs5i8WBIgCW9JXbp0YNYzGAEzNHjB2UvFOSXvHDuG%2FfvicZDDPh6nHpuN8Zt4G8cXHPIYBiiPG1LU2nvT5NKOMzfUF3nwMZNww0WSD7aSgi%2Bx2ohxFy3DFT6oySY543MWTlUtzVyc0sL3i0K%2BX5YCgmeiX%2FddIUMteJcqGkB0ipmgmq9GJiSw6ZPEYH7beFalIdUrFiEtblXdBL8QcjR7vmNTiF%2FWOR1Klv8Mu%2BQmBwmj3RA0zuq6I62ejv9X2lwvQYaljUQKAjPcmaVe9dcwfU5DbZfGnggwG0lIJ%2FFAp%2FjBm0PPcLIPHPDbzHR3EY8wIuiw7O7x83D2g8JT68K7k4Yv2Wxy6Vqj04%2B4s9DT8KQSyVQVRcs%2B5aNampqAPz%2BkVRw4fybKAjPcmaVe9dcwfU5DbZfGq1NG8LSxQRSTZeAOuJ%2FfDoJuqhAS%2B3sDWlqEHkEQYQROahEWHsvXK52JkC%2F%2FPIHKADSBR7RrKEnIwdX%2FYwVky%2FraZ%2Bw3US5kBlblet%2FjXJ6c8o5DK6qIk22idT0Xa68DrHPHYiwYKUZGW4xV17hrhPWeIeSD8iqgfYF9%2F20e5h12XQDYoiz01aFpqJyRrh9VpZcoHhD9v8lyHYq%2FYlQAtTyveK5Ldq94PZ4FH48nulki7bX1r4rmq6G7otZdnNoLg%3D%3D3sSs0d48f338b32ee6918eea85cc0121f29649022cc7:48:7df2ff89-cafc-11f0-a740-005056ae692b:0c205520e6'
-right_cookie = '0HCTSN4sSxf%2Bk0cp2%2BhaCzvl3IUrr3pi%2F6%2FD1TXISnYjrKQ%2FrjfqKPdeWUHwEOaKbkMnBxlu7WE22OsdzXGAb9CNwm8b3rsXES7wDiboDxUY%2BGEM6HMKmVtXHpqdrGzgCnCqCTKnMbIy4bt0gTGcm9iDpXIRIavI8C4aAQyiLl7zAaupFWuhaWBkVs5i8WBIgCW9JXbp0YNYzGAEzNHjB2UvFOSXvHDuG%2FfvicZDDPh6nHpuN8Zt4G8cXHPIYBiiPG1LU2nvT5NKOMzfUF3nwMZNww0WSD7aSgi%2Bx2ohxFy3DFT6oySY543MWTlUtzVyc0sL3i0K%2BX5YCgmeiX%2FddIUMteJcqGkB0ipmgmq9GJiSw6ZPEYH7beFalIdUrFiEtblXdBL8QcjR7vmNTiF%2FWOR1Klv8Mu%2BQmBwmj3RA0zuq6I62ejv9X2lwvQYaljUQKAjPcmaVe9dcwfU5DbZfGnggwG0lIJ%2FFAp%2FjBm0PPcLIPHPDbzHR3EY8wIuiw7O7x83D2g8JT68K7k4Yv2Wxy6Vqj04%2B4s9DT8KQSyVQVRcs%2B5aNampqAPz%2BkVRw4fybKAjPcmaVe9dcwfU5DbZfGq1NG8LSxQRSTZeAOuJ%2FfDoJuqhAS%2B3sDWlqEHkEQYQROahEWHsvXK52JkC%2F%2FPIHKADSBR7RrKEnIwdX%2FYwVky%2FraZ%2Bw3US5kBlblet%2FjXJ6c8o5DK6qIk22idT0Xa68DrHPHYiwYKUZGW4xV17hrhPWeIeSD8iqgfYF9%2F20e5h12XQDYoiz01aFpqJyRrh9VpZcoHhD9v8lyHYq%2FYlQAtTyveK5Ldq94PZ4FH48nulki7bX1r4rmq6G7otZdnNoLg%3D%3D3sSs0d48f338b32ee6918eea85cc0121f29649022cc7:48:7df2ff89-cafc-11f0-a740-005056ae692b:0c205520e6'
-result = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,undefined,'136ca139','b7a49df6')
-// cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,fp,'136ca139','b7a49df6')
-cookie = result['x_s3_s4e']
-console.log(result['fp'])
-console.log(fp)
+// // ip = "120.229.99.37"
+ip = "14.155.68.109"
+right_cookie = 'pPO4qUIhrDFV5vPFGmBJSuAKPHtuoZwmek2q%2FnmJK8JyOXNwVkUW2E5eTVONJxez8QpGzxSdTl%2BtgROlM7fe0tyL3MmX%2FsvlsG0IDtNQLBttYfHnyU7yuZb%2B6rdUhHe8Zd6D8eeC5ztzvJFc%2Fevugq75iI51MgYCqsJTCV89NSX6Cfr%2FlOoNn2XCJuks63Jg%2F89qofjt0XDnRr8iR2W0xGbxdlPFfdItjm87DNEpfVtyoxoAgWvssuz%2FDEgxOinh65e7Fas%2FzNO5vMcSHEZVEHMXRyJT7XJtdDPGQz0gJhhyw%2BV1GW%2Ftx%2F6z5NV8DeiDJ4%2F6LJOgG89Rpc3pJQXOzjFYa2lhuQVwQaZk%2Fg%2FDJCjaYDLH%2BDwj%2BlFTNwi819UrATJRsk6LOJIk8ZWhXvZsPUBspW6cv8T6Svl0tZjgfSUQ3h674V5pOOVifJJgDUuiptVkuWEOCfRuHxv4icgNym7vkw709nwE1kdfSwtqNeSuGA6ueslMzXGZsog36bVX%2B%2Fo7Wvy5pufGTpetA6IBFkrIpHVv07gxfX5UpkKFcB12%2FiH4FzcdiNPrei84AqnXptVkuWEOCfRuHxv4icgNyl36eLM9EOHXtg0WSaMTEOppthprePDcNRF1Pyo%2FO2leE9nGZWqHfSoHqPg%2BK%2FRNLr3KLxag2Qce9%2FKdQVPsnJyoMbcjijFPI1G0aMoEvxctUF8itmGMT4LoTV%2BRiYW6fwVdUaV4WcH9XkHX1oP6ktg0tSg5FfuUkKR9TyB5EhSWWAgdDTSoaOx0QfYlW3I6YfDd3cMnsQeO0i4DMnq9SwfJZpmiklXYoKWYSKyYCzJ9wAuOOaTyaYEJzOaRCe%2BCog%3D%3D3sSs8a5a41fe771ddae5691a33468d80746e1c7fcb71:48:a1318ce3-cb3e-11f0-a33d-3cd2e55daed6:d830412016'
+cookie = get_x_s3_s4e(x_s3_tid, x_s3_sid,ip,ua,undefined,undefined,'c2331586','c8823e45')
+cookie = cookie['x_s3_s4e']
 console.log(cookie===right_cookie)
-console.log(cookie.includes('\n'))
 console.log(cookie)
 console.log(right_cookie)
-
 
 

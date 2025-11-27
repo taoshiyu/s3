@@ -3380,9 +3380,7 @@ var bT = function () {
   function _0x560f30() {
     _0x275da8 += _0x25869d['1'];
     !!_0x4262aa ? _0x4262aa["push"](_0x275da8) : 0x1;
-    var md5_random_str = _0x3ffcf8(0x4)
-    console.log('md5_random_str',md5_random_str)
-    return md5_random_str + md5(_0x275da8);
+    return _0x3ffcf8(0x4) + md5(_0x275da8);
   }
   window["_s3dsm"] = _0x560f30;
   var _0x1edbe7 = function (_0xe32967, _0x9e1858, _0x419493) {
